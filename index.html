@@ -71,10 +71,9 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   background: var(--bg-container); border: 1px solid var(--border-color); border-radius: 10px;
   padding: 12px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
 }
-@media (min-width: 600px) { .seletor-topo-container { flex-direction: row; align-items: center; justify-content: space-between; } }
 
 .perfil-box { display: flex; flex-direction: column; gap: 6px; width: 100%; }
-@media (min-width: 600px) { .perfil-box { flex-direction: row; align-items: center; flex: 1; } }
+@media (min-width: 600px) { .perfil-box { flex-direction: row; align-items: center; justify-content: space-between; } }
 
 .perfil-label { font-size: 0.85rem; font-weight: bold; color: var(--accent-color); white-space: nowrap; }
 
@@ -101,6 +100,27 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 }
 .dropdown-item:hover { background: var(--cat-bg); color: var(--text-main); }
 .dropdown-item input[type="checkbox"] { accent-color: var(--accent-color); cursor: pointer; }
+
+/* Ferramenta Intuitiva de Clima e Ambiente */
+.clima-ambiente-box {
+  background: var(--legenda-bg); border: 1px solid var(--border-light); border-radius: 10px;
+  padding: 10px 14px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;
+}
+.clima-titulo-linha { font-size: 0.82rem; font-weight: bold; color: var(--accent-color); display: flex; justify-content: space-between; align-items: center; }
+.clima-botoes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+@media (min-width: 500px) { .clima-botoes-grid { grid-template-columns: repeat(4, 1fr); } }
+.btn-clima {
+  background: var(--btn-bg); border: 1px solid var(--border-light); color: var(--text-dimmed);
+  padding: 6px 8px; border-radius: 6px; font-size: 0.78rem; font-weight: 600; cursor: pointer; text-align: center; transition: all 0.2s;
+}
+.btn-clima:hover { border-color: var(--accent-color); color: var(--text-main); }
+.btn-clima.selected { background: var(--accent-color); color: #ffffff; border-color: var(--accent-hover); }
+
+.dica-ambiental-card {
+  display: none; background: var(--cat-bg); border-left: 3px solid var(--accent-color);
+  padding: 8px 10px; border-radius: 6px; font-size: 0.78rem; color: var(--text-dimmed); line-height: 1.4; margin-top: 4px;
+}
+.dica-ambiental-card.visivel { display: block; }
 
 .seletor-data-input {
   width: 100%; background: var(--btn-bg); border: 1px solid var(--border-light); color: var(--text-main);
@@ -269,9 +289,26 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 
   <!-- ==================== ABA 1: REGISTRO ==================== -->
   <div id="aba-registro" class="aba-conteudo active">
+    
+    <!-- FERRAMENTA INTUITIVA DE CLIMA E AMBIENTE -->
+    <div class="clima-ambiente-box">
+      <div class="clima-titulo-linha">
+        <span>🌤️ Como está o ambiente hoje? (Influência no humor e energia)</span>
+      </div>
+      <div class="clima-botoes-grid">
+        <button type="button" class="btn-clima" id="clima-ensolarado" onclick="selecionarAmbiente('clima', 'Ensolarado / Quente')">☀️ Ensolarado / Quente</button>
+        <button type="button" class="btn-clima" id="clima-chuvoso" onclick="selecionarAmbiente('clima', 'Chuvoso / Nublado')">🌧️ Chuvoso / Nublado</button>
+        <button type="button" class="btn-clima" id="periodo-dia" onclick="selecionarAmbiente('periodo', 'Período do Dia')">🌅 Dia</button>
+        <button type="button" class="btn-clima" id="periodo-noite" onclick="selecionarAmbiente('periodo', 'Período da Noite')">🌙 Noite</button>
+      </div>
+      <div class="dica-ambiental-card" id="dica-ambiental-texto">
+        Selecione o clima ou período para receber uma dica de regulação ambiental.
+      </div>
+    </div>
+
     <div class="seletor-topo-container">
       <div class="perfil-box">
-        <span class="perfil-label">Como você está a sentir-se hoje? (Selecione):</span>
+        <span class="perfil-label">O que você está a sentir hoje? (Selecione):</span>
         <div class="custom-dropdown" id="custom-dropdown-perfil">
           <button type="button" class="custom-dropdown-btn" onclick="toggleDropdown(event)">
             <span id="custom-dropdown-selected-text">Escolher o que se passa hoje...</span>
@@ -291,7 +328,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
             <label class="dropdown-item"><input type="checkbox" value="exaustao_psicofisica" onchange="atualizarPerfisSelecionados()"> Cansaço profundo / Sensação de corpo pesado</label>
             <label class="dropdown-item"><input type="checkbox" value="retirada_social" onchange="atualizarPerfisSelecionados()"> Vontade de isolamento / Afastamento dos outros</label>
             <label class="dropdown-item"><input type="checkbox" value="desesperanca_aprendida" onchange="atualizarPerfisSelecionados()"> Sensação de que as coisas não vão melhorar</label>
-            <label class="dropdown-item"><input type="checkbox" value="vazio_existencial" onchange="atualizarPerfisSelecionados()"> Vazio interno / Desconexão dos sentimentos</label>
+            <label class="dropdown-item"><input type="checkbox" value="vazio_existencial" onchange="atualizarPerfisSelecionados()"> V vazio interno / Desconexão dos sentimentos</label>
 
             <div class="dropdown-group-title">3. Padrões de Cobrança & Emoções Difíceis</div>
             <label class="dropdown-item"><input type="checkbox" value="autocritica_severa" onchange="atualizarPerfisSelecionados()"> Autocrítica pesada / Cobrança excessiva</label>
@@ -437,10 +474,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Como se autorregular:</strong> A desidratação leve causa fadiga, dores de cabeça e irritabilidade. Mantenha sempre uma garrafa de água por perto.
+          <strong>Como se autorregular:</strong> A desidratação leve causa fadiga, dores de cabeça e irritabilidade. Mantenha sempre uma garrafa de água por perto[span_0](start_span)[span_0](end_span).
         </div>
         <div class="criterio-legenda" id="legenda-hidratacao">
-          1 = Sem consumo de água; 3 = Ingestão moderada; 5 = Metas de hidratação atingidas.
+          1 = Sem consumo de água; 3 = Ingestão moderada; 5 = Metas de hidratação atingidas[span_1](start_span)[span_1](end_span).
         </div>
         <div class="botoes-escala">
           <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'hidratacao', 1)">1</button>
@@ -450,7 +487,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'hidratacao', 5)">5</button>
         </div>
         <div class="atalhos-container" id="atalhos-hidratacao"></div>
-        <textarea class="anotacao-criterio" placeholder="Manteve uma garrafa por perto? Sentiu sinais de desidratação?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Manteve uma garrafa por perto? Sentiu sinais de desidratação?[span_2](start_span)[span_2](end_span)"></textarea>
       </div>
 
       <div class="criterio-card" data-key="exercicios">
@@ -462,7 +499,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <strong>Como se autorregular:</strong> O movimento liberta endorfinas e ajuda a descarregar o excesso de cortisol acumulado pelo stress e pela ansiedade.
         </div>
         <div class="criterio-legenda" id="legenda-exercicios">
-          1 = Sedentarismo absoluto; 3 = Movimentação leve; 5 = Treino / Atividade completa.
+          1 = Sedentarismo absoluto; 3 = Movimentação leve; 5 = Treino / Atividade completa[span_3](start_span)[span_3](end_span).
         </div>
         <div class="botoes-escala">
           <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'exercicios', 1)">1</button>
@@ -472,7 +509,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'exercicios', 5)">5</button>
         </div>
         <div class="atalhos-container" id="atalhos-exercicios"></div>
-        <textarea class="anotacao-criterio" placeholder="Conseguiu colocar o corpo em movimento? Como o corpo reagiu?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Conseguiu colocar o corpo em movimento? Como o corpo reagiu?[span_4](start_span)[span_4](end_span)"></textarea>
       </div>
 
       <div class="criterio-card" data-key="medicaçao">
@@ -484,7 +521,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <strong>Como se autorregular:</strong> Siga as orientações profissionais e mantenha o acompanhamento e a medicação em dia para estabilizar a química cerebral.
         </div>
         <div class="criterio-legenda" id="legenda-medicaçao">
-          1 = Esqueceu medicação / Sintomas ignorados; 3 = Parcialmente cumprido; 5 = Prescrições e rotina em dia.
+          1 = Esqueceu medicação / Sintomas ignorados; 3 = Parcialmente cumprido; 5 = Prescrições e rotina em dia[span_5](start_span)[span_5](end_span).
         </div>
         <div class="botoes-escala">
           <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'medicaçao', 1)">1</button>
@@ -726,6 +763,14 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 <script>
 let registrosLocais = JSON.parse(localStorage.getItem('dashboard_depressao_ansiedade_db')) || {};
 let meuGraficoInstance = null;
+let ambienteAtual = { clima: '', periodo: '' };
+
+const dicasAmbientais = {
+  'Ensolarado / Quente': "☀️ Calor ou excesso de sol podem acelerar o ritmo cardíaco, gerando falsa sensação de sufoco ou irritabilidade. Mantenha-se hidratado e use água fresca nos pulsos se sentir o alarme do corpo disparar.",
+  'Chuvoso / Nublado': "🌧️ A menor luminosidade diminui a disposição e aumenta a vontade de recolhimento. Acenda luzes mais fortes em casa, faça um micro-movimento para gerar dopamina e seja gentil com o seu ritmo.",
+  'Período do Dia': "🌅 Manhã/Tarde: Cuidado com a ansiedade antecipatória ao acordar. Evite pegar no telemóvel de imediato; comece o dia com um copo de água e respirações fundas.",
+  'Período da Noite': "🌙 Noite: Com o fim das distrações, a mente pode acelerar com preocupações. Pratique despejar os pensamentos num papel antes de deitar e reduza os ecrãs."
+};
 
 const dadosPorNivel = {
   ruminacao: {
@@ -1035,6 +1080,40 @@ window.onclick = function() {
   }
 };
 
+function selecionarAmbiente(tipo, valor) {
+  if (tipo === 'clima') {
+    document.getElementById('clima-ensolarado').classList.remove('selected');
+    document.getElementById('clima-chuvoso').classList.remove('selected');
+    if (ambienteAtual.clima === valor) {
+      ambienteAtual.clima = '';
+    } else {
+      ambienteAtual.clima = valor;
+      event.currentTarget.classList.add('selected');
+    }
+  } else if (tipo === 'periodo') {
+    document.getElementById('periodo-dia').classList.remove('selected');
+    document.getElementById('periodo-noite').classList.remove('selected');
+    if (ambienteAtual.periodo === valor) {
+      ambienteAtual.periodo = '';
+    } else {
+      ambienteAtual.periodo = valor;
+      event.currentTarget.classList.add('selected');
+    }
+  }
+
+  const caixaDica = document.getElementById('dica-ambiental-texto');
+  let textoDica = [];
+  if (ambienteAtual.clima && dicasAmbientais[ambienteAtual.clima]) textoDica.push(dicasAmbientais[ambienteAtual.clima]);
+  if (ambienteAtual.periodo && dicasAmbientais[ambienteAtual.periodo]) textoDica.push(dicasAmbientais[ambienteAtual.periodo]);
+
+  if (textoDica.length > 0) {
+    caixaDica.innerHTML = textoDica.join('<br><br>');
+    caixaDica.classList.add('visivel');
+  } else {
+    caixaDica.classList.remove('visivel');
+  }
+}
+
 function selecionarEscalaDinamica(btn, chaveCard, valor) {
   const conteinerBotoes = btn.parentElement;
   conteinerBotoes.querySelectorAll('.btn-escala').forEach(b => b.classList.remove('selected'));
@@ -1115,6 +1194,7 @@ function salvarRegistroDiario() {
   });
 
   registrosLocais[dataSelecionada] = {
+    ambiente: { ...ambienteAtual },
     perfis,
     avaliacoes,
     atualizadoEm: new Date().toISOString()
@@ -1130,9 +1210,28 @@ function carregarRegistroData(dataStr) {
   document.querySelectorAll('.btn-escala').forEach(b => b.classList.remove('selected'));
   document.querySelectorAll('.atalhos-container').forEach(c => c.innerHTML = '');
   document.querySelectorAll('.anotacao-criterio').forEach(t => t.value = '');
+  document.querySelectorAll('.btn-clima').forEach(b => b.classList.remove('selected'));
+  document.getElementById('dica-ambiental-texto').classList.remove('visivel');
+  ambienteAtual = { clima: '', periodo: '' };
 
   const registro = registrosLocais[dataStr];
   if (registro) {
+    if (registro.ambiente) {
+      ambienteAtual = { ...registro.ambiente };
+      if (ambienteAtual.clima === 'Ensolarado / Quente') document.getElementById('clima-ensolarado').classList.add('selected');
+      if (ambienteAtual.clima === 'Chuvoso / Nublado') document.getElementById('clima-chuvoso').classList.add('selected');
+      if (ambienteAtual.periodo === 'Período do Dia') document.getElementById('periodo-dia').classList.add('selected');
+      if (ambienteAtual.periodo === 'Período da Noite') document.getElementById('periodo-noite').classList.add('selected');
+      
+      let textoDica = [];
+      if (ambienteAtual.clima && dicasAmbientais[ambienteAtual.clima]) textoDica.push(dicasAmbientais[ambienteAtual.clima]);
+      if (ambienteAtual.periodo && dicasAmbientais[ambienteAtual.periodo]) textoDica.push(dicasAmbientais[ambienteAtual.periodo]);
+      if (textoDica.length > 0) {
+        const caixaDica = document.getElementById('dica-ambiental-texto');
+        caixaDica.innerHTML = textoDica.join('<br><br>');
+        caixaDica.classList.add('visivel');
+      }
+    }
     if (registro.perfis) {
       registro.perfis.forEach(v => {
         const cb = document.querySelector(`#custom-dropdown-list input[value="${v}"]`);
@@ -1186,10 +1285,11 @@ function atualizarProntuario() {
       });
     }
     const media = qtd > 0 ? (soma / qtd).toFixed(1) : "N/A";
+    const amb = reg.ambiente ? ` | Clima: ${reg.ambiente.clima || 'N/A'}, ${reg.ambiente.periodo || 'N/A'}` : '';
 
     html += `
       <div class="prontuario-topico" style="border-bottom: 1px dashed var(--border-light); padding-bottom: 8px; margin-bottom: 8px;">
-        <strong>📅 Data: ${d}</strong> — <em>Média geral: ${media} / 5.0</em><br>
+        <strong>📅 Data: ${d}</strong> — <em>Média geral: ${media} / 5.0</em>${amb}<br>
         <small>Sensações assinaladas: ${reg.perfis ? reg.perfis.length : 0}</small>
       </div>
     `;
@@ -1301,12 +1401,13 @@ function exportarRelatorioPDF() {
       });
     }
     const media = qtd > 0 ? (soma / qtd).toFixed(1) : "N/A";
-    rows.push([data, media, reg.perfis ? reg.perfis.length : 0]);
+    const amb = reg.ambiente ? `${reg.ambiente.clima || ''} / ${reg.ambiente.periodo || ''}` : 'N/A';
+    rows.push([data, media, amb]);
   });
 
   doc.autoTable({
     startY: 40,
-    head: [['Data', 'Média Geral (1 a 5)', 'Pontos Assinalados']],
+    head: [['Data', 'Média Geral (1 a 5)', 'Ambiente / Clima']],
     body: rows
   });
 
