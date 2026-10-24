@@ -122,6 +122,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 }
 .dica-ambiental-card.visivel { display: block; }
 
+.input-complemento-ambiente {
+  width: 100%; background: var(--btn-bg); border: 1px solid var(--border-light); border-radius: 6px;
+  color: var(--text-main); padding: 8px 10px; font-size: 0.8rem; outline: none; margin-top: 4px;
+}
+.input-complemento-ambiente::placeholder { color: var(--text-muted); }
+
 .seletor-data-input {
   width: 100%; background: var(--btn-bg); border: 1px solid var(--border-light); color: var(--text-main);
   padding: 10px 12px; border-radius: 6px; font-size: 0.88rem; outline: none; cursor: pointer;
@@ -147,8 +153,8 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 }
 .categoria-titulo:hover { background: var(--border-light); color: var(--text-main); }
 .categoria-seta { font-size: 0.8rem; transition: transform 0.3s ease; }
-.categoria-grupo { display: flex; flex-direction: column; transition: all 0.3s ease; overflow: hidden; }
-.categoria-grupo.recolhido { max-height: 0; opacity: 0; margin: 0; pointer-events: none; }
+/* Recolhido por padrão conforme solicitado */
+.categoria-grupo { display: flex; flex-direction: column; transition: all 0.3s ease; overflow: hidden; max-height: 0; opacity: 0; margin: 0; pointer-events: none; }
 
 .criterio-card {
   background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px;
@@ -304,6 +310,8 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       <div class="dica-ambiental-card" id="dica-ambiental-texto">
         Selecione o clima ou período para receber uma dica de regulação ambiental.
       </div>
+      <!-- Campo de complementação sobre o ambiente cotidiano -->
+      <input type="text" id="complemento-ambiente-input" class="input-complemento-ambiente" placeholder="Ex: Hoje estive fora do meu ambiente cotidiano / Fiquei em casa o dia todo / Fui para casa de familiares...">
     </div>
 
     <div class="seletor-topo-container">
@@ -328,7 +336,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
             <label class="dropdown-item"><input type="checkbox" value="exaustao_psicofisica" onchange="atualizarPerfisSelecionados()"> Cansaço profundo / Sensação de corpo pesado</label>
             <label class="dropdown-item"><input type="checkbox" value="retirada_social" onchange="atualizarPerfisSelecionados()"> Vontade de isolamento / Afastamento dos outros</label>
             <label class="dropdown-item"><input type="checkbox" value="desesperanca_aprendida" onchange="atualizarPerfisSelecionados()"> Sensação de que as coisas não vão melhorar</label>
-            <label class="dropdown-item"><input type="checkbox" value="vazio_existencial" onchange="atualizarPerfisSelecionados()"> V vazio interno / Desconexão dos sentimentos</label>
+            <label class="dropdown-item"><input type="checkbox" value="vazio_existencial" onchange="atualizarPerfisSelecionados()"> Vazio interno / Desconexão dos sentimentos</label>
 
             <div class="dropdown-group-title">3. Padrões de Cobrança & Emoções Difíceis</div>
             <label class="dropdown-item"><input type="checkbox" value="autocritica_severa" onchange="atualizarPerfisSelecionados()"> Autocrítica pesada / Cobrança excessiva</label>
@@ -345,7 +353,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     <!-- Categoria 1: Dimensão Neuroemocional -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
       <span>Dimensão Neuroemocional: Mente & Corpo</span>
-      <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
+      <span class="categoria-seta" style="transform: rotate(-90deg);">▼</span>
     </div>
     <div class="categoria-grupo">
       
@@ -398,7 +406,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     <!-- Categoria 2: Saúde Integral & Rotina -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
       <span>Saúde Integral & Rotina Diária</span>
-      <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
+      <span class="categoria-seta" style="transform: rotate(-90deg);">▼</span>
     </div>
     <div class="categoria-grupo">
 
@@ -539,7 +547,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     <!-- Categoria 3: Relacionamentos & Vínculos -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
       <span>Relacionamentos & Vínculos Sociais</span>
-      <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
+      <span class="categoria-seta" style="transform: rotate(-90deg);">▼</span>
     </div>
     <div class="categoria-grupo">
 
@@ -614,7 +622,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     <!-- Categoria 4: Desempenho & Expectativas -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
       <span>Desempenho (Trabalho/Estudo) & Futuro</span>
-      <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
+      <span class="categoria-seta" style="transform: rotate(-90deg);">▼</span>
     </div>
     <div class="categoria-grupo">
 
@@ -1183,6 +1191,8 @@ function salvarRegistroDiario() {
     perfis.push(cb.value);
   });
 
+  const complementoAmbiente = document.getElementById('complemento-ambiente-input').value;
+
   const avaliacoes = {};
   document.querySelectorAll('.criterio-card').forEach(card => {
     const key = card.getAttribute('data-key');
@@ -1194,7 +1204,7 @@ function salvarRegistroDiario() {
   });
 
   registrosLocais[dataSelecionada] = {
-    ambiente: { ...ambienteAtual },
+    ambiente: { ...ambienteAtual, complemento: complementoAmbiente },
     perfis,
     avaliacoes,
     atualizadoEm: new Date().toISOString()
@@ -1212,16 +1222,20 @@ function carregarRegistroData(dataStr) {
   document.querySelectorAll('.anotacao-criterio').forEach(t => t.value = '');
   document.querySelectorAll('.btn-clima').forEach(b => b.classList.remove('selected'));
   document.getElementById('dica-ambiental-texto').classList.remove('visivel');
+  document.getElementById('complemento-ambiente-input').value = '';
   ambienteAtual = { clima: '', periodo: '' };
 
   const registro = registrosLocais[dataStr];
   if (registro) {
     if (registro.ambiente) {
-      ambienteAtual = { ...registro.ambiente };
+      ambienteAtual = { clima: registro.ambiente.clima || '', periodo: registro.ambiente.periodo || '' };
       if (ambienteAtual.clima === 'Ensolarado / Quente') document.getElementById('clima-ensolarado').classList.add('selected');
       if (ambienteAtual.clima === 'Chuvoso / Nublado') document.getElementById('clima-chuvoso').classList.add('selected');
       if (ambienteAtual.periodo === 'Período do Dia') document.getElementById('periodo-dia').classList.add('selected');
       if (ambienteAtual.periodo === 'Período da Noite') document.getElementById('periodo-noite').classList.add('selected');
+      if (registro.ambiente.complemento) {
+        document.getElementById('complemento-ambiente-input').value = registro.ambiente.complemento;
+      }
       
       let textoDica = [];
       if (ambienteAtual.clima && dicasAmbientais[ambienteAtual.clima]) textoDica.push(dicasAmbientais[ambienteAtual.clima]);
@@ -1286,10 +1300,11 @@ function atualizarProntuario() {
     }
     const media = qtd > 0 ? (soma / qtd).toFixed(1) : "N/A";
     const amb = reg.ambiente ? ` | Clima: ${reg.ambiente.clima || 'N/A'}, ${reg.ambiente.periodo || 'N/A'}` : '';
+    const comp = reg.ambiente && reg.ambiente.complemento ? `<br><small>Ambiente: ${reg.ambiente.complemento}</small>` : '';
 
     html += `
       <div class="prontuario-topico" style="border-bottom: 1px dashed var(--border-light); padding-bottom: 8px; margin-bottom: 8px;">
-        <strong>📅 Data: ${d}</strong> — <em>Média geral: ${media} / 5.0</em>${amb}<br>
+        <strong>📅 Data: ${d}</strong> — <em>Média geral: ${media} / 5.0</em>${amb}${comp}<br>
         <small>Sensações assinaladas: ${reg.perfis ? reg.perfis.length : 0}</small>
       </div>
     `;
