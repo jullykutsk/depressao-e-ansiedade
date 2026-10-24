@@ -67,6 +67,20 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 }
 .theme-toggle-btn:hover { transform: scale(1.08); }
 
+/* Caixa de Saudação Dinâmica ao Entrar */
+.saudacao-dinamica-box {
+  background: var(--bg-container); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-color);
+  border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+}
+.saudacao-titulo { font-size: 0.88rem; font-weight: bold; color: var(--accent-color); display: flex; justify-content: space-between; align-items: center; }
+.saudacao-texto { font-size: 0.84rem; color: var(--text-dimmed); line-height: 1.45; }
+.saudacao-acoes { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
+.btn-proxima-dica {
+  background: var(--btn-bg); border: 1px solid var(--border-light); color: var(--text-muted);
+  padding: 3px 10px; border-radius: 12px; font-size: 0.72rem; cursor: pointer; transition: all 0.2s;
+}
+.btn-proxima-dica:hover { color: var(--accent-color); border-color: var(--accent-color); }
+
 .seletor-topo-container {
   background: var(--bg-container); border: 1px solid var(--border-color); border-radius: 10px;
   padding: 12px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
@@ -154,7 +168,6 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 .categoria-titulo:hover { background: var(--border-light); color: var(--text-main); }
 .categoria-seta { font-size: 0.8rem; transition: transform 0.3s ease; }
 
-/* Grupos iniciam recolhidos mas preparados para abrir via JS */
 .categoria-grupo { display: flex; flex-direction: column; transition: all 0.3s ease; overflow: hidden; max-height: 0; opacity: 0; margin: 0; pointer-events: none; }
 .categoria-grupo.ativo { max-height: 3000px; opacity: 1; pointer-events: auto; margin-bottom: 12px; }
 
@@ -298,6 +311,17 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   <!-- ==================== ABA 1: REGISTRO ==================== -->
   <div id="aba-registro" class="aba-conteudo active">
     
+    <!-- MENSAGEM DINÂMICA DE BOAS-VINDAS AO ENTRAR -->
+    <div class="saudacao-dinamica-box">
+      <div class="saudacao-titulo">
+        <span id="saudacao-titulo-texto">👋 Olá! Um momento para si</span>
+        <button type="button" class="btn-proxima-dica" onclick="mudarMensagemBoasVindas()">Próxima dica 🔄</button>
+      </div>
+      <div class="saudacao-texto" id="saudacao-corpo-texto">
+        A carregar mensagem de acolhimento...
+      </div>
+    </div>
+
     <!-- FERRAMENTA INTUITIVA DE CLIMA E AMBIENTE -->
     <div class="clima-ambiente-box">
       <div class="clima-titulo-linha">
@@ -774,6 +798,66 @@ let registrosLocais = JSON.parse(localStorage.getItem('dashboard_depressao_ansie
 let meuGraficoInstance = null;
 let ambienteAtual = { clima: '', periodo: '' };
 
+/* MENSAGENS DINÂMICAS POR HORÁRIO OU ROTATIVAS */
+const mensagensBoasVindas = {
+  manha: [
+    "🌅 Manhã: Cuidado com a ansiedade antecipatória ao acordar. Evite pegar no telemóvel de imediato; comece o dia com um copo de água e respirações fundas.",
+    "☀️ Acordar pode trazer um pico de alerta no corpo. Lembre-se: você não precisa resolver o dia inteiro na primeira hora.",
+    "☕ Antes de qualquer exigência externa hoje, faça uma pausa curta de 30 segundos apenas sentindo o apoio dos seus pés no chão."
+  ],
+  tarde: [
+    "☀️ Tarde: Se a energia começou a cair ou o ritmo acelerou demasiado, faça uma pausa breve para soltar os ombros e respirar.",
+    "🌿 A meio do dia, observe se se cobrou demais. Pequenas pausas ajudam o sistema nervoso a reencontrar o eixo.",
+    "💧 Como está a sua hidratação e a sua postura agora? Aproveite para beber um copo de água fresca."
+  ],
+  noite: [
+    "🌙 Noite: Com o fim das obrigações, a mente costuma acelerar com os pensamentos do amanhã. Despeje as preocupações num papel antes de deitar.",
+    "🌌 A noite pede recolhimento e desativação do modo alerta. Afaste-se dos ecrãs e permita que o seu corpo desacople o stress do dia.",
+    "🕯️ Feche o dia sem julgamentos. O que não foi feito hoje poderá esperar amanhã; agora é momento de descanso."
+  ]
+};
+
+let indiceMensagemAtual = 0;
+let periodoAtualChave = 'manha';
+
+function atualizarMensagemBoasVindasAoEntrar() {
+  const hora = new Date().getHours();
+  if (hora >= 5 && hora < 12) {
+    periodoAtualChave = 'manha';
+  } else if (hora >= 12 && hora < 18) {
+    periodoAtualChave = 'tarde';
+  } else {
+    periodoAtualChave = 'noite';
+  }
+  
+  exibirMensagemAtual();
+}
+
+function exibirMensagemAtual() {
+  const lista = mensagensBoasVindas[periodoAtualChave];
+  const textoEl = document.getElementById('saudacao-corpo-texto');
+  const tituloEl = document.getElementById('saudacao-titulo-texto');
+  
+  if (textoEl && listacompleta(lista)) {
+    if (indiceMensagemAtual >= lista.length) indiceMensagemAtual = 0;
+    textoEl.innerText = lista[indiceMensagemAtual];
+    
+    if (periodoAtualChave === 'manha') tituloEl.innerText = "🌅 Bom dia — Um momento para si";
+    else if (periodoAtualChave === 'tarde') tituloEl.innerText = "☀️ Boa tarde — Checagem de ritmo";
+    else tituloEl.innerText = "🌙 Boa noite — Hora de desacelerar";
+  }
+}
+
+function listacompleta(arr) {
+  return arr && arr.length > 0;
+}
+
+function mudarMensagemBoasVindas() {
+  const lista = mensagensBoasVindas[periodoAtualChave];
+  indiceMensagemAtual = (indiceMensagemAtual + 1) % lista.length;
+  exibirMensagemAtual();
+}
+
 const dicasAmbientais = {
   'Ensolarado / Quente': "☀️ Calor ou excesso de sol podem acelerar o ritmo cardíaco, gerando falsa sensação de sufoco ou irritabilidade. Mantenha-se hidratado e use água fresca nos pulsos se sentir o alarme do corpo disparar.",
   'Chuvoso / Nublado': "🌧️ A menor luminosidade diminui a disposição e aumenta a vontade de recolhimento. Acenda luzes mais fortes em casa, faça um micro-movimento para gerar dopamina e seja gentil com o seu ritmo.",
@@ -1015,6 +1099,7 @@ document.addEventListener('DOMContentLoaded', () => {
     inputData.value = dataHoje;
     carregarRegistroData(dataHoje);
   }
+  atualizarMensagemBoasVindasAoEntrar();
   inicializarGrafico();
   atualizarProntuario();
 });
