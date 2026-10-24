@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard Psicoeducativo de Autorregulação - AH/SD</title>
+<title>Dashboard Psicoeducativo de Autorregulação - Depressão & Ansiedade</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
 
@@ -29,7 +29,7 @@
 }
 
 /* =========================================================
-   VARIÁVEIS DE TEMA DIA (Baseado na Imagem: Beige, Green & Rose Gold)[span_1](start_span)[span_1](end_span)
+   VARIÁVEIS DE TEMA DIA (Baseado na Imagem: Beige, Green & Rose Gold)[span_0](start_span)[span_0](end_span)
    ========================================================= */
 [data-theme="light"] {
   --bg-body: #eae8e3;        /* Beige muito claro neutro de fundo */
@@ -195,7 +195,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 }
 .criterio-card.prioritario { border: 2px solid var(--accent-color); background: var(--card-prioritario); }
 .criterio-card.prioritario::before {
-  content: "Foco Clínico Selecionado (AH/SD)"; display: inline-block; font-size: 0.72rem; font-weight: bold;
+  content: "Foco Clínico Selecionado (Depressão e Ansiedade)"; display: inline-block; font-size: 0.72rem; font-weight: bold;
   color: var(--accent-color); margin-bottom: 6px; background: var(--cat-bg); padding: 2px 8px; border-radius: 4px;
 }
 
@@ -330,7 +330,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   
   <div class="header-topo">
     <button class="btn-guia-sentimentos" onclick="abrirModalGuiaSentimentos()">
-      Guia: Dificuldade com Sentimentos?
+      Guia: Regulação de Sentimentos em Crise
     </button>
     <button class="theme-toggle-btn" id="theme-toggle" onclick="alternarTema()" title="Alternar tema claro/escuro">
       ☀️
@@ -347,37 +347,33 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   <div id="aba-registro" class="aba-conteudo active">
     <div class="seletor-topo-container">
       <div class="perfil-box">
-        <span class="perfil-label">Traços, Ser & Fazer (Múltipla Escolha):</span>
+        <span class="perfil-label">Eixos Clínicos & Fenótipos (Múltipla Escolha):</span>
         <div class="custom-dropdown" id="custom-dropdown-perfil">
           <button type="button" class="custom-dropdown-btn" onclick="toggleDropdown(event)">
-            <span id="custom-dropdown-selected-text">Selecionar Dimensões AH/SD...</span>
+            <span id="custom-dropdown-selected-text">Selecionar Eixos Clínicos...</span>
             <span>▼</span>
           </button>
           <div class="custom-dropdown-content" id="custom-dropdown-list" onclick="event.stopPropagation()">
             
-            <div class="dropdown-group-title">1. O Ser, Sentir & Refletir (Dabrowski & Desenvolvimento)</div>
-            <label class="dropdown-item"><input type="checkbox" value="excitabilidade_intelectual" onchange="atualizarPerfisSelecionados()"> Excitabilidade Intelectual</label>
-            <label class="dropdown-item"><input type="checkbox" value="excitabilidade_emocional" onchange="atualizarPerfisSelecionados()"> Excitabilidade Emocional & Empatia Profunda</label>
-            <label class="dropdown-item"><input type="checkbox" value="excitabilidade_imaginativa" onchange="atualizarPerfisSelecionados()"> Excitabilidade Imaginativa</label>
-            <label class="dropdown-item"><input type="checkbox" value="excitabilidade_psicomotora" onchange="atualizarPerfisSelecionados()"> Excitabilidade Psicomotora</label>
-            <label class="dropdown-item"><input type="checkbox" value="excitabilidade_sensorial" onchange="atualizarPerfisSelecionados()"> Excitabilidade Sensorial / Estética</label>
-            <label class="dropdown-item"><input type="checkbox" value="assincronia_desenvolvimento" onchange="atualizarPerfisSelecionados()"> Assincronia de Desenvolvimento</label>
+            <div class="dropdown-group-title">1. Eixo de Hiperativação Ansiosa (SNA / Amígdala)</div>
+            <label class="dropdown-item"><input type="checkbox" value="ruminacao_ansiosa" onchange="atualizarPerfisSelecionados()"> Ruminação Ansiosa & Superativação da Rede de Modo Padrão (DMN)</label>
+            <label class="dropdown-item"><input type="checkbox" value="hipervigilancia_somatica" onchange="atualizarPerfisSelecionados()"> Hipervigilância Somática & Reatividade Autonômica Simpática</label>
+            <label class="dropdown-item"><input type="checkbox" value="paralisia_analitica" onchange="atualizarPerfisSelecionados()"> Paralisia por Excesso de Análise (Overthinking & Busca de Certeza)</label>
+            <label class="dropdown-item"><input type="checkbox" value="ansiedade_antecipatoria" onchange="atualizarPerfisSelecionados()"> Ansiedade Antecipatória & Catastrofização Cognitiva</label>
+            <label class="dropdown-item"><input type="checkbox" value="esquiva_comportamental" onchange="atualizarPerfisSelecionados()"> Esquiva Comportamental & Evitação Aguda de Estímulos</label>
 
-            <div class="dropdown-group-title">2. O Fazer, Realizar & Cognição (Renzulli & 2e)</div>
-            <label class="dropdown-item"><input type="checkbox" value="habilidade_acima_media" onchange="atualizarPerfisSelecionados()"> Habilidade Acima da Média (Renzulli - Anel 1)</label>
-            <label class="dropdown-item"><input type="checkbox" value="comprometimento_tarefa" onchange="atualizarPerfisSelecionados()"> Comprometimento com a Tarefa / Hiperfoco (Renzulli - Anel 2)</label>
-            <label class="dropdown-item"><input type="checkbox" value="criatividade" onchange="atualizarPerfisSelecionados()"> Criatividade (Renzulli - Anel 3)</label>
-            <label class="dropdown-item"><input type="checkbox" value="dupla_excepcionalidade_2e" onchange="atualizarPerfisSelecionados()"> Dupla Excepcionalidade (2e)</label>
+            <div class="dropdown-group-title">2. Eixo de Hipoativação Depressiva (Dorsal Vagal / Estriado Ventral)</div>
+            <label class="dropdown-item"><input type="checkbox" value="anedonia_inerxias" onchange="atualizarPerfisSelecionados()"> Anedonia & Inércia Dopaminérgica Estriatal</label>
+            <label class="dropdown-item"><input type="checkbox" value="exaustao_psicofisica" onchange="atualizarPerfisSelecionados()"> Exaustão Psicofísica & Queda do Tônus Autonômico (Brain Fog)</label>
+            <label class="dropdown-item"><input type="checkbox" value="retirada_social" onchange="atualizarPerfisSelecionados()"> Retirada Social & Evitação Interpessoal (Vagal Dorsal)</label>
+            <label class="dropdown-item"><input type="checkbox" value="desesperanca_aprendida" onchange="atualizarPerfisSelecionados()"> Desesperança Aprendida & Baixa Sensação de Autoeficácia</label>
+            <label class="dropdown-item"><input type="checkbox" value="vazio_existencial" onchange="atualizarPerfisSelecionados()"> Sentimento de Vazio & Desconexão Afetiva / Amortecimento</label>
 
-            <div class="dropdown-group-title">3. Vínculos & Empatia Moral</div>
-            <label class="dropdown-item"><input type="checkbox" value="intensidade_relacional" onchange="atualizarPerfisSelecionados()"> Intensidade Relacional & Vínculos por Admiração</label>
-            <label class="dropdown-item"><input type="checkbox" value="exaustao_empatica" onchange="atualizarPerfisSelecionados()"> Exaustão Empática & Sobrecarga Moral</label>
-
-            <div class="dropdown-group-title">4. Momentos de Desregulação & Crises</div>
-            <label class="dropdown-item"><input type="checkbox" value="boreout" onchange="atualizarPerfisSelecionados()"> Boreout / Subestimulação Crônica</label>
-            <label class="dropdown-item"><input type="checkbox" value="burnout_mascaramento" onchange="atualizarPerfisSelecionados()"> Burnout por Mascaramento Social</label>
-            <label class="dropdown-item"><input type="checkbox" value="sindrome_impostor" onchange="atualizarPerfisSelecionados()"> Síndrome do Impostor & Autocrítica Severa</label>
-            <label class="dropdown-item"><input type="checkbox" value="crise_existencial" onchange="atualizarPerfisSelecionados()"> Crise Existencial & Angústia Filosófica</label>
+            <div class="dropdown-group-title">3. Padrões Cognitivos & Vulnerabilidade Neuropsicológica</div>
+            <label class="dropdown-item"><input type="checkbox" value="autocritica_severa" onchange="atualizarPerfisSelecionados()"> Autocrítica Severa & Viés de Negatividade Cognitiva</label>
+            <label class="dropdown-item"><input type="checkbox" value="perfeccionismo_disfuncional" onchange="atualizarPerfisSelecionados()"> Perfeccionismo Disfuncional & Esquema de Incompetência</label>
+            <label class="dropdown-item"><input type="checkbox" value="sobrecarga_sensorial" onchange="atualizarPerfisSelecionados()"> Sobrecarga Sensorial & Hiperestesia Interoceptiva</label>
+            <label class="dropdown-item"><input type="checkbox" value="desregulacao_afetiva" onchange="atualizarPerfisSelecionados()"> Desregulação Afetiva & Labilidade Emocional Crônica</label>
 
           </div>
         </div>
@@ -387,758 +383,334 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 
     <!-- Seção: Dimensão Neuroemocional -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
-      <span>Dimensão Neuroemocional</span>
-      <span class="categoria-seta" style="transform: rotate(-90deg);">▼</span>
+      <span>Dimensão Neuroemocional: Hiperativação Ansiosa</span>
+      <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
     </div>
-    <div class="categoria-grupo recolhido">
-      <div class="criterio-card" data-key="ansiedade">
+    <div class="categoria-grupo">
+      <div class="criterio-card prioritario" data-key="ruminacao">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Ruminação Mental & Hiperconexão de Ideias</span>
+          <span>Ruminação Mental & Hiperconexão de Ideias Catastróficas</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Mude de suporte imediatamente (brain dump em papel sem filtro) ou imponha um temporizador de 15 min. Se o cérebro estiver em loop, troque o estímulo para algo prático/físico para quebrar o ciclo analítico.
+          <strong>Fundamentação Científica (TCC & Neurobiologia):</strong> A ruminação ansiosa decorre da hiperatividade da Rede de Modo Padrão (DMN) acoplada ao circuito de ameaça da amígdala basolateral. A tentativa de controle cognitivo direto pelo córtex pré-frontal sem ancoragem somática amplifica o sinal do circuito.<br><br>
+          <strong>Estratégia de Regulação:</strong> Mude de suporte imediatamente utilizando o descolamento cognitivo (desfusão cognitiva da ACT - nomeie o processo: "Minha mente está gerando a história X") ou imponha o <em>Worry Time</em> (adiamento intencional de 15 minutos). Para quebrar o loop neuroquímico, combine com um estímulo sensorial forte (ex: água fria no rosto para ativar o reflexo de mergulho vagal).
         </div>
-        <div class="criterio-legenda">1 = Mente travada em loop associativo / Exaustão analítica; 3 = Pensamento acelerado mas funcional; 5 = Clareza mental e fluxo fluido.</div>
+        <div class="criterio-legenda">Intensidade do loop de preocupações e hiperconexão de ideação ansiosa hoje:</div>
         <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Ausente)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Moderado)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Intenso)</button>
         </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Qual problema complexo travou seu processamento hoje? Onde no corpo a exaustão mental se manifestou?"></textarea>
+        <div class="atalhos-container">
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Loops de Se e Se')">+ Loops "E se..."</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Catastrofização')">+ Catastrofização</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Insônia Inicial')">+ Insônia Inicial</button>
+        </div>
+        <textarea class="anotacao-criterio" placeholder="Registre o gatilho específico ou o tema principal do loop ansioso..."></textarea>
       </div>
 
-      <div class="criterio-card" data-key="crise_existencial">
+      <div class="criterio-card" data-key="hipervigilancia">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Vazio de Propósito & Angústia Filosófica</span>
+          <span>Hipervigilância Somática & Reatividade Autonômica Simpática</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Reajuste o foco para a micro-escala. Não tente resolver o sentido do universo hoje; foque no impacto prático e útil para 1 pessoa ou em concluir uma micro-tarefa alinhada aos seus valores.
+          <strong>Fundamentação Científica (Teoria Polivagal):</strong> A ativação do Sistema Nervoso Simpático altera a variabilidade da frequência cardíaca (VFC), contrai a musculatura axial e reduz a ventilação alveolar, disparando o alarme de fobia interoceptiva.<br><br>
+          <strong>Estratégia de Regulação:</strong> Ative o eferente vagal cardíaco via Respiração Tática/Diafragmática (inspiração curta em 4s e expiração prolongada em 8s) ou relaxamento muscular progressivo de Jacobson nas zonas de contração.
         </div>
-        <div class="criterio-legenda">1 = Desconexão total ("para que fazer isso se tudo é efêmero?"); 3 = Cumprindo obrigações de forma neutra; 5 = Senso claro de utilidade e alinhamento com valores profundos.</div>
+        <div class="criterio-legenda">Intensidade das manifestações físicas de ansiedade (taquicardia, tensão, falta de ar):</div>
         <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Nenhuma)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Moderada)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Severa)</button>
         </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Suas tarefas de hoje conversam com seus ideais éticos e intelectuais? O que gerou sensação de futilidade?"></textarea>
+        <div class="atalhos-container">
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Aperto no Peito')">+ Aperto no Peito</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Tensão Cervical')">+ Tensão Cervical</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Tontura/Tremores')">+ Tontura/Tremores</button>
+        </div>
+        <textarea class="anotacao-criterio" placeholder="Descreva as sensações físicas observadas no corpo hoje..."></textarea>
       </div>
 
-      <div class="criterio-card" data-key="vitalidade">
+      <div class="criterio-card" data-key="evitacao_antecipatoria">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Bateria Neurobiológica & Exaustão de Recursos</span>
+          <span>Esquiva Comportamental & Evitação Antecipatória</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Reduza drasticamente a carga executiva. Elimine decisões não essenciais pelo resto do dia e aceite o repouso absoluto sem culpa.
+          <strong>Fundamentação Científica (Modelo de Exposição de Barlow):</strong> A evitação comportamental gera alívio imediato por reforçamento negativo, mas fortalece o condicionamento de fobia na amígdala e amplia a percepção de ameaça para exposições futuras.<br><br>
+          <strong>Estratégia de Regulação:</strong> Aplique a hierarquia de exposição graduada (aproximação sucessiva) fracionando a situação temida no menor micro-passo aceitável até que ocorra a habituação autonômica natural.
         </div>
-        <div class="criterio-legenda">1 = Colapso de energia por sobrecarga cognitiva; 3 = Bateria suficiente apenas para o essencial; 5 = Vigor físico e mental integrado.</div>
+        <div class="criterio-legenda">Grau de evitação de tarefas, reuniões, mensagens ou compromissos por ansiedade:</div>
         <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Sem evitação)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Moderada)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Forte esquiva)</button>
         </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O esgotamento veio de interações sociais, excesso de estímulos ou tédio crônico? A bateria esvaziou do nada?"></textarea>
-      </div>
-
-      <div class="criterio-card" data-key="sobrecarga">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Sensibilidade Ambiental & Sobrecarga Sensorial</span>
-          <span class="criterio-nome-seta">►</span>
+        <div class="atalhos-container">
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Procrastinação Ansiosa')">+ Procrastinação</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Cancelamento de Compromissos')">+ Cancelamentos</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Evitação de e-mails/mensagens')">+ Evitação Social</button>
         </div>
-        <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Crie um refúgio de baixo estímulo (fones com cancelamento de ruído, iluminação suave, silêncio). Fique 20 minutos com entrada sensorial reduzida.
-        </div>
-        <div class="criterio-legenda">1 = Hipersensibilidade aguda a ruídos, luzes ou demandas sociais; 3 = Incômodo pontual tolerável; 5 = Ambiente regulado e seguro.</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
-        </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Qual estímulo do ambiente externo mais drenou sua tolerância hoje? Conseguiu refúgio sensorial?"></textarea>
-      </div>
-
-      <div class="criterio-card" data-key="autocompaixao">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Perfeccionismo Destrutivo & Autocrítica</span>
-          <span class="criterio-nome-seta">►</span>
-        </div>
-        <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Adote o critério do "suficientemente bom". Pergunte-se: "Se um amigo com o mesmo perfil estivesse passando por isso, o que eu diria a ele?"
-        </div>
-        <div class="criterio-legenda">1 = Cobrança implacável por não atingir padrões inalcançáveis; 3 = Aceitação oscilante de falhas; 5 = Diálogo interno compassivo e realista.</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
-        </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Em que momento você se julgou com rigidez excessiva por não ser perfeito(a) de primeira?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Registre as tarefas ou contextos dos quais sentiu necessidade de se afastar..."></textarea>
       </div>
     </div>
-
-    <!-- Seção: Foco & Cognição -->
+        <!-- Seção: Dimensão Depressiva -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
-      <span>Foco & Cognição</span>
-      <span class="categoria-seta" style="transform: rotate(-90deg);">▼</span>
+      <span>Dimensão Depressiva: Hipoativação & Inércia Comportamental</span>
+      <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
     </div>
-    <div class="categoria-grupo recolhido">
-      <div class="criterio-card" data-key="nutricao_intelectual">
+    <div class="categoria-grupo">
+      <div class="criterio-card prioritario" data-key="anedonia">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Fome Cognitiva / Subestimulação (Boreout)</span>
+          <span>Anedonia & Inércia Dopaminérgica Estriatal</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Injete complexidade intencional. Leia um artigo acadêmico sobre um tema totalmente novo ou resolva um problema técnico por 15-30 minutos para acalmar a fome cognitiva.
+          <strong>Fundamentação Científica (Ativação Comportamental):</strong> A depressão suprime a sinalização dopaminérgica no estriado ventral, bloqueando a capacidade de antecipar recompensa ou prazer. A motivação não surge antes da ação; ela é gerada neurobiologicamente *após* a iniciação do comportamento.<br><br>
+          <strong>Estratégia de Regulação:</strong> Aplique a Regra da Ação Micro-Inicial (Micro-stepping): comprometa-se a realizar apenas 2 minutos de uma tarefa de baixo esforço (ex: vestir o calçado ou abrir uma janela), libertando-se da obrigação de conclusão.
         </div>
-        <div class="criterio-legenda">1 = Tédio severo por falta de complexidade (definhar intelectualmente); 3 = Estímulos medianos; 5 = Nutrição intelectual ideal / Hiperfoco produtivo.</div>
+        <div class="criterio-legenda">Nível de perda de prazer, apatia ou paralisia motora/comportamental para agir:</div>
         <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Preservado)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve redução)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Baixo afeto)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Paralisia total)</button>
         </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Seu cérebro foi desafiado com complexidade suficiente hoje ou sofreu com tarefas repetitivas e lineares?"></textarea>
+        <div class="atalhos-container">
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Inércia ao Levantar')">+ Inércia ao Levantar</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Perda de Interesse em Hobbies')">+ Perda de Interesses</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Abandono de Autocuidado')">+ Negligência</button>
+        </div>
+        <textarea class="anotacao-criterio" placeholder="Registre as atividades que pareceram inacessíveis devido à apatia..."></textarea>
       </div>
 
-      <div class="criterio-card" data-key="foco_estudos">
+      <div class="criterio-card" data-key="autocritica">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Assincronia Executiva & Paralisia de Tarefas</span>
+          <span>Autocrítica Severa, Culpa & Esquema de Incompetência</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Quebre a tarefa gigantesca num passo risivelmente pequeno (ex: "abrir o arquivo e escrever apenas 1 palavra/título"). Vença a fricção inicial de arranque.
+          <strong>Fundamentação Científica (CFT - Gilbert):</strong> A autocrítica severa estimula os circuitos neurais da amígdala como se o próprio indivíduo fosse o seu agressor físico, mantendo o cortisol elevado e inibindo o sistema de acalmia (oxitocina/opiáceos endógenos).<br><br>
+          <strong>Estratégia de Regulação:</strong> Promova a reestruturação cognitiva: separe os fatos reais dos julgamentos emocionais. Adote o tom de voz interno do "Observador Compassivo e Objetivo".
         </div>
-        <div class="criterio-legenda">1 = A mente quer criar em nível avançado, mas o corpo/execução travam; 3 = Foco funcional sob esforço; 5 = Fluxo executivo alinhado com o pensamento.</div>
+        <div class="criterio-legenda">Intensidade da cobrança interna, julgamentos ou sentimentos de inutilidade:</div>
         <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Nenhuma)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Moderada)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Severa)</button>
         </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Onde ocorreu o descompasso entre o que você planejou mentalmente e o que conseguiu executar?"></textarea>
+        <div class="atalhos-container">
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Sensação de Incompetência')">+ Incompetência</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Comparação Desfavorável')">+ Comparação</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Culpa por Estar Mal')">+ Culpa</button>
+        </div>
+        <textarea class="anotacao-criterio" placeholder="Anote os pensamentos autocríticos predominantes hoje..."></textarea>
       </div>
 
-      <div class="criterio-card" data-key="atencao_estudos">
+      <div class="criterio-card" data-key="fadigacognitiva">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Atenção Sustentada & Absorção nos Estudos (Faculdade/Cursos)</span>
+          <span>Exaustão Psicofísica & Nevoeiro Mental (Brain Fog)</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Em aulas expositivas lentas ou repetitivas, adote o "registro ativo" (crie esquemas, mapas mentais visuais ou tente traduzir o conteúdo para uma linguagem própria em tempo real). Isso mantém a rede de modo padrão do cérebro AH/SD ocupada de forma útil.
+          <strong>Fundamentação Científica (Neuroinflamação & Depressão):</strong> A resposta inflamatória de baixo grau associada à depressão reduz a eficiência da rede pré-frontal dorsolateral, causando lentificação executiva e fadiga central.<br><br>
+          <strong>Estratégia de Regulação:</strong> Descarregue a memória de trabalho passando tarefas para o papel (*Brain Dump*) e aplique períodos fixos de descanso passivo sem estímulos luminosos ou digitais.
         </div>
-        <div class="criterio-legenda">1 = Desdispersão severa / Aulas lentas gerando angústia; 3 = Atenção mantida com esforço consciente; 5 = Absorção profunda e aprendizagem significativa.</div>
+        <div class="criterio-legenda">Sensação de esgotamento físico, peso corporal ou lentidão cognitiva no dia de hoje:</div>
         <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Energia Ok)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Cansaço leve)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Fadiga notável)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Esgotamento total)</button>
         </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O ritmo da aula/exposição acadêmica esteve muito abaixo da sua velocidade de processamento? Como você reagiu ao tédio expositivo?"></textarea>
-      </div>
-
-      <div class="criterio-card" data-key="ambiente_trabalho">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Desempenho Profissional & Dinâmica de Trabalho</span>
-          <span class="criterio-nome-seta">►</span>
+        <div class="atalhos-container">
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Dificuldade de Foco')">+ Falta de Foco</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Pesadez Corporal')">+ Pesadez Corporal</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Lentidão Raciocínio')">+ Lentidão</button>
         </div>
-        <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Se a burocracia ou lentidão de processos estiver exaurindo você, separe o "trabalho de entrega real" do "trabalho corporativo/social". Subdivida projetos grandes em micro-etapas e evite assumir responsabilidades extras apenas por ver lacunas na equipe.
-        </div>
-        <div class="criterio-legenda">1 = Frustração intensa com burocracia/sobrecarga de expectativas; 3 = Desempenho funcional regular; 5 = Autonomia produtiva e alinhamento com a equipe.</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
-        </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Houve conflito ou desgaste por diferença de ritmo no trabalho? Você assumiu demandas alheias para resolver mais rápido?"></textarea>
-      </div>
-
-      <div class="criterio-card" data-key="produtividade_criativa">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Fluxo Criativo & Realização (Renzulli)</span>
-          <span class="criterio-nome-seta">►</span>
-        </div>
-        <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Elimine o julgamento do rascunho inicial. Dê a si mesmo a permissão explícita de produzir algo "imperfeito" apenas para desbloquear o canal de expressão criativa.
-        </div>
-        <div class="criterio-legenda">1 = Bloqueio severo de expressão criativa / Frustração produtiva; 3 = Entregas mecânicas sem paixão; 5 = Imersão profunda e satisfação criativa.</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
-        </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Conseguiu aplicar seu comprometimento com a tarefa (hiperfoco) em algo significativo hoje?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Descreva o nível de energia e clareza mental ao longo do dia..."></textarea>
       </div>
     </div>
 
-    <!-- Seção: Saúde Integral & Rotina -->
+    <!-- Seção: Suporte & Regulação -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
-      <span>Saúde Integral & Rotina</span>
-      <span class="categoria-seta" style="transform: rotate(-90deg);">▼</span>
+      <span>Dimensão de Suporte: Conexão Social & Autorregulação</span>
+      <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
     </div>
-    <div class="categoria-grupo recolhido">
-      <div class="criterio-card" data-key="qualidade_sono">
+    <div class="categoria-grupo">
+      <div class="criterio-card" data-key="interacao_social">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Higiene do Sono & Atividade Onírica</span>
+          <span>Conexão Social vs. Retirada & Isolamento</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Estabeleça uma "gaveta de ideias" ao lado da cama. Escreva tudo o que o cérebro quer resolver para externalizar a informação e avisar ao cérebro que está seguro desligar.
+          <strong>Fundamentação Científica (Engajamento Social Polivagal):</strong> O isolamento social ativa o estado vagal dorsal de desconexão. A co-regulação interpessoal diminui diretamente a reatividade da amígdala.<br><br>
+          <strong>Estratégia de Regulação:</strong> Realize contactos de baixa exigência energética: envie uma mensagem breve a alguém seguro ou permaneça num ambiente partilhado sem obrigação de socialização ativa.
         </div>
-        <div class="criterio-legenda">1 = Mente acelerada na hora de dormir / Insônia por hiperfoco noturno; 3 = Sono regular; 5 = Descanso profundo e restaurador.</div>
+        <div class="criterio-legenda">Grau de isolamento ou abertura a interações no dia de hoje:</div>
         <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Conectado)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Neutro)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Distante)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Isolado)</button>
         </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O cérebro recusou desligar à noite processando ideias ou conversas do dia?"></textarea>
+        <div class="atalhos-container">
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Contacto Mínimo Mantido')">+ Contacto Mínimo</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Recusa de Chamadas')">+ Recusa de Chamadas</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Acolhimento Recebido')">+ Acolhimento Recebido</button>
+        </div>
+        <textarea class="anotacao-criterio" placeholder="Anotações sobre vínculos interpessoais ou necessidade de recolhimento..."></textarea>
       </div>
 
-      <div class="criterio-card" data-key="rotinas_autocuidado">
+      <div class="criterio-card" data-key="estrategias_regulacao">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Pausas de Descompressão & Autocuidado</span>
+          <span>Aplicação de Estratégias Ativas de Autorregulação</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Programe pausas ativas obrigatórias (ex: levantar, alongar os braços, beber um copo de água) para desinterromper blocos de hiperfoco extenuantes.
+          <strong>Fundamentação Científica (Neuroplasticidade):</strong> O uso repetido e intencional de técnicas de regulação fortalece a conetividade pré-frontal-amigdalina ao longo do tempo.<br><br>
+          <strong>Estratégia de Regulação:</strong> Avalie se conseguiu utilizar ferramentas corporais (exercício, respiração, gelo), cognitivas (reestruturação, escrita) ou comportamentais hoje.
         </div>
-        <div class="criterio-legenda">1 = Hiperfoco prolongado sem pausas biológicas (esqueceu de si); 3 = Cuidados básicos mantidos; 5 = Rituais de recarga respeitados.</div>
+        <div class="criterio-legenda">Uso eficaz de técnicas de autorregulação emocional durante as crises ou oscilações:</div>
         <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Eficaz)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Parcial)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Dificuldade)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Não aplicou)</button>
         </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Você lembrou de fazer pausas para esvaziar a mente entre uma atividade intensa e outra?"></textarea>
-      </div>
-
-      <div class="criterio-card" data-key="alimentacao">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Alimentação & Atenção Plena Corporal</span>
-          <span class="criterio-nome-seta">►</span>
+        <div class="atalhos-container">
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Respiração Aplicada')">+ Respiração Guiada</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Escrita Terapêutica')">+ Escrita Terapêutica</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Caminhada/Movimento')">+ Movimento Físico</button>
         </div>
-        <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Deixe lanches saudáveis e práticos visíveis. Evite a paralisia decisória sobre "o que preparar" quando já estiver em hipoglicemia por hiperfoco.
-        </div>
-        <div class="criterio-legenda">1 = Desregulação alimentar por ansiedade ou esquecimento no hiperfoco; 3 = Alimentação funcional; 5 = Nutrição consciente e equilibrada.</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
-        </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O hiperfoco te fez pular refeições ou comer de forma impulsiva hoje?"></textarea>
-      </div>
-
-      <div class="criterio-card" data-key="hidratacao">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Hidratação & Regulação Térmica</span>
-          <span class="criterio-nome-seta">►</span>
-        </div>
-        <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Mantenha uma garrafa de água grande exatamente ao lado da sua estação de trabalho ou estudo para eliminar o esforço de deslocamento.
-        </div>
-        <div class="criterio-legenda">1 = Desidratação severa por distração cognitiva; 3 = Ingestão mediana; 5 = Hidratação ideal mantida.</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
-        </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Sentiu dores de cabeça ou fadiga por esquecer de beber água enquanto criava ou estudava?"></textarea>
-      </div>
-
-      <div class="criterio-card" data-key="exercicios">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Descarga Psicomotora / Movimento Físico</span>
-          <span class="criterio-nome-seta">►</span>
-        </div>
-        <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Faça uma descarga física rápida de 5 minutos (alongamento intenso, polichinelos ou uma caminhada rápida) para escoar a energia motora presa.
-        </div>
-        <div class="criterio-legenda">1 = Sedentarismo estático com mente acelerada (inquietude psicomotora presa); 3 = Movimento leve; 5 = Descarga física adequada realizada.</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
-        </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O corpo precisou de movimento para descarregar a alta voltagem mental de hoje?"></textarea>
-      </div>
-
-      <div class="criterio-card" data-key="cuidados_medicos">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Adesão Terapêutica & Automonitoramento</span>
-          <span class="criterio-nome-seta">►</span>
-        </div>
-        <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Utilize alarmes sonoros vinculados a rotinas existentes (ex: tomar a medicação logo ao escovar os dentes) para mitigar falhas executivas.
-        </div>
-        <div class="criterio-legenda">1 = Falhas na rotina de saúde por desatenção executiva; 3 = Cumprimento básico; 5 = Cuidado com a saúde rigoroso.</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
-        </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Conseguiu manter suas medicações, suplementos ou consultas em dia sem esquecimentos?"></textarea>
-      </div>
-
-      <div class="criterio-card" data-key="rotina_domestica">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Gestão do Espaço Físico & Organização</span>
-          <span class="criterio-nome-seta">►</span>
-        </div>
-        <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Limpe apenas a sua área imediata de visão (ex: o tampo da mesa). Não tente organizar a casa inteira se estiver sem energia.
-        </div>
-        <div class="criterio-legenda">1 = Caos ambiental gerando ruído cognitivo extra; 3 = Organização funcional básica; 5 = Espaço estruturado e harmonioso.</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
-        </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: A desorganização do ambiente físico refletiu e aumentou a confusão na sua mente hoje?"></textarea>
-      </div>
-
-      <div class="criterio-card" data-key="gestao_financeira">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Controle de Impulsos & Gestão Prática</span>
-          <span class="criterio-nome-seta">►</span>
-        </div>
-        <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Implemente a "regra das 48 horas" para novas compras ou cursos. Guarde o item num carrinho/lista e decida apenas após dois dias.
-        </div>
-        <div class="criterio-legenda">1 = Gastos impulsivos motivados por tédio ou busca rápida de dopamina; 3 = Orçamento neutro; 5 = Planejamento financeiro consciente.</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
-        </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Houve compra por impulso de cursos, livros ou itens gerada por picos de interesse repentino?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Registre as técnicas que tentou utilizar e a respetiva resposta corporal..."></textarea>
       </div>
     </div>
 
-    <!-- Seção: Conexões & Lazer -->
-    <div class="categoria-titulo" onclick="toggleSecao(this)">
-      <span>Conexões & Lazer</span>
-      <span class="categoria-seta" style="transform: rotate(-90deg);">▼</span>
-    </div>
-    <div class="categoria-grupo recolhido">
-      <div class="criterio-card" data-key="relacionamento">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Intensidade Relacional & Ruídos de Ritmo</span>
-          <span class="criterio-nome-seta">►</span>
-        </div>
-        <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Lembre-se de que ritmos diferentes não significam desinteresse alheio. Comunique a sua necessidade de profundidade sem exigir velocidade imediata do outro.
-        </div>
-        <div class="criterio-legenda">1 = Sensação de profunda incompreensão ou conflito por assincronia de ritmo; 3 = Trocas educadas mas superficiais; 5 = Conexão simétrica e acolhedora.</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
-        </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Sentiu que precisou 'mascarar' sua intensidade ou velocidade mental para se adaptar aos outros hoje?"></textarea>
-      </div>
-
-      <div class="criterio-card" data-key="conexao_social">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Pertencimento & Exaustão por Mascaramento</span>
-          <span class="criterio-nome-seta">►</span>
-        </div>
-        <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Permita-se saídas sociais antecipadas ou momentos de recolhimento sem culpa quando sentir o início do esgotamento de empatia.
-        </div>
-        <div class="criterio-legenda">1 = Burnout social severo / Exaustão por fingir normalidade; 3 = Interações funcionais isoladas; 5 = Pertença genuína e segura.</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
-        </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Quanto esforço social foi necessário para transitar nos grupos hoje? Houve esgotamento de empatia?"></textarea>
-      </div>
-
-      <div class="criterio-card" data-key="hobbies">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Nutrição Lúdica & Hobbies Profundos</span>
-          <span class="criterio-nome-seta">►</span>
-        </div>
-        <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Reserve ao menos 20 minutos de imersão num tema de interesse pessoal autêntico sem a obrigação de produzir resultados úteis/comerciais.
-        </div>
-        <div class="criterio-legenda">1 = Sem tempo ou energia para interesses autênticos; 3 = Lazer passivo de tela; 5 = Imersão revigorante em paixões e interesses especiais.</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
-          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
-          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
-        </div>
-        <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Você conseguiu dedicar tempo aos seus hiperfocos saudáveis e fontes genuínas de recarga mental?"></textarea>
-      </div>
-    </div>
-
-    <!-- Painel Fixo de Saldo e Ação -->
+    <!-- Painel de Guardar Registro -->
     <div class="painel-guardar">
       <div class="saldo-linha">
-        <span>Saldo do Dia:</span>
-        <span id="saldo-badge" class="saldo-badge">0 (Equilíbrio)</span>
+        <span>Índice Diário de Regulação Emocional:</span>
+        <span class="saldo-badge" id="badge-score">A calcular...</span>
       </div>
-      <button class="btn-guardar" onclick="salvarRegistroDiario()">Salvar Registro Diário</button>
+      <button class="btn-guardar" onclick="salvarRegistroDiario()">
+        💾 Guardar Registro Clinicamente Estruturado
+      </button>
     </div>
   </div>
 
-  <!-- ==================== ABA 2: EVOLUÇÃO (GRÁFICOS, PRONTUÁRIO, PAUTA & CONTROLES) ==================== -->
+  <!-- ==================== ABA 2: EVOLUÇÃO ==================== -->
   <div id="aba-evolucao" class="aba-conteudo">
-    <!-- Ações Globais no topo da aba Evolução -->
-    <div class="acoes-globais-topo">
-      <button class="btn-discreto" onclick="exportarBackupJSON()">Exportar</button>
-      <label class="btn-discreto">
-        Importar
-        <input type="file" accept=".json" onchange="importarBackupJSON(event)">
-      </label>
-      <button class="btn-discreto" onclick="gerarPDFSemanal()">PDF da Semana (Sofisticado)</button>
-    </div>
-
     <div class="card">
-      <div class="card-title">Análise Descritiva do Ciclo Semanal (7 Dias)</div>
-      <div id="caixa-resumo-evolucao" class="caixa-prontuario">
-        Carregando prontuário de evolução...
+      <div class="acoes-globais-topo">
+        <button class="btn-discreto" onclick="exportarRelatorioPDF()">📄 Exportar Relatório Técnico (PDF)</button>
+        <button class="btn-discreto" onclick="exportarDadosJSON()">💾 Backup (JSON)</button>
+        <label class="btn-discreto">
+          📁 Importar <input type="file" onchange="importarDadosJSON(event)">
+        </label>
       </div>
-    </div>
 
-    <!-- Botão Psicoeducativo para Abrir o Mapa de Sobreposição -->
-    <div class="card" style="text-align: center;">
-      <div class="card-title" style="justify-content: center;">Guia Psicoeducativo de Apoio</div>
-      <div style="font-size:0.82rem; color:var(--text-dimmed); margin-bottom: 12px;">
-        Consulte o mapa para compreender de forma simples como se parecem e onde se diferenciam os comportamentos e traços de cada perfil.
+      <div class="card-title">
+        <span>📈 Evolução Neuroemocional & Monitoramento Longitudinal</span>
       </div>
-      <button class="btn-guardar" onclick="abrirModalMapa()">Abrir Guia de Diferenciação de Traços</button>
-    </div>
-
-    <div class="card">
-      <div class="card-title">Tendência do Saldo Emocional (Ciclo Atual)</div>
+      
       <div class="chart-box">
-        <canvas id="chartSaldoLinha"></canvas>
+        <canvas id="meuGrafico"></canvas>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-title">Perfil de Regulação por Dimensão</div>
-      <div class="chart-box">
-        <canvas id="chartCategoriasRadar"></canvas>
+      <div class="card-title">📋 Prontuário Psicoeducativo de Registros</div>
+      <div class="caixa-prontuario" id="conteudo-prontuario">
+        Selecione datas ou guarde novos registros para visualizar a análise longitudinal de ansiedade, humor e sintomas somáticos.
       </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">Pauta para a Sessão / Perguntas ao Terapeuta</div>
-      <div style="font-size:0.82rem; color:var(--text-dimmed); margin-bottom: 10px;">
-        Escreva abaixo os tópicos, reflexões ou perguntas gerais que deseja levar para a sua próxima sessão terapêutica. Este conteúdo será incorporado automaticamente no seu PDF semanal.
-      </div>
-      <textarea id="input-pauta-sessao" class="anotacao-criterio" style="min-height: 150px;" placeholder="Digite aqui as anotações gerais para a terapia..."></textarea>
-      <button class="btn-guardar" style="margin-top: 12px;" onclick="salvarPauta()">Salvar Pauta</button>
     </div>
   </div>
+
+  <footer class="app-footer">
+    <span>Dashboard Psicoeducativo — Foco Clínico em Depressão & Ansiedade</span> | 
+    <button class="footer-link" onclick="abrirModalGuiaSentimentos()">Guia Psicoeducativo</button>
+  </footer>
 </div>
 
-<!-- Rodapé -->
-<footer class="app-footer">
-  <span>Armazenamento Local (LGPD) •</span>
-  <button class="footer-link" onclick="abrirModalTermos()">Termos de Uso & Privacidade</button>
-</footer>
-
-<!-- Modal de Guia: Estratégico para AH/SD -->
-<div class="modal-overlay" id="modal-guia-sentimentos" onclick="fecharModalGuiaSentimentosFora(event)">
+<!-- ==================== MODAL GUIA ==================== -->
+<div class="modal-overlay" id="modal-guia">
   <div class="modal-box">
     <div class="modal-header">
-      <span>Guia Estratégico: Navegando pelas Intensidades AH/SD</span>
-      <button class="modal-close" onclick="fecharModalGuiaSentimentos()">&times;</button>
+      <span>Guia Psicoeducativo: Regulação no Manejo da Depressão e Ansiedade</span>
+      <button class="modal-close" onclick="fecharModalGuiaSentimentos()">✕</button>
     </div>
     <div class="modal-body">
-      <h3>O que fazer quando você sente "uma confusão mental" ou exaustão difusa?</h3>
-      <p>No cérebro com Altas Habilidades/Superdotação, o esgotamento muitas vezes não se manifesta como uma emoção simples, mas como um colapso executivo ou sobrecarga de processamento associativo.</p>
+      <h3>1. Entendendo a Dificuldade com Identificação de Sentimentos (Alexitimia)</h3>
+      <p>A ansiedade crônica e a depressão induzem frequentemente quadros de alexitimia funcional — uma dificuldade neurobiológica em traduzir sensações corporais vagas em palavras mentais claras. Se não consegue nomear o sentimento, comece por identificar o estado fisiológico do corpo (ex: acelerado, contraído, pesado, amortecido).</p>
       
-      <h3>Como usar este aplicativo estrategicamente:</h3>
-      
-      <p><strong>1. Descarte o rótulo emocional genérico:</strong><br>
-      Não gaste energia tentando adivinhar se está "triste" ou "ansioso". O cérebro AH/SD traduz cansaço intelectual ou tédio em sintomas físicos e mentais complexos.</p>
-      
-      <p><strong>2. Rastreie a origem do desgaste pelas lentes da teoria:</strong></p>
+      <h3>2. O Paradigma da Ativação vs. Acalmia Autonômica</h3>
+      <p>O sistema nervoso oscila entre eixos neurobiológicos distintos:</p>
       <ul>
-        <li><strong>Mente em loop / Exigência excessiva?</strong> Pode ser Síndrome do Impostor ou Excitabilidade Intelectual desregulada.</li>
-        <li><strong>Sensação de vazio ou "para que fazer isso?":</strong> Indício de Boreout (subestimulação crônica) ou Crise Existencial.</li>
-        <li><strong>Corpo pesado e irritação com barulhos/luzes:</strong> Sobrecarga Sensorial ou Exaustão Empática / Burnout por Mascaramento.</li>
+        <li><strong>Eixo Simpático (Hiperativação/Ansiedade):</strong> Taquicardia, pensamentos intrusivos, vigilância tensional. Requer desativação via prolongamento expiratório e ancoragem somática.</li>
+        <li><strong>Eixo Vagal Dorsal (Hipoativação/Depressão):</strong> Apatia, desconexão, inércia. Requer micro-ativação gradual sem sobrecarga executiva.</li>
       </ul>
-      
-      <p><strong>3. Use os botões de atalho:</strong> Eles servem para registrar as nuances do seu estado atual de forma rápida, poupando esforço cognitivo em momentos de exaustão.</p>
-      
-      <p><strong>4. Confirme no Saldo Diário:</strong> Se o saldo estiver negativo, você tem a prova matemática de que o seu sistema nervoso gastou mais do que repôs. Isso valida seu cansaço e afasta qualquer culpa infundada.</p>
-    </div>
-  </div>
-</div>
 
-<!-- Modal de Termos e Política de Privacidade -->
-<div class="modal-overlay" id="modal-termos" onclick="fecharModalFora(event)">
-  <div class="modal-box">
-    <div class="modal-header">
-      <span>Termos de Uso & Privacidade</span>
-      <button class="modal-close" onclick="fecharModalTermos()">&times;</button>
-    </div>
-    <div class="modal-body">
-      <h3>1. Natureza da Ferramenta e Isenção Médica</h3>
-      <p>Este Dashboard é uma ferramenta de autogestão, acompanhamento diário e monitoramento de bem-estar. <strong>NÃO constitui</strong> dispositivo médico, diagnóstico clínico ou tratamento psiquiátrico/psicológico. Em caso de crise ou sofrimento agudo, procure ajuda profissional especializada.</p>
-      
-      <h3>2. Soberania e Armazenamento Local de Dados</h3>
-      <p>Arquitetado com foco em privacidade digital (LGPD-compliant). Todos os registos diários, notas e métricas são armazenados <strong>estritamente no seu próprio navegador (LocalStorage)</strong>. Não recolhemos, visualizamos ou processamos os seus dados em servidores centrais.</p>
+      <h3>3. Validação sem Fusão Cognitiva</h3>
+      <p>Lembre-se: sentimentos e pensamentos são eventos neurológicos passageiros, não verdades absolutas sobre a sua identidade ou capacidade. O registro serve para criar um distanciamento observador (mindfulness funcional).</p>
 
-      <h3>3. Backup e Portabilidade</h3>
-      <p>A aplicação disponibiliza recursos de exportação e importação de backups em formato JSON. O utilizador é responsável por guardar e proteger as suas cópias de segurança caso limpe o cache do navegador.</p>
-      
-      <h3>4. Origem Científica, Acadêmica e Comercial</h3>
-      <p>Ferramenta desenvolvida por <strong>Jully Kutsk Maieski</strong>, graduanda em Psicologia (período de 2025-2030). Iniciada para uso pessoal e estruturação prática do acompanhamento terapêutico, a ferramenta possui o propósito de fundamentar futuras argumentações científicas com o apoio da faculdade, visando sua expansão e aplicação em Trabalho de Conclusão de Curso (TCC). A ferramenta possui também perspectiva de futura comercialização.</p>
-      
       <div class="autor-credito">
-        Concebido e desenvolvido por <strong>Jully Kutsk Maieski</strong>
+        Fundamentação Científica: Terapia Cognitivo-Comportamental (TCC), Ativação Comportamental (BA) e Teoria Polivagal.
       </div>
     </div>
   </div>
 </div>
 
-<!-- Modal do Mapa de Sobreposição e Diferenciação -->
-<div class="modal-overlay" id="modal-mapa" onclick="fecharModalMapaFora(event)">
-  <div class="modal-box" style="max-width: 800px;">
-    <div class="modal-header">
-      <span>Guia de Entendimento: Traços e Diferenciações</span>
-      <button class="modal-close" onclick="fecharModalMapa()">&times;</button>
-    </div>
-    <div class="modal-body">
-      <p>Muitas vezes, diferentes condições apresentam reações ou comportamentos parecidos no dia a dia (como pensamentos acelerados ou foco intenso). Este guia ajuda a entender de forma simples o que está por trás de cada comportamento, facilitando a conversa com o seu terapeuta.</p>
-      
-      <div style="overflow-x: auto;">
-        <table class="tabela-mapa">
-          <thead>
-            <tr>
-              <th>Característica</th>
-              <th>AH/SD</th>
-              <th>TDAH</th>
-              <th>TEA</th>
-              <th>Bipolaridade</th>
-              <th>Borderline</th>
-              <th>Ansiedade</th>
-              <th>TOC</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Pensamento Rápido</strong></td>
-              <td>Frequente, associativo e complexo</td>
-              <td>Frequente (distração/impulsividade)</td>
-              <td>Organizado em torno de interesses</td>
-              <td>Acelera em episódios</td>
-              <td>Acelera em crises emocionais</td>
-              <td>Acelera por preocupação/ameaça</td>
-              <td>Preso em dúvidas/possibilidades</td>
-            </tr>
-            <tr>
-              <td><strong>Hiperfoco</strong></td>
-              <td>Interesse intelectual profundo</td>
-              <td>Intenso, geralmente variável</td>
-              <td>Restritos e persistentes</td>
-              <td>Ocorre em mania/hipomania</td>
-              <td>Em pessoas/relacionamentos</td>
-              <td>Foco na ameaça</td>
-              <td>Foco em obsessões/rituais</td>
-            </tr>
-            <tr>
-              <td><strong>Tédio Intenso</strong></td>
-              <td>Comum por falta de complexidade</td>
-              <td>Muito comum (desatenção)</td>
-              <td>Falta de previsibilidade</td>
-              <td>Em fases de energia elevada</td>
-              <td>Ligado à instabilidade emocional</td>
-              <td>Menos característico</td>
-              <td>Não é característica central</td>
-            </tr>
-            <tr>
-              <td><strong>Necessidade de Estímulo</strong></td>
-              <td>Busca complexidade e novidade</td>
-              <td>Busca novidade e recompensa</td>
-              <td>Estímulos específicos/repetitivos</td>
-              <td>Atividades na elevação de humor</td>
-              <td>Busca intensidade emocional</td>
-              <td>Busca segurança</td>
-              <td>Busca certeza/controle</td>
-            </tr>
-            <tr>
-              <td><strong>Sens. Sensorial</strong></td>
-              <td>Pode ocorrer</td>
-              <td>Pode ocorrer</td>
-              <td>Muito relevante</td>
-              <td>Não central</td>
-              <td>Não central</td>
-              <td>Por hiperativação</td>
-              <td>Pode existir, mas não central</td>
-            </tr>
-            <tr>
-              <td><strong>Sentir-se Diferente</strong></td>
-              <td>Discrepancia intelectual/interesses</td>
-              <td>Dificuldades executivas</td>
-              <td>Diferenças sociocomunicativas</td>
-              <td>Função dos episódios</td>
-              <td>Identidade e relações</td>
-              <td>Insegurança</td>
-              <td>Medo de errar/contaminação</td>
-            </tr>
-            <tr>
-              <td><strong>Intensidade Emocional</strong></td>
-              <td>Pode ser elevada</td>
-              <td>Dificuldade de regulação</td>
-              <td>Sobrecarga sensorial</td>
-              <td>Marcadamente episódica</td>
-              <td>Muito relevante (interpessoal)</td>
-              <td>Elevada em torno de ameaças</td>
-              <td>Ligada às obsessões</td>
-            </tr>
-            <tr>
-              <td><strong>Impulsividade</strong></td>
-              <td>Não definidora</td>
-              <td>Central</td>
-              <td>Não central</td>
-              <td>Aumenta na mania</td>
-              <td>Aparece em crises</td>
-              <td>Geralmente não central</td>
-              <td>Geralmente não central</td>
-            </tr>
-            <tr>
-              <td><strong>Oscilação Produtividade</strong></td>
-              <td>Depende de interesse/desafio</td>
-              <td>Muito variável</td>
-              <td>Depende de estrutura</td>
-              <td>Episódios distintos</td>
-              <td>Acompanha estados emocionais</td>
-              <td>Acompanha ansiedade</td>
-              <td>Depende das obsessões</td>
-            </tr>
-            <tr>
-              <td><strong>Problemas Sociais</strong></td>
-              <td>Diferença de ritmo/interesses</td>
-              <td>Impulsividade/desatenção</td>
-              <td>Núcleo diagnóstico</td>
-              <td>Durante episódios</td>
-              <td>Relações instáveis</td>
-              <td>Evitação por avaliação</td>
-              <td>Evitação por obsessões</td>
-            </tr>
-            <tr>
-              <td><strong>Perfeccionismo</strong></td>
-              <td>Pode ser elevado</td>
-              <td>Compensação</td>
-              <td>Relacionado à rigidez</td>
-              <td>Não central</td>
-              <td>Pode aparecer</td>
-              <td>Muito comum</td>
-              <td>Necessidade de certeza</td>
-            </tr>
-            <tr>
-              <td><strong>Necessidade de Rotina</strong></td>
-              <td>Prefere organização</td>
-              <td>Precisa de estrutura</td>
-              <td>Rigidez/previsibilidade relevante</td>
-              <td>Varia com humor</td>
-              <td>Rotina traz segurança</td>
-              <td>Reduz ansiedade</td>
-              <td>Reduz ansiedade</td>
-            </tr>
-            <tr>
-              <td><strong>Sono Reduzido sem Cansaço</strong></td>
-              <td>Horário irregular</td>
-              <td>Desregulação</td>
-              <td>Alterações de sono</td>
-              <td>Sinal de elevação de humor</td>
-              <td>Ocorre em crises</td>
-              <td>Insônia</td>
-              <td>Insônia por obsessões</td>
-            </tr>
-            <tr>
-              <td><strong>Fala Muito</strong></td>
-              <td>Entusiasmo intelectual</td>
-              <td>Impulsividade</td>
-              <td>Temas de interesse</td>
-              <td>Aumentada em episódios</td>
-              <td>Estados emocionais</td>
-              <td>Ansiedade</td>
-              <td>Busca reasseguramento</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
-      <div class="autor-credito">
-        Ferramenta Psicoeducativa de Apoio Clínico • Jully Kutsk Maieski
-      </div>
-    </div>
-  </div>
-</div>
-
+<!-- ==================== SCRIPTS JAVASCRIPT ==================== -->
 <script>
-function toggleSecao(elementoTitulo) {
-  const grupo = elementoTitulo.nextElementSibling;
-  const seta = elementoTitulo.querySelector('.categoria-seta');
+let registrosLocais = JSON.parse(localStorage.getItem('dashboard_depressao_ansiedade_db')) || {};
+let meuGraficoInstance = null;
+
+document.addEventListener('DOMContentLoaded', () => {
+  const dataHoje = new Date().toISOString().split('T')[0];
+  const inputData = document.getElementById('data-registro');
+  if (inputData) {
+    inputData.value = dataHoje;
+    carregarRegistroData(dataHoje);
+  }
+  inicializarGrafico();
+  atualizarProntuario();
+});
+
+function alternarTema() {
+  const body = document.body;
+  const btn = document.getElementById('theme-toggle');
+  if (body.getAttribute('data-theme') === 'light') {
+    body.setAttribute('data-theme', 'dark');
+    btn.innerHTML = '🌙';
+  } else {
+    body.setAttribute('data-theme', 'light');
+    btn.innerHTML = '☀️';
+  }
+}
+
+function mudarAba(abaId, elementoBtn) {
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.aba-conteudo').forEach(aba => aba.classList.remove('active'));
+  
+  elementoBtn.classList.add('active');
+  document.getElementById('aba-' + abaId).classList.add('active');
+
+  if (abaId === 'evolucao') {
+    renderizarGraficoEvolucao();
+    atualizarProntuario();
+  }
+}
+
+function toggleSecao(elementoHeader) {
+  const grupo = elementoHeader.nextElementSibling;
+  const seta = elementoHeader.querySelector('.categoria-seta');
   grupo.classList.toggle('recolhido');
   if (grupo.classList.contains('recolhido')) {
     seta.style.transform = 'rotate(-90deg)';
@@ -1147,860 +719,304 @@ function toggleSecao(elementoTitulo) {
   }
 }
 
-function toggleDicaPratica(elementoTitulo) {
-  const card = elementoTitulo.closest('.criterio-card');
-  const caixaDica = card.querySelector('.caixa-dica-pratica');
-  const seta = elementoTitulo.querySelector('.criterio-nome-seta');
-  
-  if (caixaDica) {
-    caixaDica.classList.toggle('aberta');
-    if (caixaDica.classList.contains('aberta')) {
-      seta.style.transform = 'rotate(90deg)';
-    } else {
-      seta.style.transform = 'rotate(0deg)';
-    }
-  }
-}
-
-const opcoesAtalhos = {
-  ansiedade: {
-    1: ["Loop associativo", "Exaustão analítica", "Mente acelerada sem freio", "Tensão mental aguda", "Paralisia por excesso de ideias"],
-    2: ["Processamento intenso", "Inquietação cognitiva", "Várias abas mentais abertas", "Atenção hiperativa"],
-    3: ["Fluxo mental estável", "Foco controlado", "Ritmo gerenciável"],
-    4: ["Clareza de pensamento", "Mente organizada", "Fluidez analítica"],
-    5: ["Serenidade cognitiva", "Visão sistêmica clara", "Paz mental"]
-  },
-  crise_existencial: {
-    1: ["Sensação de futilidade", "Para que fazer isso?", "Desconexão de valores", "Vazio intelectual"],
-    2: ["Questionamentos profundos", "Busca por sentido", "Desalinho com rotina"],
-    3: ["Rotina neutra", "Propósito em avaliação"],
-    4: ["Ação com sentido", "Alinhamento ético", "Utilidade clara"],
-    5: ["Propósito pleno", "Realização alinhada", "Significado profundo"]
-  },
-  vitalidade: {
-    1: ["Colapso de bateria", "Esgotamento cognitivo", "Cansaço profundo", "Sem recursos mentais"],
-    2: ["Bateria baixa", "Fadiga acumulada", "Lentidão executiva"],
-    3: ["Energia básica o suficiente", "Bateria mediana"],
-    4: ["Boa disposição", "Vigor mental ativo"],
-    5: ["Bateria 100%", "Disposição plena", "Energia criativa alta"]
-  },
-  sobrecarga: {
-    1: ["Hipersensibilidade a ruídos", "Exaustão por ambiente", "Necessidade de isolamento", "Sobrecarga sensorial extrema"],
-    2: ["Incomodado com estímulos", "Sensibilidade moderada", "Fadiga sensorial"],
-    3: ["Ambiente tolerável", "Sem grandes ruídos"],
-    4: ["Ambiente confortável", "Regulação sensorial boa"],
-    5: ["Conforto absoluto", "Proteção sensorial ideal"]
-  },
-  autocompaixao: {
-    1: ["Autocrítica implacável", "Exigência de perfeição", "Culpa por não render", "Juiz interno severo"],
-    2: ["Frustração com o próprio ritmo", "Cobrança alta", "Rigidez"],
-    3: ["Aceitação parcial", "Flexibilidade neutra"],
-    4: ["Compreensão dos próprios limites", "Autocuidado mental"],
-    5: ["Autocompaixão plena", "Gentileza consigo", "Paz com as próprias falhas"]
-  },
-  nutricao_intelectual: {
-    1: ["Boreout profundo", "Tédio por subestimulação", "Fome cognitiva não atendida", "Mente definhando"],
-    2: ["Falta de novidade", "Estímulo monótono", "Cansaço da rotina repetitiva"],
-    3: ["Aprendizado comum", "Estímulo mediano"],
-    4: ["Mente estimulada", "Curiosidade ativa"],
-    5: ["Hiperfoco produtivo", "Complexidade ideal", "Nutrição intelectual plena"]
-  },
-  foco_estudos: {
-    1: ["Assincronia executiva", "Mente quer, corpo não faz", "Trava de início", "Paralisia de tarefas"],
-    2: ["Dificuldade de estruturação", "Foco oscilante", "Esforço executivo alto"],
-    3: ["Foco funcional", "Execução básica"],
-    4: ["Fluxo de estudo bom", "Progresso consistente"],
-    5: ["Imersão perfeita", "Execução alinhada ao pensamento"]
-  },
-  atencao_estudos: {
-    1: ["Tédio em aula expositiva", "Mente distante", "Ritmo de aula lento", "Aulas repetitivas"],
-    2: ["Dificuldade de escuta passiva", "Foco oscilante na aula"],
-    3: ["Acompanhamento regular"],
-    4: ["Anotação ativa/visual", "Bom engajamento acadêmico"],
-    5: ["Absorção profunda", "Conexão de conteúdos rápida"]
-  },
-  ambiente_trabalho: {
-    1: ["Frustração com burocracia", "Sobrecarga por ser rápido", "Lentidão de processos", "Trabalho invisível extra"],
-    2: ["Conflito leve de ritmo", "Esforço de adaptação"],
-    3: ["Rotina de trabalho neutra"],
-    4: ["Boa produtividade com limites"],
-    5: ["Autonomia profissional", "Entregas fluidas e reconhecidas"]
-  },
-  produtividade_criativa: {
-    1: ["Bloqueio criativo", "Frustração produtiva", "Ideias presas"],
-    2: ["Fluxo travado", "Dificuldade de entrega"],
-    3: ["Entregas mecânicas", "Trabalho regular"],
-    4: ["Ideias fluindo", "Boa realização (Renzulli)"],
-    5: ["Alto fluxo criativo", "Realização apaixonada", "Inspiração total"]
-  },
-  qualidade_sono: {
-    1: ["Insônia por hiperfoco", "Mente ligada à noite", "Sono não reparador"],
-    2: ["Sono fragmentado", "Demorou a desligar"],
-    3: ["Sono mediano", "Descanso razoável"],
-    4: ["Sono reparador", "Acordou bem"],
-    5: ["Sono profundo", "Recarga neural completa"]
-  },
-  rotinas_autocuidado: {
-    1: ["Esqueceu de si no hiperfoco", "Abandono de pausas", "Sem autocuidado"],
-    2: ["Autocuidado negligenciado", "Correria"],
-    3: ["Cuidados básicos ok"],
-    4: ["Pausas respeitadas", "Autocuidado presente"],
-    5: ["Rituais de recarga cumpridos", "Cuidado integral"]
-  },
-  alimentacao: {
-    1: ["Esqueceu de comer no hiperfoco", "Desregulação por ansiedade"],
-    2: ["Horários irregulares", "Alimentação sem atenção"],
-    3: ["Refeições básicas"],
-    4: ["Alimentação consciente"],
-    5: ["Nutrição equilibrada e atenta"]
-  },
-  hidratacao: {
-    1: ["Esqueceu de beber água", "Sede intensa", "Fadiga por desidratação"],
-    2: ["Pouca água ingerida"],
-    3: ["Hidratação mediana"],
-    4: ["Boa hidratação"],
-    5: ["Meta de água atingida"]
-  },
-  exercicios: {
-    1: ["Inquietude psicomotora presa", "Sedentarismo tenso", "Corpo inerte e mente a mil"],
-    2: ["Pouco movimento físico"],
-    3: ["Movimento leve"],
-    4: ["Atividade física realizada"],
-    5: ["Descarga psicomotora completa", "Corpo ativo"]
-  },
-  cuidados_medicos: {
-    1: ["Esquecimentos por distração", "Rotina de saúde descuidada"],
-    2: ["Atraso em cuidados"],
-    3: ["Saúde sob controle"],
-    4: ["Cuidados em dia"],
-    5: ["Monitoramento e rotina médica perfeitos"]
-  },
-  rotina_domestica: {
-    1: ["Caos físico gerando ruído mental", "Ambiente desorganizado"],
-    2: ["Bagunça acumulada"],
-    3: ["Casa funcional"],
-    4: ["Ambiente organizado"],
-    5: ["Espaço estruturado e limpo"]
-  },
-  gestao_financeira: {
-    1: ["Compra por impulso (busca de dopamina)", "Estresse financeiro"],
-    2: ["Gastos desatentos"],
-    3: ["Orçamento controlado"],
-    4: ["Planejamento mantido"],
-    5: ["Gestão financeira rigorosa"]
-  },
-  relacionamento: {
-    1: ["Incompreensão de ritmo", "Sensação de isolamento social", "Conflito por intensidade"],
-    2: ["Distanciamento", "Trocas frias"],
-    3: ["Convivência pacífica"],
-    4: ["Boa troca afetiva"],
-    5: ["Conexão profunda e acolhedora"]
-  },
-  conexao_social: {
-    1: ["Burnout por mascaramento", "Exaustão social extrema", "Fingir normalidade"],
-    2: ["Esforço para pertencer", "Cansaço social"],
-    3: ["Interações funcionais"],
-    4: ["Pertencimento leve"],
-    5: ["Rede segura", "Zero mascaramento necessário"]
-  },
-  hobbies: {
-    1: ["Sem tempo para hiperfocos", "Lazer zero"],
-    2: ["Apenas redes sociais (lazer passivo)"],
-    3: ["Descanso simples"],
-    4: ["Imersão em hobby"],
-    5: ["Recarga profunda em interesses autênticos"]
-  }
-};
-
-const perfisFocoMap = {
-    excitabilidade_intelectual: ["nutricao_intelectual", "foco_estudos", "atencao_estudos", "ansiedade", "crise_existencial"],
-    excitabilidade_emocional: ["sobrecarga", "autocompaixao", "relacionamento", "conexao_social"],
-    excitabilidade_imaginativa: ["nutricao_intelectual", "produtividade_criativa", "crise_existencial"],
-    excitabilidade_psicomotora: ["vitalidade", "exercicios", "sobrecarga"],
-    excitabilidade_sensorial: ["sobrecarga", "qualidade_sono", "hobbies"],
-    assincronia_desenvolvimento: ["crise_existencial", "autocompaixao", "nutricao_intelectual", "ansiedade"],
-    habilidade_acima_media: ["nutricao_intelectual", "foco_estudos", "atencao_estudos", "ambiente_trabalho", "produtividade_criativa"],
-    comprometimento_tarefa: ["foco_estudos", "ambiente_trabalho", "nutricao_intelectual", "qualidade_sono"],
-    criatividade: ["produtividade_criativa", "nutricao_intelectual", "hobbies"],
-    dupla_excepcionalidade_2e: ["foco_estudos", "atencao_estudos", "sobrecarga", "rotina_domestica", "qualidade_sono"],
-    intensidade_relacional: ["relacionamento", "conexao_social", "autocompaixao"],
-    exaustao_empatica: ["sobrecarga", "autocompaixao", "crise_existencial", "vitalidade"],
-    boreout: ["nutricao_intelectual", "atencao_estudos", "ambiente_trabalho", "vitalidade", "crise_existencial", "hobbies"],
-    burnout_mascaramento: ["sobrecarga", "ambiente_trabalho", "vitalidade", "qualidade_sono", "autocompaixao"],
-    sindrome_impostor: ["autocompaixao", "ansiedade", "ambiente_trabalho", "produtividade_criativa", "crise_existencial"],
-    crise_existencial: ["crise_existencial", "autocompaixao", "conexao_social", "ansiedade"]
-};
-
-const nomesCriterios = {
-  ansiedade: "Ruminação Mental & Hiperconexão de Ideias",
-  crise_existencial: "Vazio de Propósito & Angústia Filosófica",
-  vitalidade: "Bateria Neurobiológica & Exaustão de Recursos",
-  sobrecarga: "Sensibilidade Ambiental & Sobrecarga Sensorial",
-  autocompaixao: "Perfeccionismo Destrutivo & Autocrítica",
-  nutricao_intelectual: "Fome Cognitiva / Subestimulação (Boreout)",
-  foco_estudos: "Assincronia Executiva & Paralisia de Tarefas",
-  atencao_estudos: "Atenção Sustentada & Absorção nos Estudos (Faculdade/Cursos)",
-  ambiente_trabalho: "Desempenho Profissional & Dinâmica de Trabalho",
-  produtividade_criativa: "Fluxo Criativo & Realização (Renzulli)",
-  qualidade_sono: "Higiene do Sono & Atividade Onírica",
-  rotinas_autocuidado: "Pausas de Descompressão & Autocuidado",
-  alimentacao: "Alimentação & Atenção Plena Corporal",
-  hidratacao: "Hidratação & Regulação Térmica",
-  exercicios: "Descarga Psicomotora / Movimento Físico",
-  cuidados_medicos: "Adesão Terapêutica & Automonitoramento",
-  rotina_domestica: "Gestão do Espaço Físico & Organização",
-  gestao_financeira: "Controle de Impulsos & Gestão Prática",
-  relacionamento: "Intensidade Relacional & Ruídos de Ritmo",
-  conexao_social: "Pertencimento & Exaustão por Mascaramento",
-  hobbies: "Nutrição Lúdica & Hobbies Profundos"
-};
-
-const categoriasAreas = {
-  "Dimensão Neuroemocional": ["ansiedade", "crise_existencial", "vitalidade", "sobrecarga", "autocompaixao"],
-  "Foco & Cognição": ["nutricao_intelectual", "foco_estudos", "atencao_estudos", "ambiente_trabalho", "produtividade_criativa"],
-  "Saúde Integral & Rotina": ["qualidade_sono", "rotinas_autocuidado", "alimentacao", "hidratacao", "exercicios", "cuidados_medicos", "rotina_domestica", "gestao_financeira"],
-  "Conexões & Lazer": ["relacionamento", "conexao_social", "hobbies"]
-};
-
-let instChartLinha = null;
-let instChartRadar = null;
-
-function alternarTema() {
-  const body = document.body;
-  const btn = document.getElementById('theme-toggle');
-  const atual = body.getAttribute('data-theme');
-  if (atual === 'dark') {
-    body.setAttribute('data-theme', 'light');
-    btn.innerHTML = '☀️';
-    localStorage.setItem('dashboard_clinica_tema', 'light');
+function toggleDicaPratica(elementoNome) {
+  const caixaDica = elementoNome.nextElementSibling;
+  const seta = elementoNome.querySelector('.criterio-nome-seta');
+  caixaDica.classList.toggle('aberta');
+  if (caixaDica.classList.contains('aberta')) {
+    seta.style.transform = 'rotate(90deg)';
   } else {
-    body.setAttribute('data-theme', 'dark');
-    btn.innerHTML = '🌙';
-    localStorage.setItem('dashboard_clinica_tema', 'dark');
-  }
-  if (document.getElementById('aba-evolucao').classList.contains('active')) {
-    renderizarEvolucao();
+    seta.style.transform = 'rotate(0deg)';
   }
 }
 
-function toggleDropdown(event) {
-  event.stopPropagation();
-  const content = document.getElementById('custom-dropdown-list');
-  content.classList.toggle('open');
+function toggleDropdown(e) {
+  e.stopPropagation();
+  document.getElementById('custom-dropdown-list').classList.toggle('open');
 }
-
-window.addEventListener('click', function() {
-  const content = document.getElementById('custom-dropdown-list');
-  if (content && content.classList.contains('open')) {
-    content.classList.remove('open');
-  }
-});
 
 function atualizarPerfisSelecionados() {
-  const checkboxes = document.querySelectorAll('#custom-dropdown-list input[type="checkbox"]');
-  const selecionados = [];
-  const chavesSelecionadas = [];
-
-  checkboxes.forEach(cb => {
-    if (cb.checked) {
-      selecionados.push(cb.parentElement.innerText.trim());
-      chavesSelecionadas.push(cb.value);
-    }
-  });
-
-  const textoBtn = document.getElementById('custom-dropdown-selected-text');
-  if (selecionados.length === 0) {
-    textoBtn.innerText = "Selecionar Dimensões AH/SD...";
-  } else if (selecionados.length === 1) {
-    textoBtn.innerText = selecionados[0];
+  const checkboxes = document.querySelectorAll('#custom-dropdown-list input[type="checkbox"]:checked');
+  const textSpan = document.getElementById('custom-dropdown-selected-text');
+  if (checkboxes.length === 0) {
+    textSpan.innerText = 'Selecionar Eixos Clínicos...';
   } else {
-    textoBtn.innerText = `${selecionados.length} dimensões selecionadas`;
+    textSpan.innerText = `${checkboxes.length} eixo(s) selecionado(s)`;
   }
-
-  aplicarFocosCombinados(chavesSelecionadas);
-  localStorage.setItem('dashboard_clinica_perfis_multi', JSON.stringify(chavesSelecionadas));
+  calcularEscoreAtual();
 }
 
-function aplicarFocosCombinados(chavesArray) {
-  let prioridadesUnificadas = [];
-  chavesArray.forEach(chave => {
-    if (perfisFocoMap[chave]) {
-      prioridadesUnificadas = prioridadesUnificadas.concat(perfisFocoMap[chave]);
-    }
-  });
-
-  document.querySelectorAll('.criterio-card').forEach(card => {
-    const key = card.getAttribute('data-key');
-    if (prioridadesUnificadas.includes(key)) {
-      card.classList.add('prioritario');
-    } else {
-      card.classList.remove('prioritario');
-    }
-  });
-}
-
-function abrirModalGuiaSentimentos() {
-  document.getElementById('modal-guia-sentimentos').classList.add('open');
-}
-function fecharModalGuiaSentimentos() {
-  document.getElementById('modal-guia-sentimentos').classList.remove('open');
-}
-function fecharModalGuiaSentimentosFora(event) {
-  if (event.target.id === 'modal-guia-sentimentos') fecharModalGuiaSentimentos();
-}
-
-function abrirModalTermos() { document.getElementById('modal-termos').classList.add('open'); }
-function fecharModalTermos() { document.getElementById('modal-termos').classList.remove('open'); }
-function abrirModalMapa() { document.getElementById('modal-mapa').classList.add('open'); }
-function fecharModalMapa() { document.getElementById('modal-mapa').classList.remove('open'); }
-
-function fecharModalFora(event) {
-  if (event.target.id === 'modal-termos') fecharModalTermos();
-}
-function fecharModalMapaFora(event) {
-  if (event.target.id === 'modal-mapa') fecharModalMapa();
-}
-
-function mudarAba(abaId, btnElement) {
-  document.querySelectorAll('.aba-conteudo').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-  document.getElementById(`aba-${abaId}`).classList.add('active');
-  btnElement.classList.add('active');
-  if (abaId === 'evolucao') {
-    renderizarEvolucao();
-    carregarPauta();
+window.onclick = function() {
+  const list = document.getElementById('custom-dropdown-list');
+  if (list && list.classList.contains('open')) {
+    list.classList.remove('open');
   }
-}
+};
 
-function selecionarValor(btn, valor) {
-  const card = btn.closest('.criterio-card');
-  card.querySelectorAll('.btn-escala').forEach(b => b.classList.remove('selected'));
+function selecionarEscala(btn, valor) {
+  const conteiner = btn.parentElement;
+  conteiner.querySelectorAll('.btn-escala').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
-  
-  atualizarAtalhosCard(card, valor);
-  atualizarSaldoDia();
+  btn.setAttribute('data-valor', valor);
+  calcularEscoreAtual();
 }
 
-function atualizarAtalhosCard(card, valor) {
-  const key = card.getAttribute('data-key');
-  const container = card.querySelector('.atalhos-container');
-  if (!container) return;
-  
-  container.innerHTML = '';
-  
-  const tags = (opcoesAtalhos[key] && opcoesAtalhos[key][valor]) 
-    ? opcoesAtalhos[key][valor] 
-    : ["+ Sabor do momento", "+ Registro pontual"];
-
-  tags.forEach(texto => {
-    const btnTag = document.createElement('button');
-    btnTag.className = 'btn-atalho';
-    btnTag.type = 'button';
-    btnTag.innerText = `+ ${texto}`;
-    btnTag.onclick = function() {
-      adicionarTextoAnotacao(card, texto);
-    };
-    container.appendChild(btnTag);
-  });
-}
-
-function adicionarTextoAnotacao(card, texto) {
+function adicionarTag(btn, textoTag) {
+  const card = btn.closest('.criterio-card');
   const textarea = card.querySelector('.anotacao-criterio');
-  if (!textarea) return;
-  let valorAtual = textarea.value.trim();
-  if (valorAtual.length > 0) {
-    if (!valorAtual.includes(texto)) {
-      textarea.value = valorAtual + ' | ' + texto;
-    }
-  } else {
-    textarea.value = texto;
+  if (textarea.value.trim() === '') {
+    textarea.value = `[${textoTag}] `;
+  } else if (!textarea.value.includes(`[${textoTag}]`)) {
+    textarea.value += ` [${textoTag}]`;
   }
 }
 
-function renderizarTodosAtalhos() {
-  document.querySelectorAll('.criterio-card').forEach(card => {
-    const btnSel = card.querySelector('.btn-escala.selected');
-    const val = btnSel ? parseInt(btnSel.innerText) : 3;
-    atualizarAtalhosCard(card, val);
+function calcularEscoreAtual() {
+  let soma = 0;
+  let contagem = 0;
+  document.querySelectorAll('.btn-escala.selected').forEach(btn => {
+    soma += parseInt(btn.getAttribute('data-valor') || '0', 10);
+    contagem++;
   });
-}
-
-function calcularSaldoAtual() {
-  let saldoTotal = 0;
-  document.querySelectorAll('.criterio-card').forEach(card => {
-    const btnSelecionado = card.querySelector('.btn-escala.selected');
-    if (btnSelecionado) {
-      const val = parseInt(btnSelecionado.innerText);
-      saldoTotal += (val - 3);
-    }
-  });
-  return saldoTotal;
-}
-
-function atualizarSaldoDia() {
-  const saldo = calcularSaldoAtual();
-  const badge = document.getElementById('saldo-badge');
-  if (saldo > 0) {
-    badge.innerText = `+${saldo} (Regulado/Positivo)`;
-    badge.style.background = '#10b981';
-  } else if (saldo < 0) {
-    badge.innerText = `${saldo} (Sobrecarga/Desgaste)`;
-    badge.style.background = '#ef4444';
-  } else {
-    badge.innerText = `0 (Equilíbrio)`;
-    badge.style.background = '#b8866b';
-  }
-}
-
-function carregarRegistroData(dataSelecionada) {
-  if (!dataSelecionada) return;
-  const historico = JSON.parse(localStorage.getItem('dashboard_clinica_dados') || '[]');
-  const registro = historico.find(item => item.data === dataSelecionada);
-
-  document.querySelectorAll('.criterio-card').forEach(card => {
-    const key = card.getAttribute('data-key');
-    const botoes = card.querySelectorAll('.btn-escala');
-    const textarea = card.querySelector('.anotacao-criterio');
-
-    botoes.forEach(b => b.classList.remove('selected'));
-
-    if (registro && registro.criterios && registro.criterios[key]) {
-      const valorSalvo = registro.criterios[key].valor;
-      const obsSalva = registro.criterios[key].observacao || "";
-      botoes.forEach(b => {
-        if (parseInt(b.innerText) === valorSalvo) b.classList.add('selected');
-      });
-      textarea.value = obsSalva;
-      atualizarAtalhosCard(card, valorSalvo);
+  
+  const badge = document.getElementById('badge-score');
+  if (badge) {
+    if (contagem === 0) {
+      badge.innerText = "Sem dados";
     } else {
-      botoes.forEach(b => {
-        if (parseInt(b.innerText) === 3) b.classList.add('selected');
-      });
-      textarea.value = "";
-      atualizarAtalhosCard(card, 3);
+      const media = (soma / contagem).toFixed(1);
+      badge.innerText = `Média: ${media} / 3.0`;
     }
-  });
-  atualizarSaldoDia();
+  }
 }
 
 function salvarRegistroDiario() {
   const dataSelecionada = document.getElementById('data-registro').value;
   if (!dataSelecionada) {
-    alert('Por favor, selecione uma data no calendário.');
+    alert("Por favor, selecione uma data válida.");
     return;
   }
-  const dadosCriterios = {};
+
+  const perfis = [];
+  document.querySelectorAll('#custom-dropdown-list input[type="checkbox"]:checked').forEach(cb => {
+    perfis.push(cb.value);
+  });
+
+  const avaliacoes = {};
   document.querySelectorAll('.criterio-card').forEach(card => {
     const key = card.getAttribute('data-key');
-    const val = parseInt(card.querySelector('.btn-escala.selected').innerText);
-    const obs = card.querySelector('.anotacao-criterio').value.trim();
-    dadosCriterios[key] = { valor: val, observacao: obs };
+    const btnSelected = card.querySelector('.btn-escala.selected');
+    const valor = btnSelected ? parseInt(btnSelected.getAttribute('data-valor'), 10) : null;
+    const nota = card.querySelector('.anotacao-criterio').value;
+
+    avaliacoes[key] = { valor, nota };
   });
 
-  const checkboxes = document.querySelectorAll('#custom-dropdown-list input[type="checkbox"]:checked');
-  const perfisAtuais = Array.from(checkboxes).map(cb => cb.value);
-
-  const registro = {
-    data: dataSelecionada,
-    perfis: perfisAtuais,
-    timestamp: new Date().getTime(),
-    saldo: calcularSaldoAtual(),
-    criterios: dadosCriterios
+  registrosLocais[dataSelecionada] = {
+    perfis,
+    avaliacoes,
+    atualizadoEm: new Date().toISOString()
   };
 
-  let historico = JSON.parse(localStorage.getItem('dashboard_clinica_dados') || '[]');
-  historico = historico.filter(item => item.data !== dataSelecionada);
-  historico.push(registro);
-  localStorage.setItem('dashboard_clinica_dados', JSON.stringify(historico));
-
-  alert(`Registro do dia ${new Date(dataSelecionada + 'T00:00:00').toLocaleDateString('pt-BR')} salvo com sucesso!`);
+  localStorage.setItem('dashboard_depressao_ansiedade_db', JSON.stringify(registrosLocais));
+  alert(`Registro do dia ${dataSelecionada} foi guardado com sucesso!`);
+  atualizarProntuario();
 }
 
-function salvarPauta() {
-  const textoPauta = document.getElementById('input-pauta-sessao').value;
-  localStorage.setItem('dashboard_clinica_pauta', textoPauta);
-  alert('Pauta para a sessão salva com sucesso!');
-}
+function carregarRegistroData(dataStr) {
+  document.querySelectorAll('#custom-dropdown-list input[type="checkbox"]').forEach(cb => cb.checked = false);
+  document.querySelectorAll('.btn-escala').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('.anotacao-criterio').forEach(t => t.value = '');
 
-function carregarPauta() {
-  const pautaSalva = localStorage.getItem('dashboard_clinica_pauta') || "";
-  const inputPauta = document.getElementById('input-pauta-sessao');
-  if (inputPauta) inputPauta.value = pautaSalva;
-}
-
-function obterHistorico() {
-  const dados = JSON.parse(localStorage.getItem('dashboard_clinica_dados') || '[]');
-  return dados.sort((a,b) => a.data.localeCompare(b.data));
-}
-
-function obterDadosCicloAtual() {
-  const historico = obterHistorico();
-  const ultimaDataPdf = localStorage.getItem('dashboard_clinica_ultima_data_pdf');
-  
-  if (!ultimaDataPdf) {
-    return historico.slice(-7);
+  const registro = registrosLocais[dataStr];
+  if (registro) {
+    if (registro.perfis) {
+      registro.perfis.forEach(v => {
+        const cb = document.querySelector(`#custom-dropdown-list input[value="${v}"]`);
+        if (cb) cb.checked = true;
+      });
+    }
+    if (registro.avaliacoes) {
+      Object.keys(registro.avaliacoes).forEach(key => {
+        const item = registro.avaliacoes[key];
+        const card = document.querySelector(`.criterio-card[data-key="${key}"]`);
+        if (card) {
+          if (item.valor !== null && item.valor !== undefined) {
+            const btn = card.querySelectorAll('.btn-escala')[item.valor];
+            if (btn) {
+              btn.classList.add('selected');
+              btn.setAttribute('data-valor', item.valor);
+            }
+          }
+          if (item.nota) {
+            card.querySelector('.anotacao-criterio').value = item.nota;
+          }
+        }
+      });
+    }
   }
-  
-  const registrosPosPdf = historico.filter(item => item.data > ultimaDataPdf);
-  if (registrosPosPdf.length === 0) {
-    return historico.slice(-7);
-  }
-  return registrosPosPdf.slice(-7);
+  atualizarPerfisSelecionados();
+  calcularEscoreAtual();
 }
 
-function formatarDataBR(strData) {
-  const [ano, mes, dia] = strData.split('-');
-  return `${dia}/${mes}/${ano}`;
-}
+function atualizarProntuario() {
+  const conteiner = document.getElementById('conteudo-prontuario');
+  if (!conteiner) return;
 
-function renderizarEvolucao() {
-  const historicoCiclo = obterDadosCicloAtual();
-  const resumoContainer = document.getElementById('caixa-resumo-evolucao');
-
-  if (historicoCiclo.length === 0) {
-    resumoContainer.innerHTML = 'Sem dados registrados no ciclo semanal atual para gerar a análise descritiva.';
+  const datas = Object.keys(registrosLocais).sort().reverse();
+  if (datas.length === 0) {
+    conteiner.innerHTML = "<em>Nenhum registro armazenado até o momento. Salve o seu primeiro registro na aba Registro.</em>";
     return;
   }
 
-  const ultimos7 = historicoCiclo;
-  const qtdRegistros = ultimos7.length;
-  const dataInicio = formatarDataBR(ultimos7[0].data);
-  const dataFim = formatarDataBR(ultimos7[qtdRegistros - 1].data);
-
-  let diasSobrecargaOk = 0;
-  ultimos7.forEach(reg => {
-    const nivelSobrecarga = reg.criterios.sobrecarga ? reg.criterios.sobrecarga.valor : 3;
-    if (nivelSobrecarga >= 3) diasSobrecargaOk++;
-  });
-
-  const pctSobrecargaOk = Math.round((diasSobrecargaOk / qtdRegistros) * 100);
-
-  let textoTendencia = "";
-  const regMaisRecente = ultimos7[qtdRegistros - 1];
-
-  if (qtdRegistros === 1) {
-    textoTendencia = `Início de ciclo semanal. Em <strong>100% dos registros</strong>, os níveis de autorregulação apresentam estado inicial preservado.`;
-  } else {
-    if (pctSobrecargaOk >= 60) {
-      textoTendencia = `Observa-se uma <strong>melhora na estabilidade emocional</strong> na semana. Em <strong>${pctSobrecargaOk}% dos dias registrados</strong>, os níveis de sobrecarga mantiveram-se sob controle.`;
-    } else {
-      textoTendencia = `Identifica-se período de <strong>maior vulnerabilidade neuroemocional</strong> na semana. Em apenas <strong>${pctSobrecargaOk}% dos dias</strong> a sobrecarga esteve totalmente sob controle.`;
-    }
-  }
-
-  let textoResumoAnotacoes = "";
-  const regComObs = ultimos7.slice().reverse().find(r => {
-    return Object.values(r.criterios).some(c => c.observacao && c.observacao.length > 0);
-  });
-
-  if (regComObs) {
-    const dataObs = formatarDataBR(regComObs.data);
-    const obsLista = [];
-    Object.keys(regComObs.criterios).forEach(k => {
-      if (regComObs.criterios[k].observacao) {
-        obsLista.push(`${nomesCriterios[k] || k}: "${regComObs.criterios[k].observacao}"`);
-      }
-    });
-    textoResumoAnotacoes = `Destaque para o registro de <strong>${dataObs}</strong> com relato registrado (${obsLista.join(', ')}).`;
-  } else {
-    const dataDestaque = formatarDataBR(regMaisRecente.data);
-    textoResumoAnotacoes = `Destaque para o registro recente de <strong>${dataDestaque}</strong>.`;
-  }
-
-  resumoContainer.innerHTML = `
-    <div class="prontuario-subtitulo">Acompanhamento Semanal (${dataInicio} a ${dataFim} - ${qtdRegistros} registro${qtdRegistros > 1 ? 's' : ''}):</div>
-    <div class="prontuario-topico">• <strong>Tendência Semanal:</strong> ${textoTendencia}</div>
-    <div class="prontuario-topico">• <strong>Resumo das Anotações:</strong> ${textoResumoAnotacoes}</div>
-  `;
-
-  const isDark = document.body.getAttribute('data-theme') === 'dark';
-  const gridColor = isDark ? '#26334d' : '#e8e2d8';
-  const tickColor = isDark ? '#9ca3af' : '#8c7f73';
-  const accentColor = isDark ? '#d4a373' : '#b8866b';
-
-  const labelsDatas = ultimos7.map(item => {
-    const [ano, mes, dia] = item.data.split('-');
-    return `${dia}/${mes}`;
-  });
-
-  const valoresSaldos = ultimos7.map(item => item.saldo);
-  const coresPontos = valoresSaldos.map(s => s > 0 ? '#10b981' : (s < 0 ? '#ef4444' : '#b8866b'));
-
-  const ctxLinha = document.getElementById('chartSaldoLinha').getContext('2d');
-  if (instChartLinha) instChartLinha.destroy();
-  instChartLinha = new Chart(ctxLinha, {
-    type: 'line',
-    data: {
-      labels: labelsDatas,
-      datasets: [{
-        label: 'Saldo Diário',
-        data: valoresSaldos,
-        borderColor: accentColor,
-        borderWidth: 2,
-        pointBackgroundColor: coresPontos,
-        pointRadius: 4,
-        tension: 0.2,
-        fill: false
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: { legend: { display: false } },
-      scales: {
-        x: { ticks: { color: tickColor, font: { size: 10 } }, grid: { color: gridColor } },
-        y: { ticks: { color: tickColor }, grid: { color: gridColor } }
-      }
-    }
-  });
-
-  const mediasAreas = [];
-  const nomesAreas = Object.keys(categoriasAreas);
-
-  nomesAreas.forEach(area => {
-    const chaves = categoriasAreas[area];
-    let somaValores = 0;
-    let countValores = 0;
-
-    ultimos7.forEach(reg => {
-      chaves.forEach(k => {
-        if (reg.criterios[k]) {
-          somaValores += reg.criterios[k].valor;
-          countValores++;
+  let html = `<div class="prontuario-subtitulo">Exibindo histórico de <strong>${datas.length}</strong> registro(s) arquivado(s):</div>`;
+  datas.forEach(d => {
+    const reg = registrosLocais[d];
+    let soma = 0;
+    let qtd = 0;
+    if (reg.avaliacoes) {
+      Object.values(reg.avaliacoes).forEach(v => {
+        if (v.valor !== null && v.valor !== undefined) {
+          soma += v.valor;
+          qtd++;
         }
       });
-    });
+    }
+    const media = qtd > 0 ? (soma / qtd).toFixed(1) : "N/A";
 
-    const mediaArea = countValores > 0 ? (somaValores / countValores).toFixed(1) : 3.0;
-    mediasAreas.push(mediaArea);
+    html += `
+      <div class="prontuario-topico" style="border-bottom: 1px dashed var(--border-light); padding-bottom: 8px; margin-bottom: 8px;">
+        <strong>📅 Data: ${d}</strong> — <em>Índice Médio: ${media} / 3.0</em><br>
+        <small>Dimensões selecionadas: ${reg.perfis ? reg.perfis.length : 0}</small>
+      </div>
+    `;
   });
 
-  const ctxRadar = document.getElementById('chartCategoriasRadar').getContext('2d');
-  if (instChartRadar) instChartRadar.destroy();
-  instChartRadar = new Chart(ctxRadar, {
-    type: 'radar',
+  conteiner.innerHTML = html;
+}
+
+function inicializarGrafico() {
+  const ctx = document.getElementById('meuGrafico');
+  if (!ctx) return;
+
+  meuGraficoInstance = new Chart(ctx, {
+    type: 'line',
     data: {
-      labels: nomesAreas,
-      datasets: [{
-        label: 'Média de Nível (1 a 5)',
-        data: mediasAreas,
-        backgroundColor: isDark ? 'rgba(212, 163, 115, 0.15)' : 'rgba(184, 134, 107, 0.12)',
-        borderColor: accentColor,
-        pointBackgroundColor: accentColor
-      }]
+      labels: [],
+      datasets: [
+        {
+          label: 'Média de Intensidade (Sintomas)',
+          data: [],
+          borderColor: '#435b4e',
+          backgroundColor: 'rgba(67, 91, 78, 0.15)',
+          fill: true,
+          tension: 0.3
+        }
+      ]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      plugins: { legend: { display: false } },
       scales: {
-        r: {
-          min: 1,
-          max: 5,
-          ticks: { stepSize: 1, display: false },
-          grid: { color: gridColor },
-          angleLines: { color: gridColor },
-          pointLabels: { color: tickColor, font: { size: 11, weight: 'bold' } }
-        }
+        y: { beginAtZero: true, max: 3 }
       }
     }
   });
 }
 
-function exportarBackupJSON() {
-  const historico = localStorage.getItem('dashboard_clinica_dados') || '[]';
-  const blob = new Blob([historico], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `backup_psicoeducativo_${new Date().toISOString().split('T')[0]}.json`;
-  a.click();
-  URL.revokeObjectURL(url);
+function renderizarGraficoEvolucao() {
+  if (!meuGraficoInstance) return;
+
+  const datas = Object.keys(registrosLocais).sort();
+  const medias = datas.map(d => {
+    const reg = registrosLocais[d];
+    let soma = 0;
+    let qtd = 0;
+    if (reg.avaliacoes) {
+      Object.values(reg.avaliacoes).forEach(v => {
+        if (v.valor !== null && v.valor !== undefined) {
+          soma += v.valor;
+          qtd++;
+        }
+      });
+    }
+    return qtd > 0 ? (soma / qtd).toFixed(2) : 0;
+  });
+
+  meuGraficoInstance.data.labels = datas;
+  meuGraficoInstance.data.datasets[0].data = medias;
+  meuGraficoInstance.update();
 }
 
-function importarBackupJSON(event) {
+function exportarDadosJSON() {
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(registrosLocais, null, 2));
+  const downloadAnchor = document.createElement('a');
+  downloadAnchor.setAttribute("href", dataStr);
+  downloadAnchor.setAttribute("download", `backup_depressao_ansiedade_${new Date().toISOString().split('T')[0]}.json`);
+  document.body.appendChild(downloadAnchor);
+  downloadAnchor.click();
+  downloadAnchor.remove();
+}
+
+function importarDadosJSON(event) {
   const file = event.target.files[0];
   if (!file) return;
 
   const reader = new FileReader();
   reader.onload = function(e) {
     try {
-      const dados = JSON.parse(e.target.result);
-      if (Array.isArray(dados)) {
-        localStorage.setItem('dashboard_clinica_dados', JSON.stringify(dados));
-        alert('Backup importado com sucesso!');
-        if (document.getElementById('aba-evolucao').classList.contains('active')) {
-          renderizarEvolucao();
-        }
-        const dataAtualInput = document.getElementById('data-registro').value;
-        if (dataAtualInput) carregarRegistroData(dataAtualInput);
-      } else {
-        alert('Formato de arquivo JSON inválido.');
-      }
+      const parsed = JSON.parse(e.target.result);
+      registrosLocais = parsed;
+      localStorage.setItem('dashboard_depressao_ansiedade_db', JSON.stringify(registrosLocais));
+      alert("Backup importado com sucesso!");
+      atualizarProntuario();
+      renderizarGraficoEvolucao();
     } catch (err) {
-      alert('Erro ao ler o arquivo JSON.');
+      alert("Erro ao ler o ficheiro JSON de backup.");
     }
   };
   reader.readAsText(file);
 }
 
-// ==================== MOTOR PDF SOFISTICADO (COM AUTOTABLE) ====================
-function gerarPDFSemanal() {
+function exportarRelatorioPDF() {
   const { jsPDF } = window.jspdf;
-  const doc = new jsPDF('p', 'mm', 'a4');
-  const historicoCiclo = obterDadosCicloAtual().slice().reverse();
+  const doc = new jsPDF();
 
-  if (historicoCiclo.length === 0) {
-    alert('Sem dados registrados para gerar o relatório semanal.');
-    return;
-  }
-
-  // Cabeçalho institucional com barra superior decorativa
-  doc.setFillColor(184, 134, 107); // Cor elegante acentuada
-  doc.rect(14, 12, 182, 3, 'F');
-
-  doc.setFont("helvetica", "bold");
   doc.setFontSize(14);
-  doc.setTextColor(50, 50, 50);
-  doc.text("RELATÓRIO PSICOEDUCATIVO CLÍNICO", 14, 22);
-
-  doc.setFontSize(8.5);
-  doc.setFont("helvetica", "normal");
-  doc.setTextColor(100, 100, 100);
-  doc.text(`Emitido em: ${new Date().toLocaleDateString('pt-BR')} | Módulo de Monitoramento Especializado AH/SD`, 14, 27);
-
-  let y = 35;
-
-  // --- TABELA 1: SUMÁRIO EXECUTIVO ---
-  doc.setFont("helvetica", "bold");
+  doc.text("Relatório de Acompanhamento Psicoeducativo", 14, 20);
   doc.setFontSize(10);
-  doc.setTextColor(50, 50, 50);
-  doc.text("1. SUMÁRIO EXECUTIVO E INDICADORES DO PERÍODO", 14, y);
-  y += 4;
+  doc.text("Foco Clínico: Monitoramento de Depressão e Ansiedade", 14, 26);
+  doc.text(`Gerado em: ${new Date().toLocaleDateString('pt-BR')}`, 14, 32);
 
-  let somaSaldo = 0;
-  historicoCiclo.forEach(h => somaSaldo += h.saldo);
-  const mediaSaldo = (somaSaldo / historicoCiclo.length).toFixed(1);
+  const rows = [];
+  Object.keys(registrosLocais).sort().reverse().forEach(data => {
+    const reg = registrosLocais[data];
+    let soma = 0, qtd = 0;
+    if (reg.avaliacoes) {
+      Object.values(reg.avaliacoes).forEach(v => {
+        if (v.valor !== null && v.valor !== undefined) { soma += v.valor; qtd++; }
+      });
+    }
+    const media = qtd > 0 ? (soma / qtd).toFixed(1) : "N/A";
+    rows.push([data, media, reg.perfis ? reg.perfis.length : 0]);
+  });
 
   doc.autoTable({
-    startY: y,
-    head: [['Janela de Análise', 'Total de Registros', 'Saldo Emocional Médio', 'Status do Ciclo']],
-    body: [[
-      `${formatarDataBR(historicoCiclo[historicoCiclo.length-1].data)} a ${formatarDataBR(historicoCiclo[0].data)}`,
-      historicoCiclo.length,
-      mediaSaldo > 0 ? `+${mediaSaldo}` : mediaSaldo,
-      mediaSaldo >= 0 ? 'Estável / Regulado' : 'Sobrecarga Ativa'
-    ]],
-    theme: 'grid',
-    headStyles: { fillColor: [184, 134, 107], textColor: [255, 255, 255], fontStyle: 'bold', fontSize: 8.5 },
-    bodyStyles: { fontSize: 8.5, textColor: [60, 60, 60] },
-    margin: { left: 14, right: 14 }
+    startY: 40,
+    head: [['Data', 'Índice Médio (0-3)', 'Dimensões Assinaladas']],
+    body: rows
   });
 
-  y = doc.lastAutoTable.finalY + 10;
-
-  // --- TABELA 2: MAPEAMENTO DE RECURSOS E NOTAS ESCRITAS ---
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(10);
-  doc.text("2. MAPEAMENTO DE RECURSOS, GATILHOS E NOTAS CLÍNICAS", 14, y);
-  y += 4;
-
-  let linhasTabelaMapeamento = [];
-  historicoCiclo.forEach(reg => {
-    Object.keys(reg.criterios).forEach(k => {
-      const c = reg.criterios[k];
-      const nome = nomesCriterios[k] || k;
-      // Inclui na tabela se houver nota escrita ou desvio crítico (1, 2, 4, 5)
-      if (c.valor >= 4 || c.valor <= 2 || (c.observacao && c.observacao.trim() !== "")) {
-        linhasTabelaMapeamento.push([
-          formatarDataBR(reg.data),
-          nome,
-          `Nível ${c.valor}`,
-          c.observacao || 'Nenhum relato textual adicional'
-        ]);
-      }
-    });
-  });
-
-  if (linhasTabelaMapeamento.length === 0) {
-    linhasTabelaMapeamento.push(['-', 'Nenhum desvio crítico registrado', '-', 'Registros mantidos na faixa de neutralidade']);
-  }
-
-  doc.autoTable({
-    startY: y,
-    head: [['Data', 'Dimensão / Critério', 'Escala', 'Notas & Observações do Paciente']],
-    body: linhasTabelaMapeamento,
-    theme: 'striped',
-    headStyles: { fillColor: [74, 66, 59], textColor: [255, 255, 255], fontSize: 8.5 },
-    bodyStyles: { fontSize: 8, textColor: [50, 50, 50] },
-    columnStyles: { 
-      0: { cellWidth: 22 }, 
-      1: { cellWidth: 50 }, 
-      2: { cellWidth: 20 }, 
-      3: { cellWidth: 90 } 
-    },
-    margin: { left: 14, right: 14 }
-  });
-
-  y = doc.lastAutoTable.finalY + 10;
-
-  // --- TABELA 3: PAUTA PARA A SESSÃO TERAPÊUTICA ---
-  const pauta = localStorage.getItem('dashboard_clinica_pauta') || "";
-  if (pauta.trim() !== "") {
-    if (y > 220) { doc.addPage(); y = 20; }
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(10);
-    doc.text("3. PAUTA E TÓPICOS PARA A SESSÃO TERAPÊUTICA", 14, y);
-    y += 4;
-
-    doc.autoTable({
-      startY: y,
-      body: [[pauta]],
-      theme: 'plain',
-      styles: { fillColor: [244, 239, 233], textColor: [50, 50, 50], fontSize: 8.5, cellPadding: 6 },
-      margin: { left: 14, right: 14 }
-    });
-    y = doc.lastAutoTable.finalY + 10;
-  }
-
-  // --- RODAPÉ E AVISO TÉCNICO ---
-  if (y > 260) { doc.addPage(); y = 20; }
-  doc.setFont("helvetica", "italic");
-  doc.setFontSize(7.5);
-  doc.setTextColor(120, 120, 120);
-  doc.text("Nota técnica: Instrumento auxiliar de autogestão e monitoramento voltado à relação terapêutica e suporte clínico.", 14, y);
-
-  // Atualiza a última data do PDF para controle de ciclo
-  const dataUltimoRegistro = historicoCiclo[0].data;
-  localStorage.setItem('dashboard_clinica_ultima_data_pdf', dataUltimoRegistro);
-
-  doc.save(`Relatorio_Clinico_Sofisticado_${new Date().toISOString().split('T')[0]}.pdf`);
-
-  if (document.getElementById('aba-evolucao').classList.contains('active')) {
-    renderizarEvolucao();
-  }
+  doc.save(`relatorio_depressao_ansiedade_${new Date().toISOString().split('T')[0]}.pdf`);
 }
 
-window.onload = function() {
-  const temaSalvo = localStorage.getItem('dashboard_clinica_tema') || 'light';
-  document.body.setAttribute('data-theme', temaSalvo);
-  document.getElementById('theme-toggle').innerHTML = temaSalvo === 'light' ? '☀️' : '🌙';
+function abrirModalGuiaSentimentos() {
+  document.getElementById('modal-guia').classList.add('open');
+}
 
-  const hoje = new Date().toISOString().split('T')[0];
-  const inputData = document.getElementById('data-registro');
-  inputData.value = hoje;
-
-  const perfisSalvos = JSON.parse(localStorage.getItem('dashboard_clinica_perfis_multi') || '["excitabilidade_intelectual"]');
-  perfisSalvos.forEach(val => {
-    const cb = document.querySelector(`#custom-dropdown-list input[value="${val}"]`);
-    if (cb) cb.checked = true;
-  });
-  atualizarPerfisSelecionados();
-
-  carregarRegistroData(hoje);
-  carregarPauta();
-  renderizarTodosAtalhos();
-};
+function fecharModalGuiaSentimentos() {
+  document.getElementById('modal-guia').classList.remove('open');
+}
 </script>
 </body>
 </html>
