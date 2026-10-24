@@ -18,8 +18,8 @@
   --border-light: #3d4451;
   --text-muted: #9aa0a6;
   --text-dimmed: #d2d6dc;
-  --accent-color: #8b939e;
-  --accent-hover: #a1a8b3;
+  --accent-color: #a27257; /* Tom terracota/marrom suave idêntico à imagem */
+  --accent-hover: #885c44;
   --btn-bg: #121417;
   --card-bg: #1b1e23;
   --card-prioritario: #22262e;
@@ -29,106 +29,56 @@
 }
 
 /* =========================================================
-   VARIÁVEIS DE TEMA DIA (Baseado na Referência: Bege, Eucalipto & Nude)
+   VARIÁVEIS DE TEMA DIA (Baseado na Imagem: Bege & Terracota)
    ========================================================= */
 [data-theme="light"] {
-  --bg-body: #eae8e3;
-  --text-main: #2b332f;
-  --bg-container: #ffffff;
-  --border-color: #d8d4cd;
-  --border-light: #c5c0b6;
-  --text-muted: #78736a;
-  --text-dimmed: #464e4a;
-  --accent-color: #435b4e;
-  --accent-hover: #33473d;
-  --btn-bg: #f5f3ef;
-  --card-bg: #ffffff;
-  --card-prioritario: #f2f5f3;
-  --legenda-bg: #f5f3ef;
-  --cat-bg: #e2e8e4;
-  --tag-bg: #ebe8e2;
+  --bg-body: #f4f1ea;        /* Beige de fundo */
+  --text-main: #36322d;       /* Texto escuro legível */
+  --bg-container: #ffffff;    /* Conteiner branco clean */
+  --border-color: #e5e0d8;    /* Borda neutra suave */
+  --border-light: #d8d2c7;   /* Borda clara */
+  --text-muted: #827b70;     /* Texto secundário bege */
+  --text-dimmed: #524c44;    /* Texto suave */
+  --accent-color: #b38062;   /* Terracota suave para seleção */
+  --accent-hover: #98674b;   /* Terracota para hover */
+  --btn-bg: #f5f2eb;         /* Bege nude para botões inativos */
+  --card-bg: #ffffff;        
+  --card-prioritario: #fbf9f5; 
+  --legenda-bg: #f5f2eb;     /* Fundo de legendas nude */
+  --cat-bg: #eeeae1;         
+  --tag-bg: #f2eee6;         
 }
 
 body { background-color: var(--bg-body); color: var(--text-main); padding: 12px; display: flex; flex-direction: column; min-height: 100vh; }
 .container { max-width: 800px; margin: 0 auto; flex: 1; width: 100%; }
 
-/* Cabeçalho com Banner Largo */
+/* Cabeçalho com Banner */
 .header-marca {
-  width: 100%;
-  margin-bottom: 14px;
-  border: none;
-  padding: 0;
-  overflow: hidden;
-  border-radius: 10px;
-  background: var(--bg-container);
-  border: 1px solid var(--border-color);
+  width: 100%; margin-bottom: 14px; border: none; padding: 0; overflow: hidden;
+  border-radius: 10px; background: var(--bg-container); border: 1px solid var(--border-color);
 }
-.logo-img {
-  width: 100%;
-  height: 160px;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 10px;
-}
-.header-topo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-  padding: 0 4px;
-}
+.logo-img { width: 100%; height: 160px; display: block; object-fit: cover; object-position: center; border-radius: 10px; }
+.header-topo { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding: 0 4px; }
 
 .btn-guia-sentimentos {
-  background: var(--btn-bg);
-  border: 1px solid var(--border-light);
-  color: var(--accent-color);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.82rem;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s;
+  background: var(--btn-bg); border: 1px solid var(--border-light); color: var(--accent-color);
+  padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: bold; cursor: pointer;
+  display: flex; align-items: center; gap: 6px; transition: all 0.2s;
 }
-.btn-guia-sentimentos:hover {
-  background: var(--cat-bg);
-  transform: translateY(-1px);
-}
+.btn-guia-sentimentos:hover { background: var(--cat-bg); transform: translateY(-1px); }
 
 .theme-toggle-btn {
-  background: var(--bg-container);
-  border: 1px solid var(--border-light);
-  color: var(--text-main);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  transition: transform 0.2s, background 0.2s;
+  background: var(--bg-container); border: 1px solid var(--border-light); color: var(--text-main);
+  width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s, background 0.2s;
 }
 .theme-toggle-btn:hover { transform: scale(1.08); }
 
 .seletor-topo-container {
-  background: var(--bg-container);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 12px;
-  margin-bottom: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+  background: var(--bg-container); border: 1px solid var(--border-color); border-radius: 10px;
+  padding: 12px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
 }
-@media (min-width: 600px) {
-  .seletor-topo-container { flex-direction: row; align-items: center; justify-content: space-between; }
-}
+@media (min-width: 600px) { .seletor-topo-container { flex-direction: row; align-items: center; justify-content: space-between; } }
 
 .perfil-box { display: flex; flex-direction: column; gap: 6px; width: 100%; }
 @media (min-width: 600px) { .perfil-box { flex-direction: row; align-items: center; flex: 1; } }
@@ -154,8 +104,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 .dropdown-group-title:first-child { margin-top: 0; }
 .dropdown-item {
   padding: 8px 12px; font-size: 0.78rem; color: var(--text-dimmed); cursor: pointer; border-radius: 6px;
-  display: flex; align-items: center; gap: 8px; margin-bottom: 2px; transition: background 0.15s;
-  user-select: none;
+  display: flex; align-items: center; gap: 8px; margin-bottom: 2px; transition: background 0.15s; user-select: none;
 }
 .dropdown-item:hover { background: var(--cat-bg); color: var(--text-main); }
 .dropdown-item input[type="checkbox"] { accent-color: var(--accent-color); cursor: pointer; }
@@ -177,7 +126,6 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 .aba-conteudo { display: none; }
 .aba-conteudo.active { display: block; }
 
-/* Acordeão de Categorias Principal */
 .categoria-titulo {
   display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem; font-weight: 600;
   color: var(--text-dimmed); margin: 18px 0 10px 0; background: var(--cat-bg);
@@ -194,53 +142,46 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   padding: 14px; margin-bottom: 12px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.01);
 }
 .criterio-card.prioritario { border: 2px solid var(--accent-color); background: var(--card-prioritario); }
-.criterio-card.prioritario::before {
-  content: "Foco Principal do Momento"; display: inline-block; font-size: 0.72rem; font-weight: bold;
-  color: var(--accent-color); margin-bottom: 6px; background: var(--cat-bg); padding: 2px 8px; border-radius: 4px;
-}
 
-/* Título de Critério Clicável com Seta */
 .criterio-nome {
-  font-size: 0.95rem; font-weight: bold; color: var(--text-main); margin-bottom: 6px;
-  cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-  user-select: none; transition: color 0.2s;
+  font-size: 1.05rem; font-weight: bold; color: var(--text-main); margin-bottom: 8px;
+  cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; transition: color 0.2s;
 }
 .criterio-nome:hover { color: var(--accent-color); }
 .criterio-nome-seta { font-size: 0.75rem; color: var(--accent-color); transition: transform 0.3s ease; }
 
-/* Caixa de Dicas Práticas Psicoeducativas */
 .caixa-dica-pratica {
   display: none; background: var(--cat-bg); border: 1px dashed var(--accent-color);
-  border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; font-size: 0.8rem;
-  color: var(--text-dimmed); line-height: 1.45;
+  border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; font-size: 0.8rem; color: var(--text-dimmed); line-height: 1.45;
 }
 .caixa-dica-pratica.aberta { display: block; }
 .caixa-dica-pratica strong { color: var(--accent-color); }
 
 .criterio-legenda {
-  background: var(--legenda-bg); border-radius: 6px; padding: 8px 10px; font-size: 0.78rem;
-  color: var(--text-muted); margin-bottom: 10px; line-height: 1.35;
+  background: var(--legenda-bg); border-radius: 8px; padding: 10px 12px; font-size: 0.82rem;
+  color: var(--text-muted); margin-bottom: 12px; line-height: 1.4; border: 1px solid var(--border-color);
 }
 
-.botoes-escala { display: flex; gap: 6px; margin-bottom: 10px; }
+/* Escala de 1 a 5 no Estilo Terracota da Imagem */
+.botoes-escala { display: flex; gap: 8px; margin-bottom: 12px; }
 .btn-escala {
-  flex: 1; padding: 8px 0; background: var(--btn-bg); border: 1px solid var(--border-light);
-  color: var(--text-dimmed); border-radius: 6px; font-weight: bold; cursor: pointer; text-align: center; transition: all 0.2s;
+  flex: 1; padding: 10px 0; background: var(--btn-bg); border: 1px solid var(--border-light);
+  color: var(--text-main); border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; text-align: center; transition: all 0.2s;
 }
-.btn-escala.selected { background: var(--accent-color); color: #ffffff; border-color: var(--accent-hover); }
+.btn-escala:hover { border-color: var(--accent-color); }
+.btn-escala.selected { background: #b38062; color: #ffffff; border-color: #98674b; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
-/* Botões de Atalhos / Tags */
-.atalhos-container { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+/* Atalhos que mudam dinamicamente */
+.atalhos-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; min-height: 32px; }
 .btn-atalho {
   background: var(--tag-bg); border: 1px solid var(--border-light); color: var(--text-main);
-  padding: 5px 10px; border-radius: 20px; font-size: 0.75rem; cursor: pointer;
-  transition: all 0.2s; display: inline-flex; align-items: center;
+  padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center;
 }
-.btn-atalho:hover { border-color: var(--accent-color); color: var(--accent-color); }
+.btn-atalho:hover { border-color: var(--accent-color); color: var(--accent-color); background: var(--bg-container); }
 
 .anotacao-criterio {
-  width: 100%; background: var(--btn-bg); border: 1px solid var(--border-light); border-radius: 6px;
-  color: var(--text-main); padding: 8px; font-size: 0.82rem; resize: vertical; min-height: 44px;
+  width: 100%; background: var(--btn-bg); border: 1px solid var(--border-light); border-radius: 8px;
+  color: var(--text-main); padding: 10px 12px; font-size: 0.85rem; resize: vertical; min-height: 52px; line-height: 1.4;
 }
 .anotacao-criterio::placeholder { color: var(--text-muted); }
 
@@ -307,8 +248,6 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 .modal-body p { margin-bottom: 8px; }
 .modal-body ul { margin-left: 18px; margin-bottom: 12px; }
 .modal-body li { margin-bottom: 4px; }
-
-.autor-credito { margin-top: 16px; padding-top: 10px; border-top: 1px dashed var(--border-color); text-align: center; font-size: 0.75rem; color: var(--text-muted); font-style: italic; }
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -340,7 +279,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   <div id="aba-registro" class="aba-conteudo active">
     <div class="seletor-topo-container">
       <div class="perfil-box">
-      <span class="perfil-label">Como você está a sentir-se hoje? (Selecione):</span>
+        <span class="perfil-label">Como você está a sentir-se hoje? (Selecione):</span>
         <div class="custom-dropdown" id="custom-dropdown-perfil">
           <button type="button" class="custom-dropdown-btn" onclick="toggleDropdown(event)">
             <span id="custom-dropdown-selected-text">Escolher o que se passa hoje...</span>
@@ -374,116 +313,88 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       <input type="date" id="data-registro" class="seletor-data-input" onchange="carregarRegistroData(this.value)">
     </div>
 
-    <!-- Categoria 1: Ansiedade e Mente Acelerada -->
+    <!-- Categoria 1: Dimensão Neuroemocional -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
-      <span>Mente Acelerada, Preocupações & Sinais no Corpo</span>
+      <span>Dimensão Neuroemocional</span>
       <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
     </div>
     <div class="categoria-grupo">
       
       <div class="criterio-card prioritario" data-key="ruminacao">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Preocupação em Looping & Pensamentos que não Desligam</span>
+          <span>Ruminação Mental & Hiperconexão de Ideias</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>O que acontece:</strong> Quando estamos ansiosos, o cérebro entra num canal de repetição de cenários negativos. Tentar forçar o pensamento a parar costuma gerar o efeito contrário.<br><br>
-          <strong>O que fazer agora:</strong> Em vez de lutar contra a mente, experimente o "Tempo de Preocupação" (reserve apenas 15 minutos do dia para anotar tudo o que o preocupa, depois feche o papel). Para acalmar o corpo rapidamente, coloque água fria no rosto ou respire fundo expirando o ar bem devagar.
+          <strong>Como se autorregular:</strong> Quando a mente entra num circuito acelerado, lutar para parar o pensamento aumenta a tensão. Pratique o "Tempo de Preocupação" (escreva tudo no papel por 15 minutos) ou coloque água fria no rosto para acalmar a mente através do corpo.
         </div>
-        <div class="criterio-legenda">Intensidade desse looping de pensamentos no dia de hoje:</div>
+        <div class="criterio-legenda">
+          1 = Mente travada em loop associativo / Exaustão analítica; 3 = Pensamento acelerado mas funcional; 5 = Clareza mental e fluxo fluido.
+        </div>
         <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Calmo)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Moderado)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Intenso)</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'ruminacao', 1)">1</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'ruminacao', 2)">2</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'ruminacao', 3)">3</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'ruminacao', 4)">4</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'ruminacao', 5)">5</button>
         </div>
-        <div class="atalhos-container">
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Cenários do tipo E se...')">+ Cenários "E se..."</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Pensamentos no futuro')">+ Preocupação com o futuro</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Dificuldade para adormecer')">+ Dificuldade para dormir</button>
+        <!-- Contêiner de Atalhos Dinâmicos -->
+        <div class="atalhos-container" id="atalhos-ruminacao">
+          <!-- Dinamicamente preenchido ao clicar nos botões de 1 a 5 -->
         </div>
-        <textarea class="anotacao-criterio" placeholder="O que estava a passar pela sua cabeça hoje? Descreva brevemente..."></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Qual problema complexo travou seu processamento hoje? Onde no corpo a exaustão mental se manifestou?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="hipervigilancia">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Sinais Físicos de Alerta (Coração acelerado, tensão, aperto)</span>
+          <span>Reatividade no Corpo & Tensão Física</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>O que acontece:</strong> O corpo interpreta o stress como um perigo real e ativa o modo de "luta ou fuga", tensionando os músculos e acelerando o ritmo cardíaco para nos proteger.<br><br>
-          <strong>O que fazer agora:</strong> Envie um sinal de segurança para o seu sistema nervoso através da respiração regulada: inspire contando até 4 e expire devagar contando até 8. Solte os ombros e relaxe a mandíbula.
+          <strong>Como se autorregular:</strong> O corpo reage ao stress como perigo real. Inspire em 4 segundos e expire bem devagar em 8 segundos para enviar uma mensagem de segurança ao seu sistema nervoso.
         </div>
-        <div class="criterio-legenda">Intensidade das sensações físicas de ansiedade hoje:</div>
+        <div class="criterio-legenda">
+          1 = Corpo travado / Tensão e aperto fortes; 3 = Desconforto leve / Tensão pontual; 5 = Corpo relaxado e respiração fluida.
+        </div>
         <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Nenhuma)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Moderada)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Forte)</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'hipervigilancia', 1)">1</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'hipervigilancia', 2)">2</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'hipervigilancia', 3)">3</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 'hipervigilancia', 4)">4</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'hipervigilancia', 5)">5</button>
         </div>
-        <div class="atalhos-container">
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Aperto no peito')">+ Aperto no peito</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Ombros/pescoço tensos')">+ Tensão nos ombros</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Respiração curta')">+ Respiração curta</button>
-        </div>
-        <textarea class="anotacao-criterio" placeholder="Onde é que sentiu mais tensão ou desconforto no corpo hoje?"></textarea>
-      </div>
-
-      <div class="criterio-card" data-key="evitacao_antecipatoria">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Vontade de Evitar Tarefas, Pessoas ou Compromissos</span>
-          <span class="criterio-nome-seta">►</span>
-        </div>
-        <div class="caixa-dica-pratica">
-          <strong>O que acontece:</strong> Fugir do que nos causa ansiedade traz um alívio rápido, mas diz ao nosso cérebro que o perigo era real, tornando o medo maior da próxima vez.<br><br>
-          <strong>O que fazer agora:</strong> Em vez de tentar resolver tudo de uma vez, divida a tarefa que está a evitar num passo incrivelmente pequeno (por exemplo: apenas abrir o documento ou calçar os sapatos).
-        </div>
-        <div class="criterio-legenda">Nível de evitação ou adiamento de coisas importantes hoje:</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Nenhuma)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Moderada)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Muita evitação)</button>
-        </div>
-        <div class="atalhos-container">
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Adiar tarefas difíceis')">+ Adiar tarefas</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Evitar responder mensagens')">+ Evitar mensagens</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Sensação de sobrecarga')">+ Sensação de sobrecarga</button>
-        </div>
-        <textarea class="anotacao-criterio" placeholder="Houve alguma tarefa ou situação que preferiu adiar hoje? Descreva..."></textarea>
+        <div class="atalhos-container" id="atalhos-hipervigilancia"></div>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Quais sinais físicos de tensão você notou hoje? Em que momento do dia o corpo pareceu mais tenso?"></textarea>
       </div>
 
     </div>
-
-    <!-- Categoria 2: Baixa Energia e Desânimo -->
+        <!-- Categoria 2: Dimensão Depressiva -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
-      <span>Baixa Energia, Desânimo & Autocrítica</span>
+      <span>Dimensão Depressiva & Baixa Energia</span>
       <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
     </div>
     <div class="categoria-grupo">
-
+      
       <div class="criterio-card prioritario" data-key="anedonia">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Falta de Vontade, Apatia & Dificuldade de Sentir Prazer</span>
+          <span>Apatia, Falta de Vontade & Desânimo</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>O que acontece:</strong> Quando a energia está muito baixa, o cérebro desliga os centros de recompensa, fazendo com que nada pareça valer a pena. Esperar pela vontade de fazer as coisas não funciona nesta fase; a energia costuma aparecer *depois* que começamos.<br><br>
-          <strong>O que fazer agora:</strong> Escolha uma micro-ação de apenas 2 minutos (ex: beber um copo de água com calma ou dar 5 passos na sala). Não espere sentir vontade; apenas teste dar o primeiro passo minúsculo.
+          <strong>Como se autorregular:</strong> Quando a energia está muito baixa, esperar pela motivação não funciona. Dê um micro-passo de apenas 2 minutos sem exigir grandes resultados de si mesmo.
         </div>
-        <div class="criterio-legenda">Nível de desânimo ou falta de energia para as coisas hoje:</div>
+        <div class="criterio-legenda">
+          1 = Paralisia total / Apatia profunda; 3 = Energia baixa mas funcional; 5 = Motivação e prazer preservados.
+        </div>
         <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Normal)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve desânimo)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Baixa energia)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Paralisia / Apatia)</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'anedonia', 1)">1</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'anedonia', 2)">2</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'anedonia', 3)">3</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'anedonia', 4)">4</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'anedonia', 5)">5</button>
         </div>
-        <div class="atalhos-container">
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Dificuldade para levantar da cama')">+ Sair da cama custou</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Nada parece ter graça')">+ Nada parece ter graça</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Falta de motivação')">+ Falta de motivação</button>
-        </div>
-        <textarea class="anotacao-criterio" placeholder="O que exigiu mais esforço físico ou emocional da sua parte hoje?"></textarea>
+        <div class="atalhos-container" id="atalhos-anedonia"></div>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O que exigiu mais esforço físico ou emocional hoje? Qual micro-passo foi possível dar?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="autocritica">
@@ -492,108 +403,56 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>O que acontece:</strong> Numa fase de vulnerabilidade, tendemos a tratar-nos com muito rigor, julgando-nos duramente por estarmos cansados ou desanimados, o que só aumenta o desgaste emocional.<br><br>
-          <strong>O que fazer agora:</strong> Repare no seu diálogo interno. Pergunte-se: *"Eu diria estas mesmas palavras exatas a um amigo querido que estivesse a passar pelo mesmo?"* Tente trocar a cobrança por uma postura de compreensão consigo mesmo.
+          <strong>Como se autorregular:</strong> Repare no seu diálogo interno e pergunte-se se falaria dessa forma com um amigo querido a passar pela mesma fase difícil.
         </div>
-        <div class="criterio-legenda">Intensidade da cobrança interna ou julgamento severo hoje:</div>
+        <div class="criterio-legenda">
+          1 = Cobrança severa / Sentimento de inutilidade; 3 = Autocrítica moderada; 5 = Autocompaixão e acolhimento.
+        </div>
         <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Nenhum)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Moderado)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Muito pesado)</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'autocritica', 1)">1</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'autocritica', 2)">2</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'autocritica', 3)">3</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'autocritica', 4)">4</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'autocritica', 5)">5</button>
         </div>
-        <div class="atalhos-container">
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Sensação de não fazer o suficiente')">+ Achar que fiz pouco</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Comparação com os outros')">+ Comparação com outros</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Cobrança excessiva')">+ Cobrança interna</button>
-        </div>
-        <textarea class="anotacao-criterio" placeholder="Quais foram as cobranças ou críticas que a sua mente repetiu hoje?"></textarea>
-      </div>
-
-      <div class="criterio-card" data-key="fadigacognitiva">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Cansaço Mental, Confusão ou Dificuldade de Foco</span>
-          <span class="criterio-nome-seta">►</span>
-        </div>
-        <div class="caixa-dica-pratica">
-          <strong>O que acontece:</strong> O cérebro sobrecarregado esgota a sua capacidade de processamento, gerando a sensação de "névoa mental" e dificuldade para tomar decisões simples.<br><br>
-          <strong>O que fazer agora:</strong> Esvazie a mente escrevendo num papel tudo o que precisa de ser feito, sem ordem de importância. Dê ao seu cérebro pausas reais, longe de ecrãs e de excesso de estímulos.
-        </div>
-        <div class="criterio-legenda">Nível de clareza mental e foco ao longo do dia:</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Claro)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve confusão)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Dificuldade de foco)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Névoa mental forte)</button>
-        </div>
-        <div class="atalhos-container">
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Dificuldade de concentração')">+ Falta de concentração</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Sensação de lentidão')">+ Lentidão mental</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Exaustão mental')">+ Exaustão mental</button>
-        </div>
-        <textarea class="anotacao-criterio" placeholder="Como descreveria a sua clareza mental hoje?"></textarea>
+        <div class="atalhos-container" id="atalhos-autocritica"></div>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Que cobranças a sua mente repetiu hoje? Como você poderia ser mais gentil consigo mesmo?"></textarea>
       </div>
 
     </div>
 
-    <!-- Categoria 3: Conexão e Suporte -->
+    <!-- Categoria 3: Dimensão de Suporte -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
-      <span>Conexão, Apoio & Cuidado Prático</span>
+      <span>Dimensão de Suporte & Conexão</span>
       <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
     </div>
     <div class="categoria-grupo">
-
+      
       <div class="criterio-card" data-key="interacao_social">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Vontade de Isolamento vs. Necessidade de Apoio</span>
+          <span>Vontade de Isolamento vs. Conexão</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>O que acontece:</strong> O desânimo costuma empurrar-nos para o isolamento. Embora um pouco de silêncio seja importante, o isolamento prolongado faz com que o cérebro acredite que estamos sozinhos contra o mundo.<br><br>
-          <strong>O que fazer agora:</strong> Não precisa de estar em grandes reuniões. Um contacto mínimo de baixa energia (como enviar uma mensagem simples a alguém de confiança) já ajuda a lembrar que existe apoio à nossa volta.
+          <strong>Como se autorregular:</strong> O isolamento prolongado alimenta o desânimo. Se grandes interações pesarem, opte por um contacto de baixa energia (uma mensagem simples).
         </div>
-        <div class="criterio-legenda">Como esteve a sua conexão com outras pessoas hoje:</div>
+        <div class="criterio-legenda">
+          1 = Isolamento total / Desconexão; 3 = Contacto mínimo mantido; 5 = Boa conexão e partilha leve.
+        </div>
         <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Conectado)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Neutro)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Distante)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Isolado)</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'interacao_social', 1)">1</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'interacao_social', 2)">2</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'interacao_social', 3)">3</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'interacao_social', 4)">4</button>
+          <button class="btn-escala" onclick="selecionarEscalaDinamica(this, 'interacao_social', 5)">5</button>
         </div>
-        <div class="atalhos-container">
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Consegui manter um contacto leve')">+ Contacto leve</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Prefiri o isolamento total')">+ Isolamento</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Senti falta de apoio')">+ Senti falta de apoio</button>
-        </div>
-        <textarea class="anotacao-criterio" placeholder="Sentiu vontade de se isolar ou procurou partilhar o que sentia?"></textarea>
-      </div>
-
-      <div class="criterio-card" data-key="estrategias_regulacao">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Ferramentas de Cuidado que Conseguiu Usar Hoje</span>
-          <span class="criterio-nome-seta">►</span>
-        </div>
-        <div class="caixa-dica-pratica">
-          <strong>O que acontece:</strong> O bem-estar não surge por acaso; ele é cultivado através de pequenas escolhas diárias de autocuidado que ajudam o corpo a encontrar estabilidade.<br><br>
-          <strong>O que fazer agora:</strong> Reconheça qualquer pequena atitude que tenha tomado hoje pelo seu bem-estar (uma caminhada curta, uma respiração funda, beber água, um banho relaxante ou escrever aqui).
-        </div>
-        <div class="criterio-legenda">Avalie o seu esforço de autocuidado no dia de hoje:</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Consegui cuidar-me bem)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Esforço parcial)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Pouca energia para cuidar)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Dia muito difícil)</button>
-        </div>
-        <div class="atalhos-container">
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Respirei fundo / Pausei')">+ Pausa consciente</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Fiz uma caminhada leve')">+ Caminhada leve</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Desabafei / Escrevi')">+ Desabafo escrito</button>
-        </div>
-        <textarea class="anotacao-criterio" placeholder="O que é que tentou fazer hoje para se cuidar um pouco?"></textarea>
+        <div class="atalhos-container" id="atalhos-interacao_social"></div>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Você sentiu necessidade de se isolar hoje? Conseguiu pedir ajuda ou partilhar o que sentia?"></textarea>
       </div>
 
     </div>
 
-    <!-- Painel de Guardar Registro -->
+    <!-- Painel Guardar Registo -->
     <div class="painel-guardar">
       <div class="saldo-linha">
         <span>Índice Diário de Bem-Estar e Regulação:</span>
@@ -648,7 +507,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     </div>
     <div class="modal-body">
       <h3>1. É normal ter dificuldade em nomear o que se sente</h3>
-      <p>Quando a ansiedade ou o desânimo estão muito fortes, o corpo e a mente podem ficar "amortecidos" ou confusos (algo a que chamamos de dificuldade em traduzir sensações em palavras). Se não souber exatamente o nome do que sente, comece por reparar apenas no corpo: está tenso, acelerado, frio, pesado ou vazio?</p>
+      <p>Quando a ansiedade ou o desânimo estão muito fortes, o corpo e a mente podem ficar "amortecidos" ou confusos. Se não souber exatamente o nome do que sente, comece por reparar apenas no corpo: está tenso, acelerado, frio, pesado ou vazio?</p>
       
       <h3>2. O corpo oscila entre dois estados principais:</h3>
       <ul>
@@ -670,6 +529,59 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 <script>
 let registrosLocais = JSON.parse(localStorage.getItem('dashboard_depressao_ansiedade_db')) || {};
 let meuGraficoInstance = null;
+
+// Banco de dados de atalhos dinâmicos baseados na escala de 1 a 5 para cada chave
+const atalhosPorNivel = {
+  ruminacao: {
+    1: ['+ Loop associativo intenso', '+ Exaustão analítica', '+ Mente sem freio', '+ Tensão mental aguda', '+ Paralisia por excesso'],
+    2: ['+ Processamento pesado', '+ Inquietação cognitiva', '+ Várias abas mentais', '+ Cansaço de pensar'],
+    3: ['+ Pensamento acelerado', '+ Esforço de foco', '+ Atenção dividida'],
+    4: ['+ Mente mais calma', '+ Foco sustentado', '+ Ideias organizadas'],
+    5: ['+ Clareza mental total', '+ Fluxo fluido', '+ Presença e calma']
+  },
+  hipervigilancia: {
+    1: ['+ Coração acelerado', '+ Aperto forte no peito', '+ Tensão cervical alta', '+ Falta de ar / Alarme'],
+    2: ['+ Corpo contraído', '+ Ombros tensos', '+ Inquietação física'],
+    3: ['+ Desconforto leve', '+ Tensão passageira'],
+    4: ['+ Corpo mais solto', '+ Respiração calma'],
+    5: ['+ Relaxamento profundo', '+ Sensação de segurança']
+  },
+  evitacao_antecipatoria: {
+    1: ['+ Vontade de sumir', '+ Paralisia total frente a tarefas', '+ Fuga de mensagens'],
+    2: ['+ Procrastinação forte', '+ Adiamento de compromissos'],
+    3: ['+ Resistência leve', '+ Hesitação'],
+    4: ['+ Boa disposição para agir', '+ Ação passo a passo'],
+    5: ['+ Enfrentamento leve', '+ Fluidez nas obrigações']
+  },
+  anedonia: {
+    1: ['+ Apatia profunda', '+ Cama pesada / Inércia', '+ Nada faz sentido'],
+    2: ['+ Energia muito baixa', '+ Falta de interesse'],
+    3: ['+ Esforço para fazer coisas', '+ Cansaço normal'],
+    4: ['+ Interesse recuperado em partes', '+ Vontade leve'],
+    5: ['+ Prazer nas pequenas coisas', '+ Disposição presente']
+  },
+  autocritica: {
+    1: ['+ Cobrança impiedosa', '+ Sensação de insuficiência', '+ Culpa pesada'],
+    2: ['+ Julgamento interno forte', '+ Comparação negativa'],
+    3: ['+ Pensamentos exigentes', '+ Autocobrança'],
+    4: ['+ Compreensão maior', '+ Diálogo mais leve'],
+    5: ['+ Autocompaixão ativa', '+ Gentileza consigo']
+  },
+  fadigacognitiva: {
+    1: ['+ Névoa mental densa', '+ Zero concentração', '+ Exaustão total'],
+    2: ['+ Lentidão para raciocinar', '+ Cabeça pesada'],
+    3: ['+ Foco oscilante', '+ Cansaço mental'],
+    4: ['+ Mente mais clara', '+ Boa atenção'],
+    5: ['+ Clareza e vivacidade', '+ Raciocínio fluido']
+  },
+  interacao_social: {
+    1: ['+ Isolamento total', '+ Rejeição a barulhos/pessoas', '+ Silêncio forçado'],
+    2: ['+ Vontade de sumir dos grupos', '+ Distância'],
+    3: ['+ Contacto mínimo tolerado', '+ Neutro'],
+    4: ['+ Abertura para conversar', '+ Troca leve'],
+    5: ['+ Conexão calorosa', '+ Partilha aconchegante']
+  }
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   const dataHoje = new Date().toISOString().split('T')[0];
@@ -752,11 +664,28 @@ window.onclick = function() {
   }
 };
 
-function selecionarEscala(btn, valor) {
-  const conteiner = btn.parentElement;
-  conteiner.querySelectorAll('.btn-escala').forEach(b => b.classList.remove('selected'));
+// Função de Escala Dinâmica (1 a 5) que atualiza os botões de atalhos correspondentes
+function selecionarEscalaDinamica(btn, chaveCard, valor) {
+  const conteinerBotoes = btn.parentElement;
+  conteinerBotoes.querySelectorAll('.btn-escala').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
   btn.setAttribute('data-valor', valor);
+
+  // Renderizar atalhos dinâmicos com base no nível selecionado (1 a 5)
+  const containerAtalhos = document.getElementById(`atalhos-${chaveCard}`);
+  if (containerAtalhos) {
+    containerAtalhos.innerHTML = '';
+    const listaAtalhos = atalhosPorNivel[chaveCard]?.[valor] || ['+ Senti este estado hoje', '+ Atenção redobrada'];
+    listaAtalhos.forEach(textoTag => {
+      const tagBtn = document.createElement('button');
+      tagBtn.type = 'button';
+      tagBtn.className = 'btn-atalho';
+      tagBtn.innerText = textoTag;
+      tagBtn.onclick = function() { adicionarTag(tagBtn, textoTag.replace('+ ', '')); };
+      containerAtalhos.appendChild(tagBtn);
+    });
+  }
+
   calcularEscoreAtual();
 }
 
@@ -784,7 +713,7 @@ function calcularEscoreAtual() {
       badge.innerText = "Por preencher";
     } else {
       const media = (soma / contagem).toFixed(1);
-      badge.innerText = `Média de intensidade: ${media} / 3.0`;
+      badge.innerText = `Média de intensidade: ${media} / 5.0`;
     }
   }
 }
@@ -825,6 +754,7 @@ function salvarRegistroDiario() {
 function carregarRegistroData(dataStr) {
   document.querySelectorAll('#custom-dropdown-list input[type="checkbox"]').forEach(cb => cb.checked = false);
   document.querySelectorAll('.btn-escala').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('.atalhos-container').forEach(c => c.innerHTML = '');
   document.querySelectorAll('.anotacao-criterio').forEach(t => t.value = '');
 
   const registro = registrosLocais[dataStr];
@@ -841,10 +771,11 @@ function carregarRegistroData(dataStr) {
         const card = document.querySelector(`.criterio-card[data-key="${key}"]`);
         if (card) {
           if (item.valor !== null && item.valor !== undefined) {
-            const btn = card.querySelectorAll('.btn-escala')[item.valor];
+            // Índice de 1 a 5 mapeado para os botões da escala
+            const btnIndex = item.valor - 1;
+            const btn = card.querySelectorAll('.btn-escala')[btnIndex];
             if (btn) {
-              btn.classList.add('selected');
-              btn.setAttribute('data-valor', item.valor);
+              selecionarEscalaDinamica(btn, key, item.valor);
             }
           }
           if (item.nota) {
@@ -885,7 +816,7 @@ function atualizarProntuario() {
 
     html += `
       <div class="prontuario-topico" style="border-bottom: 1px dashed var(--border-light); padding-bottom: 8px; margin-bottom: 8px;">
-        <strong>📅 Data: ${d}</strong> — <em>Intensidade média: ${media} / 3.0</em><br>
+        <strong>📅 Data: ${d}</strong> — <em>Média geral: ${media} / 5.0</em><br>
         <small>Sensações assinaladas: ${reg.perfis ? reg.perfis.length : 0}</small>
       </div>
     `;
@@ -904,10 +835,10 @@ function inicializarGrafico() {
       labels: [],
       datasets: [
         {
-          label: 'Intensidade dos Sintomas',
+          label: 'Média de Intensidade (1 a 5)',
           data: [],
-          borderColor: '#435b4e',
-          backgroundColor: 'rgba(67, 91, 78, 0.15)',
+          borderColor: '#b38062',
+          backgroundColor: 'rgba(179, 128, 98, 0.15)',
           fill: true,
           tension: 0.3
         }
@@ -917,7 +848,7 @@ function inicializarGrafico() {
       responsive: true,
       maintainAspectRatio: false,
       scales: {
-        y: { beginAtZero: true, max: 3 }
+        y: { beginAtZero: true, max: 5 }
       }
     }
   });
@@ -1002,7 +933,7 @@ function exportarRelatorioPDF() {
 
   doc.autoTable({
     startY: 40,
-    head: [['Data', 'Intensidade Média (0 a 3)', 'Pontos Assinalados']],
+    head: [['Data', 'Média Geral (1 a 5)', 'Pontos Assinalados']],
     body: rows
   });
 
