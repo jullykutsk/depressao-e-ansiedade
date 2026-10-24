@@ -29,24 +29,24 @@
 }
 
 /* =========================================================
-   VARIÁVEIS DE TEMA DIA (Baseado na Imagem: Beige, Green & Rose Gold)[span_0](start_span)[span_0](end_span)
+   VARIÁVEIS DE TEMA DIA (Baseado na Referência: Bege, Eucalipto & Nude)
    ========================================================= */
 [data-theme="light"] {
-  --bg-body: #eae8e3;        /* Beige muito claro neutro de fundo */
-  --text-main: #2b332f;       /* Verde-escuro quase preto para leitura */
-  --bg-container: #ffffff;    /* Branco puro para o contentor principal */
-  --border-color: #d8d4cd;    /* Borda neutra suave */
-  --border-light: #c5c0b6;   /* Borda clara suave */
-  --text-muted: #78736a;     /* Texto secundário bege escuro */
-  --text-dimmed: #464e4a;    /* Texto suave */
-  --accent-color: #435b4e;   /* Verde Eucalipto Principal */
-  --accent-hover: #33473d;   /* Verde Eucalipto Escuro para hover */
-  --btn-bg: #f5f3ef;         /* Bege nude muito claro para botões */
-  --card-bg: #ffffff;        /* Cartões brancos limpos */
-  --card-prioritario: #f2f5f3; /* Fundo prioritário com leve tom verde */
-  --legenda-bg: #f5f3ef;     /* Fundo de legendas nude */
-  --cat-bg: #e2e8e4;         /* Destaque das categorias em tom eucalipto suave */
-  --tag-bg: #ebe8e2;         /* Tags em tom bege nude */
+  --bg-body: #eae8e3;
+  --text-main: #2b332f;
+  --bg-container: #ffffff;
+  --border-color: #d8d4cd;
+  --border-light: #c5c0b6;
+  --text-muted: #78736a;
+  --text-dimmed: #464e4a;
+  --accent-color: #435b4e;
+  --accent-hover: #33473d;
+  --btn-bg: #f5f3ef;
+  --card-bg: #ffffff;
+  --card-prioritario: #f2f5f3;
+  --legenda-bg: #f5f3ef;
+  --cat-bg: #e2e8e4;
+  --tag-bg: #ebe8e2;
 }
 
 body { background-color: var(--bg-body); color: var(--text-main); padding: 12px; display: flex; flex-direction: column; min-height: 100vh; }
@@ -195,7 +195,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 }
 .criterio-card.prioritario { border: 2px solid var(--accent-color); background: var(--card-prioritario); }
 .criterio-card.prioritario::before {
-  content: "Foco Clínico Selecionado (Depressão e Ansiedade)"; display: inline-block; font-size: 0.72rem; font-weight: bold;
+  content: "Foco Principal do Momento"; display: inline-block; font-size: 0.72rem; font-weight: bold;
   color: var(--accent-color); margin-bottom: 6px; background: var(--cat-bg); padding: 2px 8px; border-radius: 4px;
 }
 
@@ -308,36 +308,29 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 .modal-body ul { margin-left: 18px; margin-bottom: 12px; }
 .modal-body li { margin-bottom: 4px; }
 
-/* Tabela do Mapa de Sobreposição */
-.tabela-mapa { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.78rem; }
-.tabela-mapa th, .tabela-mapa td { border: 1px solid var(--border-light); padding: 6px 8px; text-align: left; }
-.tabela-mapa th { background: var(--cat-bg); color: var(--accent-color); font-weight: bold; }
-
 .autor-credito { margin-top: 16px; padding-top: 10px; border-top: 1px dashed var(--border-color); text-align: center; font-size: 0.75rem; color: var(--text-muted); font-style: italic; }
 </style>
 
-<!-- Importação correta do jsPDF e do Plugin autoTable -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body data-theme="light">
 <div class="container">
-  <!-- Cabeçalho com Banner -->
+  
   <div class="header-marca">
     <img src="logo.png" alt="Dashboard Psicoeducativo" class="logo-img">
   </div>
   
   <div class="header-topo">
     <button class="btn-guia-sentimentos" onclick="abrirModalGuiaSentimentos()">
-      Guia: Regulação de Sentimentos em Crise
+      Guia: Como lidar com o que estou a sentir?
     </button>
     <button class="theme-toggle-btn" id="theme-toggle" onclick="alternarTema()" title="Alternar tema claro/escuro">
       ☀️
     </button>
   </div>
 
-  <!-- Navegação por Abas (Apenas Registro e Evolução) -->
   <div class="nav-tabs">
     <button class="tab-btn active" onclick="mudarAba('registro', this)">Registro</button>
     <button class="tab-btn" onclick="mudarAba('evolucao', this)">Evolução</button>
@@ -347,33 +340,33 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   <div id="aba-registro" class="aba-conteudo active">
     <div class="seletor-topo-container">
       <div class="perfil-box">
-        <span class="perfil-label">Eixos Clínicos & Fenótipos (Múltipla Escolha):</span>
+      <span class="perfil-label">Como você está a sentir-se hoje? (Selecione):</span>
         <div class="custom-dropdown" id="custom-dropdown-perfil">
           <button type="button" class="custom-dropdown-btn" onclick="toggleDropdown(event)">
-            <span id="custom-dropdown-selected-text">Selecionar Eixos Clínicos...</span>
+            <span id="custom-dropdown-selected-text">Escolher o que se passa hoje...</span>
             <span>▼</span>
           </button>
           <div class="custom-dropdown-content" id="custom-dropdown-list" onclick="event.stopPropagation()">
             
-            <div class="dropdown-group-title">1. Eixo de Hiperativação Ansiosa (SNA / Amígdala)</div>
-            <label class="dropdown-item"><input type="checkbox" value="ruminacao_ansiosa" onchange="atualizarPerfisSelecionados()"> Ruminação Ansiosa & Superativação da Rede de Modo Padrão (DMN)</label>
-            <label class="dropdown-item"><input type="checkbox" value="hipervigilancia_somatica" onchange="atualizarPerfisSelecionados()"> Hipervigilância Somática & Reatividade Autonômica Simpática</label>
-            <label class="dropdown-item"><input type="checkbox" value="paralisia_analitica" onchange="atualizarPerfisSelecionados()"> Paralisia por Excesso de Análise (Overthinking & Busca de Certeza)</label>
-            <label class="dropdown-item"><input type="checkbox" value="ansiedade_antecipatoria" onchange="atualizarPerfisSelecionados()"> Ansiedade Antecipatória & Catastrofização Cognitiva</label>
-            <label class="dropdown-item"><input type="checkbox" value="esquiva_comportamental" onchange="atualizarPerfisSelecionados()"> Esquiva Comportamental & Evitação Aguda de Estímulos</label>
+            <div class="dropdown-group-title">1. Momentos de Ansiedade & Excesso de Pensamentos</div>
+            <label class="dropdown-item"><input type="checkbox" value="ruminacao_ansiosa" onchange="atualizarPerfisSelecionados()"> Mente acelerada / Preocupações em looping</label>
+            <label class="dropdown-item"><input type="checkbox" value="hipervigilancia_somatica" onchange="atualizarPerfisSelecionados()"> Corpo tenso / Coração acelerado / Alarme ligado</label>
+            <label class="dropdown-item"><input type="checkbox" value="paralisia_analitica" onchange="atualizarPerfisSelecionados()"> Bloqueio mental por tentar resolver tudo</label>
+            <label class="dropdown-item"><input type="checkbox" value="ansiedade_antecipatoria" onchange="atualizarPerfisSelecionados()"> Medo constante de que algo de mal aconteça</label>
+            <label class="dropdown-item"><input type="checkbox" value="esquiva_comportamental" onchange="atualizarPerfisSelecionados()"> Vontade de fugir ou adiar obrigações</label>
 
-            <div class="dropdown-group-title">2. Eixo de Hipoativação Depressiva (Dorsal Vagal / Estriado Ventral)</div>
-            <label class="dropdown-item"><input type="checkbox" value="anedonia_inerxias" onchange="atualizarPerfisSelecionados()"> Anedonia & Inércia Dopaminérgica Estriatal</label>
-            <label class="dropdown-item"><input type="checkbox" value="exaustao_psicofisica" onchange="atualizarPerfisSelecionados()"> Exaustão Psicofísica & Queda do Tônus Autonômico (Brain Fog)</label>
-            <label class="dropdown-item"><input type="checkbox" value="retirada_social" onchange="atualizarPerfisSelecionados()"> Retirada Social & Evitação Interpessoal (Vagal Dorsal)</label>
-            <label class="dropdown-item"><input type="checkbox" value="desesperanca_aprendida" onchange="atualizarPerfisSelecionados()"> Desesperança Aprendida & Baixa Sensação de Autoeficácia</label>
-            <label class="dropdown-item"><input type="checkbox" value="vazio_existencial" onchange="atualizarPerfisSelecionados()"> Sentimento de Vazio & Desconexão Afetiva / Amortecimento</label>
+            <div class="dropdown-group-title">2. Momentos de Baixa Energia & Desânimo</div>
+            <label class="dropdown-item"><input type="checkbox" value="anedonia_inerxias" onchange="atualizarPerfisSelecionados()"> Falta de vontade ou de prazer nas coisas</label>
+            <label class="dropdown-item"><input type="checkbox" value="exaustao_psicofisica" onchange="atualizarPerfisSelecionados()"> Cansaço profundo / Sensação de corpo pesado</label>
+            <label class="dropdown-item"><input type="checkbox" value="retirada_social" onchange="atualizarPerfisSelecionados()"> Vontade de isolamento / Afastamento dos outros</label>
+            <label class="dropdown-item"><input type="checkbox" value="desesperanca_aprendida" onchange="atualizarPerfisSelecionados()"> Sensação de que as coisas não vão melhorar</label>
+            <label class="dropdown-item"><input type="checkbox" value="vazio_existencial" onchange="atualizarPerfisSelecionados()"> Vazio interno / Desconexão dos sentimentos</label>
 
-            <div class="dropdown-group-title">3. Padrões Cognitivos & Vulnerabilidade Neuropsicológica</div>
-            <label class="dropdown-item"><input type="checkbox" value="autocritica_severa" onchange="atualizarPerfisSelecionados()"> Autocrítica Severa & Viés de Negatividade Cognitiva</label>
-            <label class="dropdown-item"><input type="checkbox" value="perfeccionismo_disfuncional" onchange="atualizarPerfisSelecionados()"> Perfeccionismo Disfuncional & Esquema de Incompetência</label>
-            <label class="dropdown-item"><input type="checkbox" value="sobrecarga_sensorial" onchange="atualizarPerfisSelecionados()"> Sobrecarga Sensorial & Hiperestesia Interoceptiva</label>
-            <label class="dropdown-item"><input type="checkbox" value="desregulacao_afetiva" onchange="atualizarPerfisSelecionados()"> Desregulação Afetiva & Labilidade Emocional Crônica</label>
+            <div class="dropdown-group-title">3. Padrões de Cobrança & Emoções Difíceis</div>
+            <label class="dropdown-item"><input type="checkbox" value="autocritica_severa" onchange="atualizarPerfisSelecionados()"> Autocrítica pesada / Cobrança excessiva</label>
+            <label class="dropdown-item"><input type="checkbox" value="perfeccionismo_disfuncional" onchange="atualizarPerfisSelecionados()"> Sensação de que nunca faço o suficiente</label>
+            <label class="dropdown-item"><input type="checkbox" value="sobrecarga_sensorial" onchange="atualizarPerfisSelecionados()"> Sensibilidade alta a barulhos, luzes ou confusão</label>
+            <label class="dropdown-item"><input type="checkbox" value="desregulacao_afetiva" onchange="atualizarPerfisSelecionados()"> Emoções à flor da pele / Variações rápidas de humor</label>
 
           </div>
         </div>
@@ -381,179 +374,185 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       <input type="date" id="data-registro" class="seletor-data-input" onchange="carregarRegistroData(this.value)">
     </div>
 
-    <!-- Seção: Dimensão Neuroemocional -->
+    <!-- Categoria 1: Ansiedade e Mente Acelerada -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
-      <span>Dimensão Neuroemocional: Hiperativação Ansiosa</span>
+      <span>Mente Acelerada, Preocupações & Sinais no Corpo</span>
       <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
     </div>
     <div class="categoria-grupo">
+      
       <div class="criterio-card prioritario" data-key="ruminacao">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Ruminação Mental & Hiperconexão de Ideias Catastróficas</span>
+          <span>Preocupação em Looping & Pensamentos que não Desligam</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Fundamentação Científica (TCC & Neurobiologia):</strong> A ruminação ansiosa decorre da hiperatividade da Rede de Modo Padrão (DMN) acoplada ao circuito de ameaça da amígdala basolateral. A tentativa de controle cognitivo direto pelo córtex pré-frontal sem ancoragem somática amplifica o sinal do circuito.<br><br>
-          <strong>Estratégia de Regulação:</strong> Mude de suporte imediatamente utilizando o descolamento cognitivo (desfusão cognitiva da ACT - nomeie o processo: "Minha mente está gerando a história X") ou imponha o <em>Worry Time</em> (adiamento intencional de 15 minutos). Para quebrar o loop neuroquímico, combine com um estímulo sensorial forte (ex: água fria no rosto para ativar o reflexo de mergulho vagal).
+          <strong>O que acontece:</strong> Quando estamos ansiosos, o cérebro entra num canal de repetição de cenários negativos. Tentar forçar o pensamento a parar costuma gerar o efeito contrário.<br><br>
+          <strong>O que fazer agora:</strong> Em vez de lutar contra a mente, experimente o "Tempo de Preocupação" (reserve apenas 15 minutos do dia para anotar tudo o que o preocupa, depois feche o papel). Para acalmar o corpo rapidamente, coloque água fria no rosto ou respire fundo expirando o ar bem devagar.
         </div>
-        <div class="criterio-legenda">Intensidade do loop de preocupações e hiperconexão de ideação ansiosa hoje:</div>
+        <div class="criterio-legenda">Intensidade desse looping de pensamentos no dia de hoje:</div>
         <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Ausente)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Calmo)</button>
           <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve)</button>
           <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Moderado)</button>
           <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Intenso)</button>
         </div>
         <div class="atalhos-container">
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Loops de Se e Se')">+ Loops "E se..."</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Catastrofização')">+ Catastrofização</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Insônia Inicial')">+ Insônia Inicial</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Cenários do tipo E se...')">+ Cenários "E se..."</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Pensamentos no futuro')">+ Preocupação com o futuro</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Dificuldade para adormecer')">+ Dificuldade para dormir</button>
         </div>
-        <textarea class="anotacao-criterio" placeholder="Registre o gatilho específico ou o tema principal do loop ansioso..."></textarea>
+        <textarea class="anotacao-criterio" placeholder="O que estava a passar pela sua cabeça hoje? Descreva brevemente..."></textarea>
       </div>
 
       <div class="criterio-card" data-key="hipervigilancia">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Hipervigilância Somática & Reatividade Autonômica Simpática</span>
+          <span>Sinais Físicos de Alerta (Coração acelerado, tensão, aperto)</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Fundamentação Científica (Teoria Polivagal):</strong> A ativação do Sistema Nervoso Simpático altera a variabilidade da frequência cardíaca (VFC), contrai a musculatura axial e reduz a ventilação alveolar, disparando o alarme de fobia interoceptiva.<br><br>
-          <strong>Estratégia de Regulação:</strong> Ative o eferente vagal cardíaco via Respiração Tática/Diafragmática (inspiração curta em 4s e expiração prolongada em 8s) ou relaxamento muscular progressivo de Jacobson nas zonas de contração.
+          <strong>O que acontece:</strong> O corpo interpreta o stress como um perigo real e ativa o modo de "luta ou fuga", tensionando os músculos e acelerando o ritmo cardíaco para nos proteger.<br><br>
+          <strong>O que fazer agora:</strong> Envie um sinal de segurança para o seu sistema nervoso através da respiração regulada: inspire contando até 4 e expire devagar contando até 8. Solte os ombros e relaxe a mandíbula.
         </div>
-        <div class="criterio-legenda">Intensidade das manifestações físicas de ansiedade (taquicardia, tensão, falta de ar):</div>
+        <div class="criterio-legenda">Intensidade das sensações físicas de ansiedade hoje:</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Nenhuma)</button>
           <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve)</button>
           <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Moderada)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Severa)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Forte)</button>
         </div>
         <div class="atalhos-container">
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Aperto no Peito')">+ Aperto no Peito</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Tensão Cervical')">+ Tensão Cervical</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Tontura/Tremores')">+ Tontura/Tremores</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Aperto no peito')">+ Aperto no peito</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Ombros/pescoço tensos')">+ Tensão nos ombros</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Respiração curta')">+ Respiração curta</button>
         </div>
-        <textarea class="anotacao-criterio" placeholder="Descreva as sensações físicas observadas no corpo hoje..."></textarea>
+        <textarea class="anotacao-criterio" placeholder="Onde é que sentiu mais tensão ou desconforto no corpo hoje?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="evitacao_antecipatoria">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Esquiva Comportamental & Evitação Antecipatória</span>
+          <span>Vontade de Evitar Tarefas, Pessoas ou Compromissos</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Fundamentação Científica (Modelo de Exposição de Barlow):</strong> A evitação comportamental gera alívio imediato por reforçamento negativo, mas fortalece o condicionamento de fobia na amígdala e amplia a percepção de ameaça para exposições futuras.<br><br>
-          <strong>Estratégia de Regulação:</strong> Aplique a hierarquia de exposição graduada (aproximação sucessiva) fracionando a situação temida no menor micro-passo aceitável até que ocorra a habituação autonômica natural.
+          <strong>O que acontece:</strong> Fugir do que nos causa ansiedade traz um alívio rápido, mas diz ao nosso cérebro que o perigo era real, tornando o medo maior da próxima vez.<br><br>
+          <strong>O que fazer agora:</strong> Em vez de tentar resolver tudo de uma vez, divida a tarefa que está a evitar num passo incrivelmente pequeno (por exemplo: apenas abrir o documento ou calçar os sapatos).
         </div>
-        <div class="criterio-legenda">Grau de evitação de tarefas, reuniões, mensagens ou compromissos por ansiedade:</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Sem evitação)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Moderada)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Forte esquiva)</button>
-        </div>
-        <div class="atalhos-container">
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Procrastinação Ansiosa')">+ Procrastinação</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Cancelamento de Compromissos')">+ Cancelamentos</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Evitação de e-mails/mensagens')">+ Evitação Social</button>
-        </div>
-        <textarea class="anotacao-criterio" placeholder="Registre as tarefas ou contextos dos quais sentiu necessidade de se afastar..."></textarea>
-      </div>
-    </div>
-        <!-- Seção: Dimensão Depressiva -->
-    <div class="categoria-titulo" onclick="toggleSecao(this)">
-      <span>Dimensão Depressiva: Hipoativação & Inércia Comportamental</span>
-      <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
-    </div>
-    <div class="categoria-grupo">
-      <div class="criterio-card prioritario" data-key="anedonia">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Anedonia & Inércia Dopaminérgica Estriatal</span>
-          <span class="criterio-nome-seta">►</span>
-        </div>
-        <div class="caixa-dica-pratica">
-          <strong>Fundamentação Científica (Ativação Comportamental):</strong> A depressão suprime a sinalização dopaminérgica no estriado ventral, bloqueando a capacidade de antecipar recompensa ou prazer. A motivação não surge antes da ação; ela é gerada neurobiologicamente *após* a iniciação do comportamento.<br><br>
-          <strong>Estratégia de Regulação:</strong> Aplique a Regra da Ação Micro-Inicial (Micro-stepping): comprometa-se a realizar apenas 2 minutos de uma tarefa de baixo esforço (ex: vestir o calçado ou abrir uma janela), libertando-se da obrigação de conclusão.
-        </div>
-        <div class="criterio-legenda">Nível de perda de prazer, apatia ou paralisia motora/comportamental para agir:</div>
-        <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Preservado)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve redução)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Baixo afeto)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Paralisia total)</button>
-        </div>
-        <div class="atalhos-container">
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Inércia ao Levantar')">+ Inércia ao Levantar</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Perda de Interesse em Hobbies')">+ Perda de Interesses</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Abandono de Autocuidado')">+ Negligência</button>
-        </div>
-        <textarea class="anotacao-criterio" placeholder="Registre as atividades que pareceram inacessíveis devido à apatia..."></textarea>
-      </div>
-
-      <div class="criterio-card" data-key="autocritica">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Autocrítica Severa, Culpa & Esquema de Incompetência</span>
-          <span class="criterio-nome-seta">►</span>
-        </div>
-        <div class="caixa-dica-pratica">
-          <strong>Fundamentação Científica (CFT - Gilbert):</strong> A autocrítica severa estimula os circuitos neurais da amígdala como se o próprio indivíduo fosse o seu agressor físico, mantendo o cortisol elevado e inibindo o sistema de acalmia (oxitocina/opiáceos endógenos).<br><br>
-          <strong>Estratégia de Regulação:</strong> Promova a reestruturação cognitiva: separe os fatos reais dos julgamentos emocionais. Adote o tom de voz interno do "Observador Compassivo e Objetivo".
-        </div>
-        <div class="criterio-legenda">Intensidade da cobrança interna, julgamentos ou sentimentos de inutilidade:</div>
+        <div class="criterio-legenda">Nível de evitação ou adiamento de coisas importantes hoje:</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Nenhuma)</button>
           <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve)</button>
           <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Moderada)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Severa)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Muita evitação)</button>
         </div>
         <div class="atalhos-container">
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Sensação de Incompetência')">+ Incompetência</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Comparação Desfavorável')">+ Comparação</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Culpa por Estar Mal')">+ Culpa</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Adiar tarefas difíceis')">+ Adiar tarefas</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Evitar responder mensagens')">+ Evitar mensagens</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Sensação de sobrecarga')">+ Sensação de sobrecarga</button>
         </div>
-        <textarea class="anotacao-criterio" placeholder="Anote os pensamentos autocríticos predominantes hoje..."></textarea>
+        <textarea class="anotacao-criterio" placeholder="Houve alguma tarefa ou situação que preferiu adiar hoje? Descreva..."></textarea>
+      </div>
+
+    </div>
+
+    <!-- Categoria 2: Baixa Energia e Desânimo -->
+    <div class="categoria-titulo" onclick="toggleSecao(this)">
+      <span>Baixa Energia, Desânimo & Autocrítica</span>
+      <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
+    </div>
+    <div class="categoria-grupo">
+
+      <div class="criterio-card prioritario" data-key="anedonia">
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Falta de Vontade, Apatia & Dificuldade de Sentir Prazer</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>O que acontece:</strong> Quando a energia está muito baixa, o cérebro desliga os centros de recompensa, fazendo com que nada pareça valer a pena. Esperar pela vontade de fazer as coisas não funciona nesta fase; a energia costuma aparecer *depois* que começamos.<br><br>
+          <strong>O que fazer agora:</strong> Escolha uma micro-ação de apenas 2 minutos (ex: beber um copo de água com calma ou dar 5 passos na sala). Não espere sentir vontade; apenas teste dar o primeiro passo minúsculo.
+        </div>
+        <div class="criterio-legenda">Nível de desânimo ou falta de energia para as coisas hoje:</div>
+        <div class="botoes-escala">
+          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Normal)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve desânimo)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Baixa energia)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Paralisia / Apatia)</button>
+        </div>
+        <div class="atalhos-container">
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Dificuldade para levantar da cama')">+ Sair da cama custou</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Nada parece ter graça')">+ Nada parece ter graça</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Falta de motivação')">+ Falta de motivação</button>
+        </div>
+        <textarea class="anotacao-criterio" placeholder="O que exigiu mais esforço físico ou emocional da sua parte hoje?"></textarea>
+      </div>
+
+      <div class="criterio-card" data-key="autocritica">
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Autocrítica Pesada & Cobrança Excessiva</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>O que acontece:</strong> Numa fase de vulnerabilidade, tendemos a tratar-nos com muito rigor, julgando-nos duramente por estarmos cansados ou desanimados, o que só aumenta o desgaste emocional.<br><br>
+          <strong>O que fazer agora:</strong> Repare no seu diálogo interno. Pergunte-se: *"Eu diria estas mesmas palavras exatas a um amigo querido que estivesse a passar pelo mesmo?"* Tente trocar a cobrança por uma postura de compreensão consigo mesmo.
+        </div>
+        <div class="criterio-legenda">Intensidade da cobrança interna ou julgamento severo hoje:</div>
+        <div class="botoes-escala">
+          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Nenhum)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Moderado)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Muito pesado)</button>
+        </div>
+        <div class="atalhos-container">
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Sensação de não fazer o suficiente')">+ Achar que fiz pouco</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Comparação com os outros')">+ Comparação com outros</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Cobrança excessiva')">+ Cobrança interna</button>
+        </div>
+        <textarea class="anotacao-criterio" placeholder="Quais foram as cobranças ou críticas que a sua mente repetiu hoje?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="fadigacognitiva">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Exaustão Psicofísica & Nevoeiro Mental (Brain Fog)</span>
+          <span>Cansaço Mental, Confusão ou Dificuldade de Foco</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Fundamentação Científica (Neuroinflamação & Depressão):</strong> A resposta inflamatória de baixo grau associada à depressão reduz a eficiência da rede pré-frontal dorsolateral, causando lentificação executiva e fadiga central.<br><br>
-          <strong>Estratégia de Regulação:</strong> Descarregue a memória de trabalho passando tarefas para o papel (*Brain Dump*) e aplique períodos fixos de descanso passivo sem estímulos luminosos ou digitais.
+          <strong>O que acontece:</strong> O cérebro sobrecarregado esgota a sua capacidade de processamento, gerando a sensação de "névoa mental" e dificuldade para tomar decisões simples.<br><br>
+          <strong>O que fazer agora:</strong> Esvazie a mente escrevendo num papel tudo o que precisa de ser feito, sem ordem de importância. Dê ao seu cérebro pausas reais, longe de ecrãs e de excesso de estímulos.
         </div>
-        <div class="criterio-legenda">Sensação de esgotamento físico, peso corporal ou lentidão cognitiva no dia de hoje:</div>
+        <div class="criterio-legenda">Nível de clareza mental e foco ao longo do dia:</div>
         <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Energia Ok)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Cansaço leve)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Fadiga notável)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Esgotamento total)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Claro)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Leve confusão)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Dificuldade de foco)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Névoa mental forte)</button>
         </div>
         <div class="atalhos-container">
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Dificuldade de Foco')">+ Falta de Foco</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Pesadez Corporal')">+ Pesadez Corporal</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Lentidão Raciocínio')">+ Lentidão</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Dificuldade de concentração')">+ Falta de concentração</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Sensação de lentidão')">+ Lentidão mental</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Exaustão mental')">+ Exaustão mental</button>
         </div>
-        <textarea class="anotacao-criterio" placeholder="Descreva o nível de energia e clareza mental ao longo do dia..."></textarea>
+        <textarea class="anotacao-criterio" placeholder="Como descreveria a sua clareza mental hoje?"></textarea>
       </div>
+
     </div>
 
-    <!-- Seção: Suporte & Regulação -->
+    <!-- Categoria 3: Conexão e Suporte -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
-      <span>Dimensão de Suporte: Conexão Social & Autorregulação</span>
+      <span>Conexão, Apoio & Cuidado Prático</span>
       <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
     </div>
     <div class="categoria-grupo">
+
       <div class="criterio-card" data-key="interacao_social">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Conexão Social vs. Retirada & Isolamento</span>
+          <span>Vontade de Isolamento vs. Necessidade de Apoio</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Fundamentação Científica (Engajamento Social Polivagal):</strong> O isolamento social ativa o estado vagal dorsal de desconexão. A co-regulação interpessoal diminui diretamente a reatividade da amígdala.<br><br>
-          <strong>Estratégia de Regulação:</strong> Realize contactos de baixa exigência energética: envie uma mensagem breve a alguém seguro ou permaneça num ambiente partilhado sem obrigação de socialização ativa.
+          <strong>O que acontece:</strong> O desânimo costuma empurrar-nos para o isolamento. Embora um pouco de silêncio seja importante, o isolamento prolongado faz com que o cérebro acredite que estamos sozinhos contra o mundo.<br><br>
+          <strong>O que fazer agora:</strong> Não precisa de estar em grandes reuniões. Um contacto mínimo de baixa energia (como enviar uma mensagem simples a alguém de confiança) já ajuda a lembrar que existe apoio à nossa volta.
         </div>
-        <div class="criterio-legenda">Grau de isolamento ou abertura a interações no dia de hoje:</div>
+        <div class="criterio-legenda">Como esteve a sua conexão com outras pessoas hoje:</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Conectado)</button>
           <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Neutro)</button>
@@ -561,46 +560,47 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Isolado)</button>
         </div>
         <div class="atalhos-container">
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Contacto Mínimo Mantido')">+ Contacto Mínimo</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Recusa de Chamadas')">+ Recusa de Chamadas</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Acolhimento Recebido')">+ Acolhimento Recebido</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Consegui manter um contacto leve')">+ Contacto leve</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Prefiri o isolamento total')">+ Isolamento</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Senti falta de apoio')">+ Senti falta de apoio</button>
         </div>
-        <textarea class="anotacao-criterio" placeholder="Anotações sobre vínculos interpessoais ou necessidade de recolhimento..."></textarea>
+        <textarea class="anotacao-criterio" placeholder="Sentiu vontade de se isolar ou procurou partilhar o que sentia?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="estrategias_regulacao">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Aplicação de Estratégias Ativas de Autorregulação</span>
+          <span>Ferramentas de Cuidado que Conseguiu Usar Hoje</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Fundamentação Científica (Neuroplasticidade):</strong> O uso repetido e intencional de técnicas de regulação fortalece a conetividade pré-frontal-amigdalina ao longo do tempo.<br><br>
-          <strong>Estratégia de Regulação:</strong> Avalie se conseguiu utilizar ferramentas corporais (exercício, respiração, gelo), cognitivas (reestruturação, escrita) ou comportamentais hoje.
+          <strong>O que acontece:</strong> O bem-estar não surge por acaso; ele é cultivado através de pequenas escolhas diárias de autocuidado que ajudam o corpo a encontrar estabilidade.<br><br>
+          <strong>O que fazer agora:</strong> Reconheça qualquer pequena atitude que tenha tomado hoje pelo seu bem-estar (uma caminhada curta, uma respiração funda, beber água, um banho relaxante ou escrever aqui).
         </div>
-        <div class="criterio-legenda">Uso eficaz de técnicas de autorregulação emocional durante as crises ou oscilações:</div>
+        <div class="criterio-legenda">Avalie o seu esforço de autocuidado no dia de hoje:</div>
         <div class="botoes-escala">
-          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Eficaz)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Parcial)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Dificuldade)</button>
-          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Não aplicou)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 0)">0 (Consegui cuidar-me bem)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 1)">1 (Esforço parcial)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 2)">2 (Pouca energia para cuidar)</button>
+          <button class="btn-escala" onclick="selecionarEscala(this, 3)">3 (Dia muito difícil)</button>
         </div>
         <div class="atalhos-container">
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Respiração Aplicada')">+ Respiração Guiada</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Escrita Terapêutica')">+ Escrita Terapêutica</button>
-          <button class="btn-atalho" onclick="adicionarTag(this, 'Caminhada/Movimento')">+ Movimento Físico</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Respirei fundo / Pausei')">+ Pausa consciente</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Fiz uma caminhada leve')">+ Caminhada leve</button>
+          <button class="btn-atalho" onclick="adicionarTag(this, 'Desabafei / Escrevi')">+ Desabafo escrito</button>
         </div>
-        <textarea class="anotacao-criterio" placeholder="Registre as técnicas que tentou utilizar e a respetiva resposta corporal..."></textarea>
+        <textarea class="anotacao-criterio" placeholder="O que é que tentou fazer hoje para se cuidar um pouco?"></textarea>
       </div>
+
     </div>
 
     <!-- Painel de Guardar Registro -->
     <div class="painel-guardar">
       <div class="saldo-linha">
-        <span>Índice Diário de Regulação Emocional:</span>
+        <span>Índice Diário de Bem-Estar e Regulação:</span>
         <span class="saldo-badge" id="badge-score">A calcular...</span>
       </div>
       <button class="btn-guardar" onclick="salvarRegistroDiario()">
-        💾 Guardar Registro Clinicamente Estruturado
+        💾 Guardar o meu registo de hoje
       </button>
     </div>
   </div>
@@ -609,15 +609,15 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   <div id="aba-evolucao" class="aba-conteudo">
     <div class="card">
       <div class="acoes-globais-topo">
-        <button class="btn-discreto" onclick="exportarRelatorioPDF()">📄 Exportar Relatório Técnico (PDF)</button>
-        <button class="btn-discreto" onclick="exportarDadosJSON()">💾 Backup (JSON)</button>
+        <button class="btn-discreto" onclick="exportarRelatorioPDF()">📄 Exportar Relatório em PDF</button>
+        <button class="btn-discreto" onclick="exportarDadosJSON()">💾 Guardar Cópia (Backup JSON)</button>
         <label class="btn-discreto">
-          📁 Importar <input type="file" onchange="importarDadosJSON(event)">
+          📁 Carregar Dados <input type="file" onchange="importarDadosJSON(event)">
         </label>
       </div>
 
       <div class="card-title">
-        <span>📈 Evolução Neuroemocional & Monitoramento Longitudinal</span>
+        <span>📈 A minha evolução ao longo dos dias</span>
       </div>
       
       <div class="chart-box">
@@ -626,16 +626,16 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     </div>
 
     <div class="card">
-      <div class="card-title">📋 Prontuário Psicoeducativo de Registros</div>
+      <div class="card-title">📋 O meu histórico de dias anteriores</div>
       <div class="caixa-prontuario" id="conteudo-prontuario">
-        Selecione datas ou guarde novos registros para visualizar a análise longitudinal de ansiedade, humor e sintomas somáticos.
+        Guarde os seus registos diários para conseguir ver aqui a sua evolução, identificar padrões e perceber como o seu bem-estar se tem transformado ao longo do tempo.
       </div>
     </div>
   </div>
 
   <footer class="app-footer">
-    <span>Dashboard Psicoeducativo — Foco Clínico em Depressão & Ansiedade</span> | 
-    <button class="footer-link" onclick="abrirModalGuiaSentimentos()">Guia Psicoeducativo</button>
+    <span>Dashboard de Autorregulação — Acompanhamento de Ansiedade & Humor</span> | 
+    <button class="footer-link" onclick="abrirModalGuiaSentimentos()">Guia de Ajuda</button>
   </footer>
 </div>
 
@@ -643,25 +643,24 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 <div class="modal-overlay" id="modal-guia">
   <div class="modal-box">
     <div class="modal-header">
-      <span>Guia Psicoeducativo: Regulação no Manejo da Depressão e Ansiedade</span>
+      <span>Guia de Ajuda: Como lidar com o que está a sentir</span>
       <button class="modal-close" onclick="fecharModalGuiaSentimentos()">✕</button>
     </div>
     <div class="modal-body">
-      <h3>1. Entendendo a Dificuldade com Identificação de Sentimentos (Alexitimia)</h3>
-      <p>A ansiedade crônica e a depressão induzem frequentemente quadros de alexitimia funcional — uma dificuldade neurobiológica em traduzir sensações corporais vagas em palavras mentais claras. Se não consegue nomear o sentimento, comece por identificar o estado fisiológico do corpo (ex: acelerado, contraído, pesado, amortecido).</p>
+      <h3>1. É normal ter dificuldade em nomear o que se sente</h3>
+      <p>Quando a ansiedade ou o desânimo estão muito fortes, o corpo e a mente podem ficar "amortecidos" ou confusos (algo a que chamamos de dificuldade em traduzir sensações em palavras). Se não souber exatamente o nome do que sente, comece por reparar apenas no corpo: está tenso, acelerado, frio, pesado ou vazio?</p>
       
-      <h3>2. O Paradigma da Ativação vs. Acalmia Autonômica</h3>
-      <p>O sistema nervoso oscila entre eixos neurobiológicos distintos:</p>
+      <h3>2. O corpo oscila entre dois estados principais:</h3>
       <ul>
-        <li><strong>Eixo Simpático (Hiperativação/Ansiedade):</strong> Taquicardia, pensamentos intrusivos, vigilância tensional. Requer desativação via prolongamento expiratório e ancoragem somática.</li>
-        <li><strong>Eixo Vagal Dorsal (Hipoativação/Depressão):</strong> Apatia, desconexão, inércia. Requer micro-ativação gradual sem sobrecarga executiva.</li>
+        <li><strong>Modo Alerta / Acelerado (Ansiedade):</strong> O coração bate mais depressa, a mente não desliga e o corpo prepara-se para fugir. <em>O que ajuda:</em> Expirar o ar bem devagar, focar nos apoios dos pés no chão e desacelerar o ritmo.</li>
+        <li><strong>Modo Desligado / Pesado (Depressão / Desânimo):</strong> A apatia toma conta, apetece ficar na cama e falta energia. <em>O que ajuda:</em> Dar micro-passos sem cobrança. Não espere ter vontade; faça apenas um gesto pequeno e gentil por si.</li>
       </ul>
 
-      <h3>3. Validação sem Fusão Cognitiva</h3>
-      <p>Lembre-se: sentimentos e pensamentos são eventos neurológicos passageiros, não verdades absolutas sobre a sua identidade ou capacidade. O registro serve para criar um distanciamento observador (mindfulness funcional).</p>
+      <h3>3. Lembre-se: os seus sentimentos são passageiros</h3>
+      <p>O que você sente hoje é um estado passageiro do seu sistema nervoso, e não quem você é. Registar os seus dias ajuda a olhar com carinho para a sua evolução e a perceber que as fases difíceis também passam.</p>
 
       <div class="autor-credito">
-        Fundamentação Científica: Terapia Cognitivo-Comportamental (TCC), Ativação Comportamental (BA) e Teoria Polivagal.
+        Baseado em abordagens cientificamente comprovadas (Terapia Cognitivo-Comportamental, Ativação Comportamental e Teoria Polivagal).
       </div>
     </div>
   </div>
@@ -739,9 +738,9 @@ function atualizarPerfisSelecionados() {
   const checkboxes = document.querySelectorAll('#custom-dropdown-list input[type="checkbox"]:checked');
   const textSpan = document.getElementById('custom-dropdown-selected-text');
   if (checkboxes.length === 0) {
-    textSpan.innerText = 'Selecionar Eixos Clínicos...';
+    textSpan.innerText = 'Escolher o que se passa hoje...';
   } else {
-    textSpan.innerText = `${checkboxes.length} eixo(s) selecionado(s)`;
+    textSpan.innerText = `${checkboxes.length} item(ns) selecionado(s)`;
   }
   calcularEscoreAtual();
 }
@@ -782,10 +781,10 @@ function calcularEscoreAtual() {
   const badge = document.getElementById('badge-score');
   if (badge) {
     if (contagem === 0) {
-      badge.innerText = "Sem dados";
+      badge.innerText = "Por preencher";
     } else {
       const media = (soma / contagem).toFixed(1);
-      badge.innerText = `Média: ${media} / 3.0`;
+      badge.innerText = `Média de intensidade: ${media} / 3.0`;
     }
   }
 }
@@ -819,7 +818,7 @@ function salvarRegistroDiario() {
   };
 
   localStorage.setItem('dashboard_depressao_ansiedade_db', JSON.stringify(registrosLocais));
-  alert(`Registro do dia ${dataSelecionada} foi guardado com sucesso!`);
+  alert(`O registo do dia ${dataSelecionada} foi guardado com sucesso!`);
   atualizarProntuario();
 }
 
@@ -865,11 +864,11 @@ function atualizarProntuario() {
 
   const datas = Object.keys(registrosLocais).sort().reverse();
   if (datas.length === 0) {
-    conteiner.innerHTML = "<em>Nenhum registro armazenado até o momento. Salve o seu primeiro registro na aba Registro.</em>";
+    conteiner.innerHTML = "<em>Ainda não existem registos guardados. Faça o seu primeiro registo na aba Registro.</em>";
     return;
   }
 
-  let html = `<div class="prontuario-subtitulo">Exibindo histórico de <strong>${datas.length}</strong> registro(s) arquivado(s):</div>`;
+  let html = `<div class="prontuario-subtitulo">A exibir o seu histórico de <strong>${datas.length}</strong> dia(s) registado(s):</div>`;
   datas.forEach(d => {
     const reg = registrosLocais[d];
     let soma = 0;
@@ -886,8 +885,8 @@ function atualizarProntuario() {
 
     html += `
       <div class="prontuario-topico" style="border-bottom: 1px dashed var(--border-light); padding-bottom: 8px; margin-bottom: 8px;">
-        <strong>📅 Data: ${d}</strong> — <em>Índice Médio: ${media} / 3.0</em><br>
-        <small>Dimensões selecionadas: ${reg.perfis ? reg.perfis.length : 0}</small>
+        <strong>📅 Data: ${d}</strong> — <em>Intensidade média: ${media} / 3.0</em><br>
+        <small>Sensações assinaladas: ${reg.perfis ? reg.perfis.length : 0}</small>
       </div>
     `;
   });
@@ -905,7 +904,7 @@ function inicializarGrafico() {
       labels: [],
       datasets: [
         {
-          label: 'Média de Intensidade (Sintomas)',
+          label: 'Intensidade dos Sintomas',
           data: [],
           borderColor: '#435b4e',
           backgroundColor: 'rgba(67, 91, 78, 0.15)',
@@ -952,7 +951,7 @@ function exportarDadosJSON() {
   const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(registrosLocais, null, 2));
   const downloadAnchor = document.createElement('a');
   downloadAnchor.setAttribute("href", dataStr);
-  downloadAnchor.setAttribute("download", `backup_depressao_ansiedade_${new Date().toISOString().split('T')[0]}.json`);
+  downloadAnchor.setAttribute("download", `meu_acompanhamento_emocional_${new Date().toISOString().split('T')[0]}.json`);
   document.body.appendChild(downloadAnchor);
   downloadAnchor.click();
   downloadAnchor.remove();
@@ -968,11 +967,11 @@ function importarDadosJSON(event) {
       const parsed = JSON.parse(e.target.result);
       registrosLocais = parsed;
       localStorage.setItem('dashboard_depressao_ansiedade_db', JSON.stringify(registrosLocais));
-      alert("Backup importado com sucesso!");
+      alert("Os seus dados foram carregados com sucesso!");
       atualizarProntuario();
       renderizarGraficoEvolucao();
     } catch (err) {
-      alert("Erro ao ler o ficheiro JSON de backup.");
+      alert("Erro ao ler o ficheiro de dados.");
     }
   };
   reader.readAsText(file);
@@ -983,10 +982,10 @@ function exportarRelatorioPDF() {
   const doc = new jsPDF();
 
   doc.setFontSize(14);
-  doc.text("Relatório de Acompanhamento Psicoeducativo", 14, 20);
+  doc.text("O Meu Diário de Autorregulação Emocional", 14, 20);
   doc.setFontSize(10);
-  doc.text("Foco Clínico: Monitoramento de Depressão e Ansiedade", 14, 26);
-  doc.text(`Gerado em: ${new Date().toLocaleDateString('pt-BR')}`, 14, 32);
+  doc.text("Acompanhamento de Bem-Estar, Ansiedade e Humor", 14, 26);
+  doc.text(`Relatório gerado em: ${new Date().toLocaleDateString('pt-BR')}`, 14, 32);
 
   const rows = [];
   Object.keys(registrosLocais).sort().reverse().forEach(data => {
@@ -1003,11 +1002,11 @@ function exportarRelatorioPDF() {
 
   doc.autoTable({
     startY: 40,
-    head: [['Data', 'Índice Médio (0-3)', 'Dimensões Assinaladas']],
+    head: [['Data', 'Intensidade Média (0 a 3)', 'Pontos Assinalados']],
     body: rows
   });
 
-  doc.save(`relatorio_depressao_ansiedade_${new Date().toISOString().split('T')[0]}.pdf`);
+  doc.save(`relatorio_bem_estar_${new Date().toISOString().split('T')[0]}.pdf`);
 }
 
 function abrirModalGuiaSentimentos() {
