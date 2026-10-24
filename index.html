@@ -131,12 +131,6 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 .btn-clima:hover { border-color: var(--accent-color); color: var(--text-main); }
 .btn-clima.selected { background: var(--accent-color); color: #ffffff; border-color: var(--accent-hover); }
 
-.dica-ambiental-card {
-  display: none; background: var(--cat-bg); border-left: 3px solid var(--accent-color);
-  padding: 8px 10px; border-radius: 6px; font-size: 0.78rem; color: var(--text-dimmed); line-height: 1.4; margin-top: 4px;
-}
-.dica-ambiental-card.visivel { display: block; }
-
 .input-complemento-ambiente {
   width: 100%; background: var(--btn-bg); border: 1px solid var(--border-light); border-radius: 6px;
   color: var(--text-main); padding: 8px 10px; font-size: 0.8rem; outline: none; margin-top: 4px;
@@ -334,9 +328,6 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         <button type="button" class="btn-clima" id="periodo-dia" onclick="selecionarAmbiente('periodo', 'Período do Dia')">Dia</button>
         <button type="button" class="btn-clima" id="periodo-noite" onclick="selecionarAmbiente('periodo', 'Período da Noite')">Noite</button>
       </div>
-      <div class="dica-ambiental-card" id="dica-ambiental-texto">
-        Selecione o clima ou período para receber uma dica de regulação ambiental.
-      </div>
       <input type="text" id="complemento-ambiente-input" class="input-complemento-ambiente" placeholder="Ex: Hoje estive fora do meu ambiente cotidiano / Fiquei em casa o dia todo / Fui para casa de familiares...">
     </div>
 
@@ -362,7 +353,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
             <label class="dropdown-item"><input type="checkbox" value="exaustao_psicofisica" onchange="atualizarPerfisSelecionados()"> Cansaço profundo / Sensação de corpo pesado</label>
             <label class="dropdown-item"><input type="checkbox" value="retirada_social" onchange="atualizarPerfisSelecionados()"> Vontade de isolamento / Afastamento dos outros</label>
             <label class="dropdown-item"><input type="checkbox" value="desesperanca_aprendida" onchange="atualizarPerfisSelecionados()"> Sensação de que as coisas não vão melhorar</label>
-            <label class="dropdown-item"><input type="checkbox" value="vazio_existencial" onchange="atualizarPerfisSelecionados()"> Vazio interno / Desconexão dos sentimentos</label>
+            <label class="dropdown-item"><input type="checkbox" value="vazio_existencial" onchange="atualizarPerfisSelecionados()"> V vazio interno / Desconexão dos sentimentos</label>
 
             <div class="dropdown-group-title">3. Padrões de Cobrança & Emoções Difíceis</div>
             <label class="dropdown-item"><input type="checkbox" value="autocritica_severa" onchange="atualizarPerfisSelecionados()"> Autocrítica pesada / Cobrança excessiva</label>
@@ -508,10 +499,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Como se autorregular:</strong> A desidratação leve causa fadiga, dores de cabeça e irritabilidade. Mantenha sempre uma garrafa de água por perto[span_0](start_span)[span_0](end_span).
+          <strong>Como se autorregular:</strong> A desidratação leve causa fadiga, dores de cabeça e irritabilidade. Mantenha sempre uma garrafa de água por perto.
         </div>
         <div class="criterio-legenda" id="legenda-hidratacao">
-          1 = Sem consumo de água; 3 = Ingestão moderada; 5 = Metas de hidratação atingidas[span_1](start_span)[span_1](end_span).
+          1 = Sem consumo de água; 3 = Ingestão moderada; 5 = Metas de hidratação atingidas.
         </div>
         <div class="botoes-escala">
           <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'hidratacao', 1)">1</button>
@@ -521,7 +512,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'hidratacao', 5)">5</button>
         </div>
         <div class="atalhos-container" id="atalhos-hidratacao"></div>
-        <textarea class="anotacao-criterio" placeholder="Manteve uma garrafa por perto? Sentiu sinais de desidratação?[span_2](start_span)[span_2](end_span)"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Manteve uma garrafa por perto? Sentiu sinais de desidratação?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="exercicios">
@@ -533,7 +524,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <strong>Como se autorregular:</strong> O movimento liberta endorfinas e ajuda a descarregar o excesso de cortisol acumulado pelo stress e pela ansiedade.
         </div>
         <div class="criterio-legenda" id="legenda-exercicios">
-          1 = Sedentarismo absoluto; 3 = Movimentação leve; 5 = Treino / Atividade completa[span_3](start_span)[span_3](end_span).
+          1 = Sedentarismo absoluto; 3 = Movimentação leve; 5 = Treino / Atividade completa.
         </div>
         <div class="botoes-escala">
           <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'exercicios', 1)">1</button>
@@ -543,7 +534,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'exercicios', 5)">5</button>
         </div>
         <div class="atalhos-container" id="atalhos-exercicios"></div>
-        <textarea class="anotacao-criterio" placeholder="Conseguiu colocar o corpo em movimento? Como o corpo reagiu?[span_4](start_span)[span_4](end_span)"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Conseguiu colocar o corpo em movimento? Como o corpo reagiu?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="medicaçao">
@@ -555,7 +546,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <strong>Como se autorregular:</strong> Siga as orientações profissionais e mantenha o acompanhamento e a medicação em dia para estabilizar a química cerebral.
         </div>
         <div class="criterio-legenda" id="legenda-medicaçao">
-          1 = Esqueceu medicação / Sintomas ignorados; 3 = Parcialmente cumprido; 5 = Prescrições e rotina em dia[span_5](start_span)[span_5](end_span).
+          1 = Esqueceu medicação / Sintomas ignorados; 3 = Parcialmente cumprido; 5 = Prescrições e rotina em dia.
         </div>
         <div class="botoes-escala">
           <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'medicaçao', 1)">1</button>
@@ -787,7 +778,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       <p>O que você sente hoje é um estado passageiro do seu sistema nervoso, e não quem você é. Registar os seus dias ajuda a olhar com carinho para a sua evolução e a perceber que as fases difíceis também passam.</p>
 
       <div class="autor-credito">
-        Baseado en abordagens cientificamente comprovadas (Terapia Cognitivo-Comportamental, Ativação Comportamental e Teoria Polivagal).
+        Baseado em abordagens cientificamente comprovadas (Terapia Cognitivo-Comportamental, Ativação Comportamental e Teoria Polivagal).
       </div>
     </div>
   </div>
@@ -858,13 +849,6 @@ function mudarMensagemBoasVindas() {
   indiceMensagemAtual = (indiceMensagemAtual + 1) % lista.length;
   exibirMensagemAtual();
 }
-
-const dicasAmbientais = {
-  'Ensolarado / Quente': "Calor ou excesso de sol podem acelerar o ritmo cardíaco, gerando falsa sensação de sufoco ou irritabilidade. Mantenha-se hidratado e use água fresca nos pulsos se sentir o alarme do corpo disparar.",
-  'Chuvoso / Nublado': "A menor luminosidade diminui a disposição e aumenta a vontade de recolhimento. Acenda luzes mais fortes em casa, faça um micro-movimento para gerar dopamina e seja gentil com o seu ritmo.",
-  'Período do Dia': "Manhã/Tarde: Cuidado com a ansiedade antecipatória ao acordar. Evite pegar no telemóvel de imediato; comece o dia com um copo de água e respirações fundas.",
-  'Período da Noite': "Noite: Com o fim das distrações, a mente pode acelerar com preocupações. Pratique despejar os pensamentos num papel antes de deitar e reduza os ecrãs."
-};
 
 const dadosPorNivel = {
   ruminacao: {
@@ -1195,18 +1179,6 @@ function selecionarAmbiente(tipo, valor) {
       event.currentTarget.classList.add('selected');
     }
   }
-
-  const caixaDica = document.getElementById('dica-ambiental-texto');
-  let textoDica = [];
-  if (ambienteAtual.clima && dicasAmbientais[ambienteAtual.clima]) textoDica.push(dicasAmbientais[ambienteAtual.clima]);
-  if (ambienteAtual.periodo && dicasAmbientais[ambienteAtual.periodo]) textoDica.push(dicasAmbientais[ambienteAtual.periodo]);
-
-  if (textoDica.length > 0) {
-    caixaDica.innerHTML = textoDica.join('<br><br>');
-    caixaDica.classList.add('visivel');
-  } else {
-    caixaDica.classList.remove('visivel');
-  }
 }
 
 function selecionarEscalaDinamica(btn, chaveCard, valor) {
@@ -1308,7 +1280,6 @@ function carregarRegistroData(dataStr) {
   document.querySelectorAll('.atalhos-container').forEach(c => c.innerHTML = '');
   document.querySelectorAll('.anotacao-criterio').forEach(t => t.value = '');
   document.querySelectorAll('.btn-clima').forEach(b => b.classList.remove('selected'));
-  document.getElementById('dica-ambiental-texto').classList.remove('visivel');
   document.getElementById('complemento-ambiente-input').value = '';
   ambienteAtual = { clima: '', periodo: '' };
 
@@ -1322,15 +1293,6 @@ function carregarRegistroData(dataStr) {
       if (ambienteAtual.periodo === 'Período da Noite') document.getElementById('periodo-noite').classList.add('selected');
       if (registro.ambiente.complemento) {
         document.getElementById('complemento-ambiente-input').value = registro.ambiente.complemento;
-      }
-      
-      let textoDica = [];
-      if (ambienteAtual.clima && dicasAmbientais[ambienteAtual.clima]) textoDica.push(dicasAmbientais[ambienteAtual.clima]);
-      if (ambienteAtual.periodo && dicasAmbientais[ambienteAtual.periodo]) textoDica.push(dicasAmbientais[ambienteAtual.periodo]);
-      if (textoDica.length > 0) {
-        const caixaDica = document.getElementById('dica-ambiental-texto');
-        caixaDica.innerHTML = textoDica.join('<br><br>');
-        caixaDica.classList.add('visivel');
       }
     }
     if (registro.perfis) {
