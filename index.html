@@ -7,9 +7,6 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
 
-/* =========================================================
-   VARIÁVEIS DE TEMA NOITE (Cinzas Neutros & Sofisticados)
-   ========================================================= */
 :root {
   --bg-body: #121417;
   --text-main: #f1f3f5;
@@ -18,7 +15,7 @@
   --border-light: #3d4451;
   --text-muted: #9aa0a6;
   --text-dimmed: #d2d6dc;
-  --accent-color: #a27257; /* Terracota suave idêntico à imagem */
+  --accent-color: #a27257;
   --accent-hover: #885c44;
   --btn-bg: #121417;
   --card-bg: #1b1e23;
@@ -28,31 +25,27 @@
   --tag-bg: #252932;
 }
 
-/* =========================================================
-   VARIÁVEIS DE TEMA DIA (Baseado na Imagem: Bege & Terracota)
-   ========================================================= */
 [data-theme="light"] {
-  --bg-body: #f4f1ea;        /* Bege de fundo */
-  --text-main: #36322d;       /* Texto escuro legível */
-  --bg-container: #ffffff;    /* Conteiner branco clean */
-  --border-color: #e5e0d8;    /* Borda neutra suave */
-  --border-light: #d8d2c7;   /* Borda clara */
-  --text-muted: #827b70;     /* Texto secundário bege */
-  --text-dimmed: #524c44;    /* Texto suave */
-  --accent-color: #b38062;   /* Terracota suave para seleção */
-  --accent-hover: #98674b;   /* Terracota para hover */
-  --btn-bg: #f5f2eb;         /* Bege nude para botões inativos */
-  --card-bg: #ffffff;        
-  --card-prioritario: #fbf9f5; 
-  --legenda-bg: #f5f2eb;     /* Fundo de legendas nude */
-  --cat-bg: #eeeae1;         
-  --tag-bg: #f2eee6;         
+  --bg-body: #f4f1ea;
+  --text-main: #36322d;
+  --bg-container: #ffffff;
+  --border-color: #e5e0d8;
+  --border-light: #d8d2c7;
+  --text-muted: #827b70;
+  --text-dimmed: #524c44;
+  --accent-color: #b38062;
+  --accent-hover: #98674b;
+  --btn-bg: #f5f2eb;
+  --card-bg: #ffffff;
+  --card-prioritario: #fbf9f5;
+  --legenda-bg: #f5f2eb;
+  --cat-bg: #eeeae1;
+  --tag-bg: #f2eee6;
 }
 
 body { background-color: var(--bg-body); color: var(--text-main); padding: 12px; display: flex; flex-direction: column; min-height: 100vh; }
 .container { max-width: 800px; margin: 0 auto; flex: 1; width: 100%; }
 
-/* Cabeçalho com Banner */
 .header-marca {
   width: 100%; margin-bottom: 14px; border: none; padding: 0; overflow: hidden;
   border-radius: 10px; background: var(--bg-container); border: 1px solid var(--border-color);
@@ -162,7 +155,6 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   color: var(--text-muted); margin-bottom: 12px; line-height: 1.4; border: 1px solid var(--border-color);
 }
 
-/* Escala de 1 a 5 no Estilo Terracota da Imagem */
 .botoes-escala { display: flex; gap: 8px; margin-bottom: 12px; }
 .btn-escala {
   flex: 1; padding: 10px 0; background: var(--btn-bg); border: 1px solid var(--border-light);
@@ -171,7 +163,6 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 .btn-escala:hover { border-color: var(--accent-color); }
 .btn-escala.selected { background: #b38062; color: #ffffff; border-color: #98674b; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
-/* Atalhos que mudam dinamicamente */
 .atalhos-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; min-height: 32px; }
 .btn-atalho {
   background: var(--tag-bg); border: 1px solid var(--border-light); color: var(--text-main);
@@ -248,7 +239,6 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 .modal-body p { margin-bottom: 8px; }
 .modal-body ul { margin-left: 18px; margin-bottom: 12px; }
 .modal-body li { margin-bottom: 4px; }
-
 .autor-credito { margin-top: 16px; padding-top: 10px; border-top: 1px dashed var(--border-color); text-align: center; font-size: 0.75rem; color: var(--text-muted); font-style: italic; }
 </style>
 
@@ -315,20 +305,20 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       <input type="date" id="data-registro" class="seletor-data-input" onchange="carregarRegistroData(this.value)">
     </div>
 
-    <!-- Categoria 1: Ansiedade e Mente Acelerada -->
+    <!-- Categoria 1: Dimensão Neuroemocional -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
-      <span>Mente Acelerada, Preocupações & Sinais no Corpo</span>
+      <span>Dimensão Neuroemocional: Mente & Corpo</span>
       <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
     </div>
     <div class="categoria-grupo">
       
       <div class="criterio-card prioritario" data-key="ruminacao">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Preocupação em Looping & Pensamentos que não Desligam</span>
+          <span>Ruminação Mental & Hiperconexão de Ideias</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Como se autorregular:</strong> Quando a mente entra num circuito acelerado, lutar para parar o pensamento aumenta a tensão. Pratique o "Tempo de Preocupação" (escreva tudo no papel por 15 minutos) ou coloque água fria no rosto para acalmar a mente através do corpo.
+          <strong>Como se autorregular:</strong> Quando a mente entra num circuito acelerado, lutar para parar o pensamento aumenta a tensão. Pratique o "Tempo de Preocupação" ou use água fria no rosto para acalmar o sistema nervoso.
         </div>
         <div class="criterio-legenda" id="legenda-ruminacao">
           1 = Mente travada em loop / Exaustão mental; 3 = Pensamento acelerado mas funcional; 5 = Clareza mental e fluxo tranquilo.
@@ -346,15 +336,14 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 
       <div class="criterio-card" data-key="hipervigilancia">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Sinais Físicos de Alerta (Coração acelerado, tensão, aperto)</span>
+          <span>Reatividade no Corpo & Tensão Física</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Como se autorregular:</strong> O corpo interpreta o stress como um perigo real e ativa o modo de "luta ou fuga", tensionando os músculos e acelerando o ritmo cardíaco para nos proteger.<br><br>
-          <strong>O que fazer agora:</strong> Envie um sinal de segurança para o seu sistema nervoso através da respiração regulada: inspire contando até 4 e expire devagar contando até 8. Solte os ombros e relaxe a mandíbula.
+          <strong>Como se autorregular:</strong> O corpo reage ao stress como perigo real. Inspire em 4 segundos e expire devagar em 8 segundos para enviar uma mensagem de segurança ao corpo.
         </div>
         <div class="criterio-legenda" id="legenda-hipervigilancia">
-          1 = Corpo travado / Tensão e aperto fortes; 3 = Desconforto leve / Tensão pontual; 5 = Corpo relaxado e respiração fluida.
+          1 = Corpo travado / Tensão e aperto fortes; 3 = Desconforto leve; 5 = Corpo relaxado e respiração fluida.
         </div>
         <div class="botoes-escala">
           <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'hipervigilancia', 1)">1</button>
@@ -367,142 +356,300 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         <textarea class="anotacao-criterio" placeholder="Onde é que sentiu mais tensão ou desconforto no corpo hoje?"></textarea>
       </div>
 
-      <div class="criterio-card" data-key="evitacao_antecipatoria">
-        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Vontade de Evitar Tarefas, Pessoas ou Compromissos</span>
-          <span class="criterio-nome-seta">►</span>
-        </div>
-        <div class="caixa-dica-pratica">
-          <strong>Como se autorregular:</strong> Fugir do que nos causa ansiedade traz um alívio rápido, mas diz ao nosso cérebro que o perigo era real, tornando o medo maior da próxima vez.<br><br>
-          <strong>O que fazer agora:</strong> Em vez de tentar resolver tudo de uma vez, divida a tarefa que está a evitar num passo incrivelmente pequeno (por exemplo: apenas abrir o documento ou calçar os sapatos).
-        </div>
-        <div class="criterio-legenda" id="legenda-evitacao_antecipatoria">
-          1 = Paralisia frente a obrigações / Fuga total; 3 = Resistência moderada; 5 = Disposição natural para agir.
-        </div>
-        <div class="botoes-escala">
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'evitacao_antecipatoria', 1)">1</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'evitacao_antecipatoria', 2)">2</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'evitacao_antecipatoria', 3)">3</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'evitacao_antecipatoria', 4)">4</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'evitacao_antecipatoria', 5)">5</button>
-        </div>
-        <div class="atalhos-container" id="atalhos-evitacao_antecipatoria"></div>
-        <textarea class="anotacao-criterio" placeholder="Houve alguma tarefa ou situação que preferiu adiar hoje? Descreva..."></textarea>
-      </div>
-
     </div>
 
-    <!-- Categoria 2: Baixa Energia e Desânimo -->
+    <!-- Categoria 2: Saúde Integral & Rotina -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
-      <span>Baixa Energia, Desânimo & Autocrítica</span>
+      <span>Saúde Integral & Rotina Diária</span>
       <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
     </div>
     <div class="categoria-grupo">
 
-      <div class="criterio-card prioritario" data-key="anedonia">
+      <div class="criterio-card" data-key="sono">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Falta de Vontade, Apatia & Dificuldade de Sentir Prazer</span>
+          <span>Qualidade do Sono</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Como se autorregular:</strong> Quando a energia está muito baixa, o cérebro desliga os centros de recompensa, fazendo com que nada pareça valer a pena. Esperar pela vontade de fazer as coisas não funciona nesta fase; a energia costuma aparecer *depois* que começamos.<br><br>
-          <strong>O que fazer agora:</strong> Escolha uma micro-ação de apenas 2 minutos (ex: beber um copo de água com calma ou dar 5 passos na sala). Não espere sentir vontade; apenas teste dar o primeiro passo minúsculo.
+          <strong>Como se autorregular:</strong> Uma boa noite de sono é o pilar principal da regulação emocional. Evite ecrãs 1 hora antes de deitar e crie um ambiente escuro e fresco.
         </div>
-        <div class="criterio-legenda" id="legenda-anedonia">
-          1 = Apatia profunda / Paralisia; 3 = Energia baixa mas funcional; 5 = Prazer e disposição presentes.
+        <div class="criterio-legenda" id="legenda-sono">
+          1 = Insónia / Sono não reparador; 3 = Sono mediano; 5 = Descanso profundo e revigorante.
         </div>
         <div class="botoes-escala">
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'anedonia', 1)">1</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'anedonia', 2)">2</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'anedonia', 3)">3</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'anedonia', 4)">4</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'anedonia', 5)">5</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'sono', 1)">1</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'sono', 2)">2</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'sono', 3)">3</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'sono', 4)">4</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'sono', 5)">5</button>
         </div>
-        <div class="atalhos-container" id="atalhos-anedonia"></div>
-        <textarea class="anotacao-criterio" placeholder="O que exigiu mais esforço físico ou emocional da sua parte hoje?"></textarea>
+        <div class="atalhos-container" id="atalhos-sono"></div>
+        <textarea class="anotacao-criterio" placeholder="Demorou para adormecer? Acordou muitas vezes durante a noite?"></textarea>
       </div>
 
-      <div class="criterio-card" data-key="autocritica">
+      <div class="criterio-card" data-key="autocuidado">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Autocrítica Pesada & Cobrança Excessiva</span>
+          <span>Rotinas de Autocuidado</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Como se autorregular:</strong> Numa fase de vulnerabilidade, tendemos a tratar-nos com muito rigor, julgando-nos duramente por estarmos cansados ou desanimados, o que só aumenta o desgaste emocional.<br><br>
-          <strong>O que fazer agora:</strong> Repare no seu diálogo interno. Pergunte-se: *"Eu diria estas mesmas palavras exatas a um amigo querido que estivesse a passar pelo mesmo?"* Tente trocar a cobrança por uma postura de compreensão consigo mesmo.
+          <strong>Como se autorregular:</strong> Cuidar de si envolve pequenos rituais diários de higiene e carinho pessoal, mesmo nos dias em que a energia está baixa.
         </div>
-        <div class="criterio-legenda" id="legenda-autocritica">
-          1 = Cobrança impiedosa / Culpa pesada; 3 = Autocrítica moderada; 5 = Autocompaixão ativa.
+        <div class="criterio-legenda" id="legenda-autocuidado">
+          1 = Abandono total de si; 3 = Higiene e cuidados básicos; 5 = Rituais de bem-estar completos.
         </div>
         <div class="botoes-escala">
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'autocritica', 1)">1</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'autocritica', 2)">2</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'autocritica', 3)">3</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'autocritica', 4)">4</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'autocritica', 5)">5</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'autocuidado', 1)">1</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'autocuidado', 2)">2</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'autocuidado', 3)">3</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'autocuidado', 4)">4</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'autocuidado', 5)">5</button>
         </div>
-        <div class="atalhos-container" id="atalhos-autocritica"></div>
-        <textarea class="anotacao-criterio" placeholder="Quais foram as cobranças ou críticas que a sua mente repetiu hoje?"></textarea>
+        <div class="atalhos-container" id="atalhos-autocuidado"></div>
+        <textarea class="anotacao-criterio" placeholder="Quais pequenos rituais de cuidado pessoal conseguiu manter hoje?"></textarea>
       </div>
 
-      <div class="criterio-card" data-key="fadigacognitiva">
+      <div class="criterio-card" data-key="alimentacao">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Cansaço Mental, Confusão ou Dificuldade de Foco</span>
+          <span>Alimentação Equilibrada</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Como se autorregular:</strong> O cérebro sobrecarregado esgota a sua capacidade de processamento, gerando a sensação de "névoa mental" e dificuldade para tomar decisões simples.<br><br>
-          <strong>O que fazer agora:</strong> Esvazie a mente escrevendo num papel tudo o que precisa de ser feito, sem ordem de importância. Dê ao seu cérebro pausas reais, longe de ecrãs e de excesso de estímulos.
+          <strong>Como se autorregular:</strong> O intestino comunica diretamente com o cérebro (eixo intestino-cérebro). Tente fazer refeições nutritivas e evite comer por impulso emocional.
         </div>
-        <div class="criterio-legenda" id="legenda-fadigacognitiva">
-          1 = Névoa mental densa / Exaustão; 3 = Foco oscilante; 5 = Mente clara e alerta.
+        <div class="criterio-legenda" id="legenda-alimentacao">
+          1 = Ultraprocessados / Compulsão; 3 = Alimentação razoável; 5 = Refeições nutritivas.
         </div>
         <div class="botoes-escala">
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'fadigacognitiva', 1)">1</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'fadigacognitiva', 2)">2</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'fadigacognitiva', 3)">3</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'fadigacognitiva', 4)">4</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'fadigacognitiva', 5)">5</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'alimentacao', 1)">1</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'alimentacao', 2)">2</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'alimentacao', 3)">3</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'alimentacao', 4)">4</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'alimentacao', 5)">5</button>
         </div>
-        <div class="atalhos-container" id="atalhos-fadigacognitiva"></div>
-        <textarea class="anotacao-criterio" placeholder="Como descreveria a sua clareza mental hoje?"></textarea>
+        <div class="atalhos-container" id="atalhos-alimentacao"></div>
+        <textarea class="anotacao-criterio" placeholder="Como foi a sua relação com a comida hoje? Conseguiu alimentar-se bem?"></textarea>
+      </div>
+
+      <div class="criterio-card" data-key="hidratacao">
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Hidratação</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Como se autorregular:</strong> A desidratação leve causa fadiga, dores de cabeça e irritabilidade. Mantenha sempre uma garrafa de água por perto.
+        </div>
+        <div class="criterio-legenda" id="legenda-hidratacao">
+          1 = Sem consumo de água; 3 = Ingestão moderada; 5 = Metas de hidratação atingidas.
+        </div>
+        <div class="botoes-escala">
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'hidratacao', 1)">1</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'hidratacao', 2)">2</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'hidratacao', 3)">3</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'hidratacao', 4)">4</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'hidratacao', 5)">5</button>
+        </div>
+        <div class="atalhos-container" id="atalhos-hidratacao"></div>
+        <textarea class="anotacao-criterio" placeholder="Manteve uma garrafa por perto? Sentiu sinais de desidratação?"></textarea>
+      </div>
+
+      <div class="criterio-card" data-key="exercicios">
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Exercícios / Movimento</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Como se autorregular:</strong> O movimento liberta endorfinas e ajuda a descarregar o excesso de cortisol acumulado pelo stress e pela ansiedade.
+        </div>
+        <div class="criterio-legenda" id="legenda-exercicios">
+          1 = Sedentarismo absoluto; 3 = Movimentação leve; 5 = Treino / Atividade completa.
+        </div>
+        <div class="botoes-escala">
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'exercicios', 1)">1</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'exercicios', 2)">2</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'exercicios', 3)">3</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'exercicios', 4)">4</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'exercicios', 5)">5</button>
+        </div>
+        <div class="atalhos-container" id="atalhos-exercicios"></div>
+        <textarea class="anotacao-criterio" placeholder="Conseguiu colocar o corpo em movimento? Como o corpo reagiu?"></textarea>
+      </div>
+
+      <div class="criterio-card" data-key="medicaçao">
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Cuidados Médicos & Medicação</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Como se autorregular:</strong> Siga as orientações profissionais e mantenha o acompanhamento e a medicação em dia para estabilizar a química cerebral.
+        </div>
+        <div class="criterio-legenda" id="legenda-medicaçao">
+          1 = Esqueceu medicação / Sintomas ignorados; 3 = Parcialmente cumprido; 5 = Prescrições e rotina em dia.
+        </div>
+        <div class="botoes-escala">
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'medicaçao', 1)">1</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'medicaçao', 2)">2</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'medicaçao', 3)">3</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'medicaçao', 4)">4</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'medicaçao', 5)">5</button>
+        </div>
+        <div class="atalhos-container" id="atalhos-medicaçao"></div>
+        <textarea class="anotacao-criterio" placeholder="Tomou a medicação correta? Como tem sido o acompanhamento médico?"></textarea>
       </div>
 
     </div>
 
-    <!-- Categoria 3: Conexão e Suporte -->
+    <!-- Categoria 3: Relacionamentos & Vínculos -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
-      <span>Conexão, Apoio & Cuidado Prático</span>
+      <span>Relacionamentos & Vínculos Sociais</span>
       <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
     </div>
     <div class="categoria-grupo">
 
-      <div class="criterio-card" data-key="interacao_social">
+      <div class="criterio-card" data-key="rel_intimo">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
-          <span>Vontade de Isolamento vs. Necessidade de Apoio</span>
+          <span>Relacionamento Íntimo / Amoroso</span>
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Como se autorregular:</strong> O desânimo costuma empurrar-nos para o isolamento. Embora um pouco de silêncio seja importante, o isolamento prolongado faz com que o cérebro acredite que estamos sozinhos contra o mundo.<br><br>
-          <strong>O que fazer agora:</strong> Não precisa de estar em grandes reuniões. Um contacto mínimo de baixa energia (como enviar uma mensagem simples a alguém de confiança) já ajuda a lembrar que existe apoio à nossa volta.
+          <strong>Como se autorregular:</strong> Relações íntimas exigem vulnerabilidade e escuta. Partilhe o que sente sem carregar o outro com a responsabilidade exclusiva de o salvar.
         </div>
-        <div class="criterio-legenda" id="legenda-interacao_social">
-          1 = Isolamento total / Desconexão; 3 = Contacto mínimo mantido; 5 = Boa conexão e partilha.
+        <div class="criterio-legenda" id="legenda-rel_intimo">
+            1 = Conflito intenso / Desconexão; 3 = Relação estável mas distante; 5 = Intimidade, afeto e acolhimento.
         </div>
         <div class="botoes-escala">
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'interacao_social', 1)">1</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'interacao_social', 2)">2</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'interacao_social', 3)">3</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'interacao_social', 4)">4</button>
-          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'interacao_social', 5)">5</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'rel_intimo', 1)">1</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'rel_intimo', 2)">2</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'rel_intimo', 3)">3</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'rel_intimo', 4)">4</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'rel_intimo', 5)">5</button>
         </div>
-        <div class="atalhos-container" id="atalhos-interacao_social"></div>
-        <textarea class="anotacao-criterio" placeholder="Sentiu vontade de se isolar ou procurou partilhar o que sentia?"></textarea>
+        <div class="atalhos-container" id="atalhos-rel_intimo"></div>
+        <textarea class="anotacao-criterio" placeholder="Como foi a conexão ou os sentimentos em relação ao seu parceiro(a) hoje?"></textarea>
+      </div>
+
+      <div class="criterio-card" data-key="rel_amizades">
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Amizades & Vida Social</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Como se autorregular:</strong> Manter laços de amizade protege contra o isolamento depressivo. Um simples contacto leve já faz diferença.
+        </div>
+        <div class="criterio-legenda" id="legenda-rel_amizades">
+            1 = Isolamento social total; 3 = Contacto esporádico; 5 = Conexões alegres e apoio ativo.
+        </div>
+        <div class="botoes-escala">
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'rel_amizades', 1)">1</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'rel_amizades', 2)">2</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'rel_amizades', 3)">3</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'rel_amizades', 4)">4</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'rel_amizades', 5)">5</button>
+        </div>
+        <div class="atalhos-container" id="atalhos-rel_amizades"></div>
+        <textarea class="anotacao-criterio" placeholder="Conseguiu falar com amigos ou sentiu vontade de se afastar?"></textarea>
+      </div>
+
+      <div class="criterio-card" data-key="rel_familiar">
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Relações Familiares</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Como se autorregular:</strong> Estabeleça limites saudáveis com a família se houver gatilhos emocionais, valorizando os vínculos que trazem paz.
+        </div>
+        <div class="criterio-legenda" id="legenda-rel_familiar">
+            1 = Conflitos pesados / Tensão familiar; 3 = Convivência neutra; 5 = Harmonia e apoio familiar.
+        </div>
+        <div class="botoes-escala">
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'rel_familiar', 1)">1</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'rel_familiar', 2)">2</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'rel_familiar', 3)">3</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'rel_familiar', 4)">4</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'rel_familiar', 5)">5</button>
+        </div>
+        <div class="atalhos-container" id="atalhos-rel_familiar"></div>
+        <textarea class="anotacao-criterio" placeholder="Como foram as interações com os seus familiares hoje?"></textarea>
       </div>
 
     </div>
 
-    <!-- Painel de Guardar Registro -->
+    <!-- Categoria 4: Desempenho & Expectativas -->
+    <div class="categoria-titulo" onclick="toggleSecao(this)">
+      <span>Desempenho (Trabalho/Estudo) & Futuro</span>
+      <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
+    </div>
+    <div class="categoria-grupo">
+
+      <div class="criterio-card" data-key="desempenho_trabalho">
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Desempenho no Trabalho / Perspetiva Profissional</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Como se autorregular:</strong> Se estiver a trabalhar, foque em pequenas entregas. Se não estiver empregado ou ativo no momento, observe o que sente (culpa, medo, alívio ou esperança) ao pensar no trabalho.
+        </div>
+        <div class="criterio-legenda" id="legenda-desempenho_trabalho">
+            1 = Exaustão profissional / Angústia severa ao pensar em trabalhar; 3 = Produtividade razoável / Neutro; 5 = Realização e satisfação profissional.
+        </div>
+        <div class="botoes-escala">
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'desempenho_trabalho', 1)">1</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'desempenho_trabalho', 2)">2</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'desempenho_trabalho', 3)">3</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'desempenho_trabalho', 4)">4</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'desempenho_trabalho', 5)">5</button>
+        </div>
+        <div class="atalhos-container" id="atalhos-desempenho_trabalho"></div>
+        <textarea class="anotacao-criterio" placeholder="Como foi o trabalho hoje? Se não trabalha, o que sente quando pensa nisso?"></textarea>
+      </div>
+
+      <div class="criterio-card" data-key="desempenho_estudo">
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Desempenho nos Estudos / Foco Académico</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Como se autorregular:</strong> A ansiedade e a depressão afetam diretamente a memória e o foco. Seja paciente com o seu ritmo de aprendizagem atual.
+        </div>
+        <div class="criterio-legenda" id="legenda-desempenho_estudo">
+            1 = Bloqueio mental / Incapacidade de estudar; 3 = Estudo com esforço moderado; 5 = Aprendizagem fluida e focada.
+        </div>
+        <div class="botoes-escala">
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'desempenho_estudo', 1)">1</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'desempenho_estudo', 2)">2</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'desempenho_estudo', 3)">3</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'desempenho_estudo', 4)">4</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'desempenho_estudo', 5)">5</button>
+        </div>
+        <div class="atalhos-container" id="atalhos-desempenho_estudo"></div>
+        <textarea class="anotacao-criterio" placeholder="Conseguiu focar nos estudos? Como se sente em relação a esta área?"></textarea>
+      </div>
+
+      <div class="criterio-card" data-key="expectativa_futuro">
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Expectativa do Futuro & Esperança</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Como se autorregular:</strong> A depressão afunila a visão de futuro, fazendo o amanhã parecer sombrio. Tente focar apenas na janela do dia de hoje, sem tentar resolver a vida toda agora.
+        </div>
+        <div class="criterio-legenda" id="legenda-expectativa_futuro">
+            1 = Desesperança alta / Medo paralisante do futuro; 3 = Incerteza mas com abertura; 5 = Otimismo e esperança ativa.
+        </div>
+        <div class="botoes-escala">
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'expectativa_futuro', 1)">1</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'expectativa_futuro', 2)">2</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'expectativa_futuro', 3)">3</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'expectativa_futuro', 4)">4</button>
+          <button class="btn-escala" type="button" onclick="selecionarEscalaDinamica(this, 'expectativa_futuro', 5)">5</button>
+        </div>
+        <div class="atalhos-container" id="atalhos-expectativa_futuro"></div>
+        <textarea class="anotacao-criterio" placeholder="Quais foram os pensamentos ou expectativas sobre o futuro hoje?"></textarea>
+      </div>
+
+    </div>
+
+    <!-- Painel Guardar Registo -->
     <div class="painel-guardar">
       <div class="saldo-linha">
         <span>Índice Diário de Bem-Estar e Regulação:</span>
@@ -580,7 +727,6 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 let registrosLocais = JSON.parse(localStorage.getItem('dashboard_depressao_ansiedade_db')) || {};
 let meuGraficoInstance = null;
 
-// Banco de dados de atalhos e legendas dinâmicas baseados na escala de 1 a 5 para cada chave
 const dadosPorNivel = {
   ruminacao: {
     legendas: {
@@ -614,84 +760,196 @@ const dadosPorNivel = {
       5: ['+ Relaxamento profundo', '+ Sensação de segurança']
     }
   },
-  evitacao_antecipatoria: {
+  sono: {
     legendas: {
-      1: "1 = Paralisia frente a obrigações / Fuga total",
-      2: "2 = Procrastinação forte e adiamento de tarefas",
-      3: "3 = Resistência moderada para agir",
-      4: "4 = Boa disposição para enfrentar tarefas",
-      5: "5 = Enfrentamento leve e fluidez nas obrigações"
+      1: "1 = Insónia / Sono não reparador",
+      2: "2 = Sono agitado e cansativo",
+      3: "3 = Sono mediano",
+      4: "4 = Bom descanso noturno",
+      5: "5 = Descanso profundo e revigorante"
     },
     atalhos: {
-      1: ['+ Vontade de sumir', '+ Paralisia total frente a tarefas', '+ Fuga de mensagens'],
-      2: ['+ Procrastinação forte', '+ Adiamento de compromissos'],
-      3: ['+ Resistência leve', '+ Hesitação'],
-      4: ['+ Boa disposição para agir', '+ Ação passo a passo'],
-      5: ['+ Enfrentamento leve', '+ Fluidez nas obrigações']
+      1: ['+ Insónia severa', '+ Acordou esgotado', '+ Pensamentos na madrugada'],
+      2: ['+ Sono picado', '+ Cansaço ao acordar'],
+      3: ['+ Sono mediano', '+ Descanso razoável'],
+      4: ['+ Dormiu bem', '+ Acordou com energia'],
+      5: ['+ Descanso profundo', '+ Revigorado']
     }
   },
-  anedonia: {
+  autocuidado: {
     legendas: {
-      1: "1 = Apatia profunda / Paralisia total",
-      2: "2 = Falta de ânimo e energia muito baixa",
-      3: "3 = Energia baixa mas funcional para o básico",
-      4: "4 = Interesse recuperado em partes / Vontade leve",
-      5: "5 = Prazer nas pequenas coisas e disposição"
+      1: "1 = Abandono total de si",
+      2: "2 = Pouco cuidado pessoal",
+      3: "3 = Higiene e cuidados básicos",
+      4: "4 = Bons rituais de autocuidado",
+      5: "5 = Rituais de bem-estar completos"
     },
     atalhos: {
-      1: ['+ Apatia profunda', '+ Cama pesada / Inércia', '+ Nada faz sentido'],
-      2: ['+ Energia muito baixa', '+ Falta de interesse'],
-      3: ['+ Esforço para fazer coisas', '+ Cansaço normal'],
-      4: ['+ Interesse recuperado em partes', '+ Vontade leve'],
-      5: ['+ Prazer nas pequenas coisas', '+ Disposição presente']
+      1: ['+ Abandono total', '+ Sem banho/higiene', '+ Cansaço extremo'],
+      2: ['+ Apenas o essencial', '+ Falta de tempo para si'],
+      3: ['+ Higiene e rotina em dia', '+ Autocuidado básico'],
+      4: ['+ Rituais agradáveis', '+ Cuidado pessoal ativo'],
+      5: ['+ Bem-estar completo', '+ Amor-próprio em dia']
     }
   },
-  autocritica: {
+  alimentacao: {
     legendas: {
-      1: "1 = Cobrança impiedosa / Culpa pesada",
-      2: "2 = Julgamento interno forte e exigência",
-      3: "3 = Autocrítica moderada",
-      4: "4 = Compreensão maior consigo mesmo",
-      5: "5 = Autocompaixão ativa e acolhimento"
+      1: "1 = Ultraprocessados / Compulsão",
+      2: "2 = Alimentação desregulada",
+      3: "3 = Alimentação razoável",
+      4: "4 = Refeições equilibradas",
+      5: "5 = Refeições nutritivas e conscientes"
     },
     atalhos: {
-      1: ['+ Cobrança impiedosa', '+ Sensação de insuficiência', '+ Culpa pesada'],
-      2: ['+ Julgamento interno forte', '+ Comparação negativa'],
-      3: ['+ Pensamentos exigentes', '+ Autocobrança'],
-      4: ['+ Compreensão maior', '+ Diálogo mais leve'],
-      5: ['+ Autocompaixão ativa', '+ Gentileza consigo']
+      1: ['+ Compulsão alimentar', '+ Só ultraprocessados', '+ Pulei refeições'],
+      2: ['+ Alimentação pesada', '+ Sem apetite'],
+      3: ['+ Alimentação razoável', '+ Refeições básicas'],
+      4: ['+ Comida caseira', '+ Boas escolhas'],
+      5: ['+ Refeições nutritivas', '+ Equilíbrio alimentar']
     }
   },
-  fadigacognitiva: {
+  hidratacao: {
     legendas: {
-      1: "1 = Névoa mental densa / Exaustão total",
-      2: "2 = Lentidão para raciocinar e cabeça pesada",
-      3: "3 = Foco oscilante e cansaço mental",
-      4: "4 = Mente mais clara e boa atenção",
-      5: "5 = Clareza e vivacidade mental"
+      1: "1 = Sem consumo de água",
+      2: "2 = Hidratação baixa",
+      3: "3 = Ingestão moderada",
+      4: "4 = Boa hidratação",
+      5: "5 = Metas de hidratação atingidas"
     },
     atalhos: {
-      1: ['+ Névoa mental densa', '+ Zero concentração', '+ Exaustão total'],
-      2: ['+ Lentidão para raciocinar', '+ Cabeça pesada'],
-      3: ['+ Foco oscilante', '+ Cansaço mental'],
-      4: ['+ Mente mais clara', '+ Boa atenção'],
-      5: ['+ Clareza e vivacidade', '+ Raciocínio fluido']
+      1: ['+ Zero água', '+ Boca seca / Dor de cabeça'],
+      2: ['+ Pouca água durante o dia'],
+      3: ['+ Consumo moderado', '+ Hidratação básica'],
+      4: ['+ Próximo da meta', '+ Garrafa sempre perto'],
+      5: ['+ Metas atingidas', '+ Hidratação excelente']
     }
   },
-  interacao_social: {
+  exercicios: {
     legendas: {
-      1: "1 = Isolamento total / Desconexão",
-      2: "2 = Vontade de sumir dos grupos e distância",
-      3: "3 = Contacto mínimo mantido",
-      4: "4 = Abertura para conversar e troca leve",
-      5: "5 = Boa conexão e partilha aconchegante"
+      1: "1 = Sedentarismo absoluto",
+      2: "2 = Pouco movimento",
+      3: "3 = Movimentação leve",
+      4: "4 = Atividade física moderada",
+      5: "5 = Treino / Atividade completa"
     },
     atalhos: {
-      1: ['+ Isolamento total', '+ Rejeição a barulhos/pessoas', '+ Silêncio forçado'],
-      2: ['+ Vontade de sumir dos grupos', '+ Distância'],
-      3: ['+ Contacto mínimo tolerado', '+ Neutro'],
-      4: ['+ Abertura para conversar', '+ Troca leve'],
-      5: ['+ Conexão calorosa', '+ Partilha aconchegante']
+      1: ['+ Sedentarismo total', '+ Imóvel o dia todo'],
+      2: ['+ Apenas caminhada curta'],
+      3: ['+ Movimentação leve', '+ Alongamento básico'],
+      4: ['+ Exercício funcional', '+ Boa atividade'],
+      5: ['+ Treino completo', '+ Muita disposição']
+    }
+  },
+  medicaçao: {
+    legendas: {
+      1: "1 = Esqueceu medicação / Sintomas ignorados",
+      2: "2 = Aderência irregular",
+      3: "3 = Parcialmente cumprido",
+      4: "4 = Tratamento em dia",
+      5: "5 = Prescrições e rotina em dia"
+    },
+    atalhos: {
+      1: ['+ Esqueci medicação', '+ Ignorei sintomas'],
+      2: ['+ Tomei fora de hora'],
+      3: ['+ Parcialmente cumprido', '+ Cuidados básicos ok'],
+      4: ['+ Medicação em dia', '+ Acompanhamento estável'],
+      5: ['+ Rotina médica perfeita', '+ Adesão total']
+    }
+  },
+  rel_intimo: {
+    legendas: {
+      1: "1 = Conflito intenso / Desconexão",
+      2: "2 = Distância ou atritos leves",
+      3: "3 = Relação estável mas distante",
+      4: "4 = Boa proximidade e afeto",
+      5: "5 = Intimidade, afeto e acolhimento"
+    },
+    atalhos: {
+      1: ['+ Conflito forte', '+ Desconexão total', '+ Distanciamento'],
+      2: ['+ Atritos leves', '+ Falta de diálogo'],
+      3: ['+ Relação neutra', '+ Pouco tempo juntos'],
+      4: ['+ Diálogo bom', '+ Afeto presente'],
+      5: ['+ Intimidade profunda', '+ Acolhimento amoroso']
+    }
+  },
+  rel_amizades: {
+    legendas: {
+      1: "1 = Isolamento social total",
+      2: "2 = Evitação de amigos",
+      3: "3 = Contacto esporádico",
+      4: "4 = Conversas agradáveis",
+      5: "5 = Conexões alegres e apoio ativo"
+    },
+    atalhos: {
+      1: ['+ Isolamento total', '+ Recusa de convites'],
+      2: ['+ Evitei mensagens'],
+      3: ['+ Contacto mínimo', '+ Conversa rápida'],
+      4: ['+ Falei com amigos', '+ Partilha leve'],
+      5: ['+ Apoio ativo', '+ Encontros prazerosos']
+    }
+  },
+  rel_familiar: {
+    legendas: {
+      1: "1 = Conflitos pesados / Tensão familiar",
+      2: "2 = Desentendimentos",
+      3: "3 = Convivência neutra",
+      4: "4 = Relação harmoniosa",
+      5: "5 = Harmonia e apoio familiar"
+    },
+    atalhos: {
+      1: ['+ Conflito familiar', '+ Tensão alta em casa'],
+      2: ['+ Discussões'],
+      3: ['+ Convivência neutra', '+ Respeito mútuo'],
+      4: ['+ Apoio da família', '+ Momento agradável'],
+      5: ['+ Harmonia total', '+ Acolhimento em casa']
+    }
+  },
+  desempenho_trabalho: {
+    legendas: {
+      1: "1 = Exaustão profissional / Angústia ao pensar no trabalho",
+      2: "2 = Dificuldade de entrega / Procrastinação no trabalho",
+      3: "3 = Produtividade razoável / Neutro",
+      4: "4 = Bom ritmo profissional",
+      5: "5 = Realização e satisfação profissional"
+    },
+    atalhos: {
+      1: ['+ Burnout / Exaustão', '+ Angústia ao pensar em trabalhar', '+ Desemprego angustiante'],
+      2: ['+ Procrastinação profissional', '+ Falta de foco no trabalho'],
+      3: ['+ Ritmo normal', '+ Trabalho entregue'],
+      4: ['+ Boa produtividade', '+ Sentimento de utilidade'],
+      5: ['+ Realização profissional', '+ Orgulho das entregas']
+    }
+  },
+  desempenho_estudo: {
+    legendas: {
+      1: "1 = Bloqueio mental / Incapacidade de estudar",
+      2: "2 = Dificuldade de concentração",
+      3: "3 = Estudo com esforço moderado",
+      4: "4 = Bom rendimento académico",
+      5: "5 = Aprendizagem fluida e focada"
+    },
+    atalhos: {
+      1: ['+ Bloqueio mental', '+ Aversão aos estudos', '+ Névoa forte'],
+      2: ['+ Difícil concentrar', '+ Cansaço nos estudos'],
+      3: ['+ Estudo básico feito', '+ Esforço moderado'],
+      4: ['+ Bom foco', '+ Matéria em dia'],
+      5: ['+ Aprendizagem fluida', '+ Alta concentração']
+    }
+  },
+  expectativa_futuro: {
+    legendas: {
+      1: "1 = Desesperança alta / Medo paralisante do futuro",
+      2: "2 = Pessimismo e preocupação excessiva",
+      3: "3 = Incerteza mas com abertura",
+      4: "4 = Perspetiva positiva",
+      5: "5 = Otimismo e esperança ativa"
+    },
+    atalhos: {
+      1: ['+ Visão somática do futuro', '+ Desesperança alta', '+ Medo do amanhã'],
+      2: ['+ Preocupação excessiva', '+ Incerteza pesada'],
+      3: ['+ Um dia de cada vez', '+ Aceitação do momento'],
+      4: ['+ Planos em mente', '+ Esperança leve'],
+      5: ['+ Otimismo ativo', '+ Confiança no futuro']
     }
   }
 };
@@ -777,20 +1035,17 @@ window.onclick = function() {
   }
 };
 
-// Função de Escala Dinâmica (1 a 5) que atualiza atalhos e legendas em tempo real
 function selecionarEscalaDinamica(btn, chaveCard, valor) {
   const conteinerBotoes = btn.parentElement;
   conteinerBotoes.querySelectorAll('.btn-escala').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
   btn.setAttribute('data-valor', valor);
 
-  // Atualizar Legenda Dinâmica correspondente ao nível selecionado
   const elLegenda = document.getElementById(`legenda-${chaveCard}`);
   if (elLegenda && dadosPorNivel[chaveCard]?.legendas[valor]) {
     elLegenda.innerText = dadosPorNivel[chaveCard].legendas[valor];
   }
 
-  // Renderizar atalhos dinâmicos baseados no nível (1 a 5)
   const containerAtalhos = document.getElementById(`atalhos-${chaveCard}`);
   if (containerAtalhos) {
     containerAtalhos.innerHTML = '';
