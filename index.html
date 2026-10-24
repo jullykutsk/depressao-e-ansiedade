@@ -77,7 +77,8 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 .saudacao-acoes { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
 .btn-proxima-dica {
   background: var(--btn-bg); border: 1px solid var(--border-light); color: var(--text-muted);
-  padding: 3px 10px; border-radius: 12px; font-size: 0.72rem; cursor: pointer; transition: all 0.2s;
+  width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
 }
 .btn-proxima-dica:hover { color: var(--accent-color); border-color: var(--accent-color); }
 
@@ -314,8 +315,8 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     <!-- MENSAGEM DINÂMICA DE BOAS-VINDAS AO ENTRAR -->
     <div class="saudacao-dinamica-box">
       <div class="saudacao-titulo">
-        <span id="saudacao-titulo-texto">👋 Olá! Um momento para si</span>
-        <button type="button" class="btn-proxima-dica" onclick="mudarMensagemBoasVindas()">Próxima dica 🔄</button>
+        <span id="saudacao-titulo-texto">Olá! Um momento para si</span>
+        <button type="button" class="btn-proxima-dica" onclick="mudarMensagemBoasVindas()" title="Próxima dica">🔄</button>
       </div>
       <div class="saudacao-texto" id="saudacao-corpo-texto">
         A carregar mensagem de acolhimento...
@@ -325,13 +326,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     <!-- FERRAMENTA INTUITIVA DE CLIMA E AMBIENTE -->
     <div class="clima-ambiente-box">
       <div class="clima-titulo-linha">
-        <span>🌤️ Como está o ambiente hoje? (Influência no humor e energia)</span>
+        <span>Como está o ambiente hoje? (Influência no humor e energia)</span>
       </div>
       <div class="clima-botoes-grid">
-        <button type="button" class="btn-clima" id="clima-ensolarado" onclick="selecionarAmbiente('clima', 'Ensolarado / Quente')">☀️ Ensolarado / Quente</button>
-        <button type="button" class="btn-clima" id="clima-chuvoso" onclick="selecionarAmbiente('clima', 'Chuvoso / Nublado')">🌧️ Chuvoso / Nublado</button>
-        <button type="button" class="btn-clima" id="periodo-dia" onclick="selecionarAmbiente('periodo', 'Período do Dia')">🌅 Dia</button>
-        <button type="button" class="btn-clima" id="periodo-noite" onclick="selecionarAmbiente('periodo', 'Período da Noite')">🌙 Noite</button>
+        <button type="button" class="btn-clima" id="clima-ensolarado" onclick="selecionarAmbiente('clima', 'Ensolarado / Quente')">Ensolarado / Quente</button>
+        <button type="button" class="btn-clima" id="clima-chuvoso" onclick="selecionarAmbiente('clima', 'Chuvoso / Nublado')">Chuvoso / Nublado</button>
+        <button type="button" class="btn-clima" id="periodo-dia" onclick="selecionarAmbiente('periodo', 'Período do Dia')">Dia</button>
+        <button type="button" class="btn-clima" id="periodo-noite" onclick="selecionarAmbiente('periodo', 'Período da Noite')">Noite</button>
       </div>
       <div class="dica-ambiental-card" id="dica-ambiental-texto">
         Selecione o clima ou período para receber uma dica de regulação ambiental.
@@ -786,7 +787,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       <p>O que você sente hoje é um estado passageiro do seu sistema nervoso, e não quem você é. Registar os seus dias ajuda a olhar com carinho para a sua evolução e a perceber que as fases difíceis também passam.</p>
 
       <div class="autor-credito">
-        Baseado em abordagens cientificamente comprovadas (Terapia Cognitivo-Comportamental, Ativação Comportamental e Teoria Polivagal).
+        Baseado en abordagens cientificamente comprovadas (Terapia Cognitivo-Comportamental, Ativação Comportamental e Teoria Polivagal).
       </div>
     </div>
   </div>
@@ -801,19 +802,19 @@ let ambienteAtual = { clima: '', periodo: '' };
 /* MENSAGENS DINÂMICAS POR HORÁRIO OU ROTATIVAS */
 const mensagensBoasVindas = {
   manha: [
-    "🌅 Manhã: Cuidado com a ansiedade antecipatória ao acordar. Evite pegar no telemóvel de imediato; comece o dia com um copo de água e respirações fundas.",
-    "☀️ Acordar pode trazer um pico de alerta no corpo. Lembre-se: você não precisa resolver o dia inteiro na primeira hora.",
-    "☕ Antes de qualquer exigência externa hoje, faça uma pausa curta de 30 segundos apenas sentindo o apoio dos seus pés no chão."
+    "Cuidado com a ansiedade antecipatória ao acordar. Evite pegar no telemóvel de imediato; comece o dia com um copo de água e respirações fundas.",
+    "Acordar pode trazer um pico de alerta no corpo. Lembre-se: você não precisa resolver o dia inteiro na primeira hora.",
+    "Antes de qualquer exigência externa hoje, faça uma pausa curta de 30 segundos apenas sentindo o apoio dos seus pés no chão."
   ],
   tarde: [
-    "☀️ Tarde: Se a energia começou a cair ou o ritmo acelerou demasiado, faça uma pausa breve para soltar os ombros e respirar.",
-    "🌿 A meio do dia, observe se se cobrou demais. Pequenas pausas ajudam o sistema nervoso a reencontrar o eixo.",
-    "💧 Como está a sua hidratação e a sua postura agora? Aproveite para beber um copo de água fresca."
+    "Se a energia começou a cair ou o ritmo acelerou demasiado, faça uma pausa breve para soltar os ombros e respirar.",
+    "A meio do dia, observe se se cobrou demais. Pequenas pausas ajudam o sistema nervoso a reencontrar o eixo.",
+    "Como está a sua hidratação e a sua postura agora? Aproveite para beber um copo de água fresca."
   ],
   noite: [
-    "🌙 Noite: Com o fim das obrigações, a mente costuma acelerar com os pensamentos do amanhã. Despeje as preocupações num papel antes de deitar.",
-    "🌌 A noite pede recolhimento e desativação do modo alerta. Afaste-se dos ecrãs e permita que o seu corpo desacople o stress do dia.",
-    "🕯️ Feche o dia sem julgamentos. O que não foi feito hoje poderá esperar amanhã; agora é momento de descanso."
+    "Com o fim das obrigações, a mente costuma acelerar com os pensamentos do amanhã. Despeje as preocupações num papel antes de deitar.",
+    "A noite pede recolhimento e desativação do modo alerta. Afaste-se dos ecrãs e permita que o seu corpo desacople o stress do dia.",
+    "Feche o dia sem julgamentos. O que não foi feito hoje poderá esperar amanhã; agora é momento de descanso."
   ]
 };
 
@@ -842,9 +843,9 @@ function exibirMensagemAtual() {
     if (indiceMensagemAtual >= lista.length) indiceMensagemAtual = 0;
     textoEl.innerText = lista[indiceMensagemAtual];
     
-    if (periodoAtualChave === 'manha') tituloEl.innerText = "🌅 Bom dia — Um momento para si";
-    else if (periodoAtualChave === 'tarde') tituloEl.innerText = "☀️ Boa tarde — Checagem de ritmo";
-    else tituloEl.innerText = "🌙 Boa noite — Hora de desacelerar";
+    if (periodoAtualChave === 'manha') tituloEl.innerText = "Bom dia — Um momento para si";
+    else if (periodoAtualChave === 'tarde') tituloEl.innerText = "Boa tarde — Checagem de ritmo";
+    else tituloEl.innerText = "Boa noite — Hora de desacelerar";
   }
 }
 
@@ -859,10 +860,10 @@ function mudarMensagemBoasVindas() {
 }
 
 const dicasAmbientais = {
-  'Ensolarado / Quente': "☀️ Calor ou excesso de sol podem acelerar o ritmo cardíaco, gerando falsa sensação de sufoco ou irritabilidade. Mantenha-se hidratado e use água fresca nos pulsos se sentir o alarme do corpo disparar.",
-  'Chuvoso / Nublado': "🌧️ A menor luminosidade diminui a disposição e aumenta a vontade de recolhimento. Acenda luzes mais fortes em casa, faça um micro-movimento para gerar dopamina e seja gentil com o seu ritmo.",
-  'Período do Dia': "🌅 Manhã/Tarde: Cuidado com a ansiedade antecipatória ao acordar. Evite pegar no telemóvel de imediato; comece o dia com um copo de água e respirações fundas.",
-  'Período da Noite': "🌙 Noite: Com o fim das distrações, a mente pode acelerar com preocupações. Pratique despejar os pensamentos num papel antes de deitar e reduza os ecrãs."
+  'Ensolarado / Quente': "Calor ou excesso de sol podem acelerar o ritmo cardíaco, gerando falsa sensação de sufoco ou irritabilidade. Mantenha-se hidratado e use água fresca nos pulsos se sentir o alarme do corpo disparar.",
+  'Chuvoso / Nublado': "A menor luminosidade diminui a disposição e aumenta a vontade de recolhimento. Acenda luzes mais fortes em casa, faça um micro-movimento para gerar dopamina e seja gentil com o seu ritmo.",
+  'Período do Dia': "Manhã/Tarde: Cuidado com a ansiedade antecipatória ao acordar. Evite pegar no telemóvel de imediato; comece o dia com um copo de água e respirações fundas.",
+  'Período da Noite': "Noite: Com o fim das distrações, a mente pode acelerar com preocupações. Pratique despejar os pensamentos num papel antes de deitar e reduza os ecrãs."
 };
 
 const dadosPorNivel = {
