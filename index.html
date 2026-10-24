@@ -153,8 +153,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 }
 .categoria-titulo:hover { background: var(--border-light); color: var(--text-main); }
 .categoria-seta { font-size: 0.8rem; transition: transform 0.3s ease; }
-/* Recolhido por padrão conforme solicitado */
+
+/* Grupos iniciam recolhidos mas preparados para abrir via JS */
 .categoria-grupo { display: flex; flex-direction: column; transition: all 0.3s ease; overflow: hidden; max-height: 0; opacity: 0; margin: 0; pointer-events: none; }
+.categoria-grupo.ativo { max-height: 3000px; opacity: 1; pointer-events: auto; margin-bottom: 12px; }
 
 .criterio-card {
   background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px;
@@ -310,7 +312,6 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       <div class="dica-ambiental-card" id="dica-ambiental-texto">
         Selecione o clima ou período para receber uma dica de regulação ambiental.
       </div>
-      <!-- Campo de complementação sobre o ambiente cotidiano -->
       <input type="text" id="complemento-ambiente-input" class="input-complemento-ambiente" placeholder="Ex: Hoje estive fora do meu ambiente cotidiano / Fiquei em casa o dia todo / Fui para casa de familiares...">
     </div>
 
@@ -353,7 +354,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     <!-- Categoria 1: Dimensão Neuroemocional -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
       <span>Dimensão Neuroemocional: Mente & Corpo</span>
-      <span class="categoria-seta" style="transform: rotate(-90deg);">▼</span>
+      <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
     </div>
     <div class="categoria-grupo">
       
@@ -406,7 +407,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     <!-- Categoria 2: Saúde Integral & Rotina -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
       <span>Saúde Integral & Rotina Diária</span>
-      <span class="categoria-seta" style="transform: rotate(-90deg);">▼</span>
+      <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
     </div>
     <div class="categoria-grupo">
 
@@ -547,7 +548,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     <!-- Categoria 3: Relacionamentos & Vínculos -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
       <span>Relacionamentos & Vínculos Sociais</span>
-      <span class="categoria-seta" style="transform: rotate(-90deg);">▼</span>
+      <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
     </div>
     <div class="categoria-grupo">
 
@@ -622,7 +623,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     <!-- Categoria 4: Desempenho & Expectativas -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
       <span>Desempenho (Trabalho/Estudo) & Futuro</span>
-      <span class="categoria-seta" style="transform: rotate(-90deg);">▼</span>
+      <span class="categoria-seta" style="transform: rotate(0deg);">▼</span>
     </div>
     <div class="categoria-grupo">
 
@@ -1046,11 +1047,11 @@ function mudarAba(abaId, elementoBtn) {
 function toggleSecao(elementoHeader) {
   const grupo = elementoHeader.nextElementSibling;
   const seta = elementoHeader.querySelector('.categoria-seta');
-  grupo.classList.toggle('recolhido');
-  if (grupo.classList.contains('recolhido')) {
-    seta.style.transform = 'rotate(-90deg)';
-  } else {
+  grupo.classList.toggle('ativo');
+  if (grupo.classList.contains('ativo')) {
     seta.style.transform = 'rotate(0deg)';
+  } else {
+    seta.style.transform = 'rotate(-90deg)';
   }
 }
 
