@@ -5,48 +5,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard Psicoeducativo de Autorregulação - AH/SD</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
 
 /* =========================================================
-   VARIÁVEIS DE TEMA NOITE (Verde Menta Escuro / Floresta / Calmo)
+   VARIÁVEIS DE TEMA NOITE (Verde Botânico Profundo & Nude)
    ========================================================= */
 :root {
-  --bg-body: #0d1a15;
-  --text-main: #e8f3ee;
-  --bg-container: #142620;
-  --border-color: #1f3a31;
-  --border-light: #2c4f43;
-  --text-muted: #8cae9e;
-  --text-dimmed: #c5dcd2;
-  --accent-color: #72b095;
-  --accent-hover: #5d987d;
-  --btn-bg: #0d1a15;
-  --card-bg: #142620;
-  --card-prioritario: #193129;
-  --legenda-bg: #0d1a15;
-  --cat-bg: #1a332a;
-  --tag-bg: #1a332a;
+  --bg-body: #16241d;
+  --text-main: #f0f4f1;
+  --bg-container: #1e3128;
+  --border-color: #2a4337;
+  --border-light: #3a5b4b;
+  --text-muted: #8faea0;
+  --text-dimmed: #d0ded7;
+  --accent-color: #4a6b5b;
+  --accent-hover: #3b5749;
+  --btn-bg: #16241d;
+  --card-bg: #1e3128;
+  --card-prioritario: #233b30;
+  --legenda-bg: #16241d;
+  --cat-bg: #263e33;
+  --tag-bg: #263e33;
 }
 
 /* =========================================================
-   VARIÁVEIS DE TEMA DIA (Verde Menta Suave / Sálvia / Relaxante)
+   VARIÁVEIS DE TEMA DIA (Baseado na Imagem: Beige, Green & Rose Gold)
    ========================================================= */
 [data-theme="light"] {
-  --bg-body: #f4f8f5;
-  --text-main: #2d3a34;
-  --bg-container: #ffffff;
-  --border-color: #e0eae4;
-  --border-light: #c8d8ce;
-  --text-muted: #738a7f;
-  --text-dimmed: #4a5c54;
-  --accent-color: #589a7d;
-  --accent-hover: #458066;
-  --btn-bg: #f0f5f2;
-  --card-bg: #ffffff;
-  --card-prioritario: #f0f7f3;
-  --legenda-bg: #f4f8f5;
-  --cat-bg: #e6f0eb;
-  --tag-bg: #edf4f0;
+  --bg-body: #eae8e3;        /* Beige muito claro neutro de fundo */
+  --text-main: #2b332f;       /* Verde-escuro quase preto para leitura */
+  --bg-container: #ffffff;    /* Branco puro para o contentor principal */
+  --border-color: #d8d4cd;    /* Borda neutra suave */
+  --border-light: #c5c0b6;   /* Borda clara suave */
+  --text-muted: #78736a;     /* Texto secundário bege escuro */
+  --text-dimmed: #464e4a;    /* Texto suave */
+  --accent-color: #435b4e;   /* Verde Eucalipto Principal */
+  --accent-hover: #33473d;   /* Verde Eucalipto Escuro para hover */
+  --btn-bg: #f5f3ef;         /* Bege nude muito claro para botões */
+  --card-bg: #ffffff;        /* Cartões brancos limpos */
+  --card-prioritario: #f2f5f3; /* Fundo prioritário com leve tom verde */
+  --legenda-bg: #f5f3ef;     /* Fundo de legendas nude */
+  --cat-bg: #e2e8e4;         /* Destaque das categorias em tom eucalipto suave */
+  --tag-bg: #ebe8e2;         /* Tags em tom bege nude */
 }
 
 body { background-color: var(--bg-body); color: var(--text-main); padding: 12px; display: flex; flex-direction: column; min-height: 100vh; }
@@ -288,7 +288,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 
 .modal-overlay {
   display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(13, 26, 21, 0.85); z-index: 2000; justify-content: center; align-items: center; padding: 16px;
+  background: rgba(22, 36, 29, 0.85); z-index: 2000; justify-content: center; align-items: center; padding: 16px;
 }
 .modal-overlay.open { display: flex; }
 .modal-box {
