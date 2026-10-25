@@ -74,7 +74,6 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 }
 .saudacao-titulo { font-size: 0.88rem; font-weight: bold; color: var(--accent-color); display: flex; justify-content: space-between; align-items: center; }
 .saudacao-texto { font-size: 0.84rem; color: var(--text-dimmed); line-height: 1.45; }
-.saudacao-acoes { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
 .btn-proxima-dica {
   background: var(--btn-bg); border: 1px solid var(--border-light); color: var(--text-muted);
   width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
@@ -217,7 +216,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   padding: 14px; margin-top: 20px; display: flex; flex-direction: column; gap: 10px;
 }
 .saldo-linha { display: flex; align-items: center; justify-content: space-between; font-weight: bold; font-size: 0.95rem; }
-.saldo-badge { background: var(--accent-color); color: #ffffff; padding: 5px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: bold; }
+.saldo-badge { padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; color: #ffffff; background: #6c757d; }
 
 .btn-guardar {
   background: var(--accent-color); color: #ffffff; border: none; padding: 12px 16px; border-radius: 8px;
@@ -714,8 +713,8 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     <!-- Painel Guardar Registo -->
     <div class="painel-guardar">
       <div class="saldo-linha">
-        <span>Índice Diário de Bem-Estar e Regulação:</span>
-        <span class="saldo-badge" id="badge-score">A calcular...</span>
+        <span>Saldo do Dia:</span>
+        <span class="saldo-badge" id="badge-score">Por preencher</span>
       </div>
       <button class="btn-guardar" onclick="salvarRegistroDiario()">
         💾 Guardar o meu registo de hoje
@@ -895,7 +894,7 @@ const dadosPorNivel = {
       1: ['+ Insónia severa', '+ Acordou esgotado', '+ Pensamentos na madrugada'],
       2: ['+ Sono picado', '+ Cansaço ao acordar'],
       3: ['+ Sono mediano', '+ Descanso razoável'],
-      4: ['+ Dormiu bien', '+ Acordou com energia'],
+      4: ['+ Dormiu bem', '+ Acordou com energia'],
       5: ['+ Descanso profundo', '+ Revigorado']
     }
   },
@@ -1220,20 +1219,36 @@ function adicionarTag(btn, textoTag) {
 }
 
 function calcularEscoreAtual() {
-  let soma = 0;
-  let contagem = 0;
+  let saldoTotal = 0;
+  let contagemPreenchida = 0;
+
   document.querySelectorAll('.btn-escala.selected').forEach(btn => {
-    soma += parseInt(btn.getAttribute('data-valor') || '0', 10);
-    contagem++;
+    const val = parseInt(btn.getAttribute('data-valor') || '3', 10);
+    contagemPreenchida++;
+    if (val === 1) saldoTotal -= 2;
+    else if (val === 2) saldoTotal -= 1;
+    else if (val === 4) saldoTotal += 1;
+    else if (val === 5) saldoTotal += 2;
+    // val 3 é neutro (0)
   });
   
   const badge = document.getElementById('badge-score');
   if (badge) {
-    if (contagem === 0) {
+    if (contagemPreenchida === 0) {
       badge.innerText = "Por preencher";
+      badge.style.backgroundColor = "#6c757d";
     } else {
-      const media = (soma / contagem).toFixed(1);
-      badge.innerText = `Média de intensidade: ${media} / 5.0`;
+      const sinal = saldoTotal > 0 ? `+${saldoTotal}` : `${saldoTotal}`;
+      if (saldoTotal > 0) {
+        badge.innerText = `${sinal} (Regulado/Positivo)`;
+        badge.style.backgroundColor = "#28a745";
+      } else if (saldoTotal < 0) {
+        badge.innerText = `${sinal} (Sobrecarga/Desgaste)`;
+        badge.style.backgroundColor = "#dc3545";
+      } else {
+        badge.innerText = `0 (Neutro/Equilibrado)`;
+        badge.style.backgroundColor = "#6c757d";
+      }
     }
   }
 }
@@ -1337,23 +1352,24 @@ function atualizarProntuario() {
   let html = `<div class="prontuario-subtitulo">A exibir o seu histórico de <strong>${datas.length}</strong> dia(s) registado(s):</div>`;
   datas.forEach(d => {
     const reg = registrosLocais[d];
-    let soma = 0;
-    let qtd = 0;
+    let saldoDia = 0;
     if (reg.avaliacoes) {
       Object.values(reg.avaliacoes).forEach(v => {
         if (v.valor !== null && v.valor !== undefined) {
-          soma += v.valor;
-          qtd++;
+          if (v.valor === 1) saldoDia -= 2;
+          else if (v.valor === 2) saldoDia -= 1;
+          else if (v.valor === 4) saldoDia += 1;
+          else if (v.valor === 5) saldoDia += 2;
         }
       });
     }
-    const media = qtd > 0 ? (soma / qtd).toFixed(1) : "N/A";
+    const sinal = saldoDia > 0 ? `+${saldoDia}` : `${saldoDia}`;
     const amb = reg.ambiente ? ` | Clima: ${reg.ambiente.clima || 'N/A'}, ${reg.ambiente.periodo || 'N/A'}` : '';
     const comp = reg.ambiente && reg.ambiente.complemento ? `<br><small>Ambiente: ${reg.ambiente.complemento}</small>` : '';
 
     html += `
       <div class="prontuario-topico" style="border-bottom: 1px dashed var(--border-light); padding-bottom: 8px; margin-bottom: 8px;">
-        <strong>📅 Data: ${d}</strong> — <em>Média geral: ${media} / 5.0</em>${amb}${comp}<br>
+        <strong>📅 Data: ${d}</strong> — <em>Saldo do Dia: ${sinal}</em>${amb}${comp}<br>
         <small>Sensações assinaladas: ${reg.perfis ? reg.perfis.length : 0}</small>
       </div>
     `;
@@ -1372,7 +1388,7 @@ function inicializarGrafico() {
       labels: [],
       datasets: [
         {
-          label: 'Média de Intensidade (1 a 5)',
+          label: 'Saldo do Dia (Negativo / Positivo)',
           data: [],
           borderColor: '#b38062',
           backgroundColor: 'rgba(179, 128, 98, 0.15)',
@@ -1385,7 +1401,7 @@ function inicializarGrafico() {
       responsive: true,
       maintainAspectRatio: false,
       scales: {
-        y: { beginAtZero: true, max: 5 }
+        y: { beginAtZero: true }
       }
     }
   });
@@ -1395,23 +1411,24 @@ function renderizarGraficoEvolucao() {
   if (!meuGraficoInstance) return;
 
   const datas = Object.keys(registrosLocais).sort();
-  const medias = datas.map(d => {
+  const saldos = datas.map(d => {
     const reg = registrosLocais[d];
-    let soma = 0;
-    let qtd = 0;
+    let saldoDia = 0;
     if (reg.avaliacoes) {
       Object.values(reg.avaliacoes).forEach(v => {
         if (v.valor !== null && v.valor !== undefined) {
-          soma += v.valor;
-          qtd++;
+          if (v.valor === 1) saldoDia -= 2;
+          else if (v.valor === 2) saldoDia -= 1;
+          else if (v.valor === 4) saldoDia += 1;
+          else if (v.valor === 5) saldoDia += 2;
         }
       });
     }
-    return qtd > 0 ? (soma / qtd).toFixed(2) : 0;
+    return saldoDia;
   });
 
   meuGraficoInstance.data.labels = datas;
-  meuGraficoInstance.data.datasets[0].data = medias;
+  meuGraficoInstance.data.datasets[0].data = saldos;
   meuGraficoInstance.update();
 }
 
@@ -1458,20 +1475,25 @@ function exportarRelatorioPDF() {
   const rows = [];
   Object.keys(registrosLocais).sort().reverse().forEach(data => {
     const reg = registrosLocais[data];
-    let soma = 0, qtd = 0;
+    let saldoDia = 0;
     if (reg.avaliacoes) {
       Object.values(reg.avaliacoes).forEach(v => {
-        if (v.valor !== null && v.valor !== undefined) { soma += v.valor; qtd++; }
+        if (v.valor !== null && v.valor !== undefined) {
+          if (v.valor === 1) saldoDia -= 2;
+          else if (v.valor === 2) saldoDia -= 1;
+          else if (v.valor === 4) saldoDia += 1;
+          else if (v.valor === 5) saldoDia += 2;
+        }
       });
     }
-    const media = qtd > 0 ? (soma / qtd).toFixed(1) : "N/A";
+    const sinal = saldoDia > 0 ? `+${saldoDia}` : `${saldoDia}`;
     const amb = reg.ambiente ? `${reg.ambiente.clima || ''} / ${reg.ambiente.periodo || ''}` : 'N/A';
-    rows.push([data, media, amb]);
+    rows.push([data, sinal, amb]);
   });
 
   doc.autoTable({
     startY: 40,
-    head: [['Data', 'Média Geral (1 a 5)', 'Ambiente / Clima']],
+    head: [['Data', 'Saldo do Dia', 'Ambiente / Clima']],
     body: rows
   });
 
